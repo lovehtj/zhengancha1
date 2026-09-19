@@ -96,6 +96,10 @@
   .qr{width:74px;height:74px;flex:none;border:1px solid var(--line);border-radius:9px;padding:5px;display:grid;place-items:center;
       font-size:10px;color:var(--ink-3);text-align:center;line-height:1.3}
   .qr svg{width:100%;height:100%}
+
+  /* 双二维码：iOS → App Store，安卓 → 下载落地页（各自独立，扫哪个装哪个） */
+  .qrcol{display:flex;flex-direction:column;align-items:center;gap:2px;flex:none}
+  .qrcap{font-size:10.5px;color:var(--ink-3);line-height:1.2}
 </style>
 </head>
 <body>
@@ -195,10 +199,17 @@
   <div class="foot">
     <div class="t">
       <b>到期多看一眼，隐患少一点。</b><br>
-      App Store 搜索「证安查」｜安卓扫码下载 APK ｜ 详细说明见官网「使用说明」
-      <div id="qrtip" style="margin-top:3px;color:var(--brand-700);font-weight:650;font-size:11.5px">扫码下载 App</div>
+      iOS：App Store 搜索「证安查」｜安卓：扫码进下载页取安装包<br>详细说明见官网「使用说明」
+      <div id="qrtip" style="margin-top:3px;color:var(--ink-3);font-size:11px">安卓码请用系统相机/浏览器扫（微信内会拦）</div>
     </div>
-    <div class="qr" id="qr">App Store<br>搜索<br>「证安查」</div>
+    <div class="qrcol">
+      <div class="qr" id="qr">App Store<br>搜索<br>「证安查」</div>
+      <div class="qrcap">iOS</div>
+    </div>
+    <div class="qrcol">
+      <div class="qr" id="qr-and">安卓<br>扫码下载</div>
+      <div class="qrcap">安卓</div>
+    </div>
   </div>
 
   <div class="note">证安查 · 免费使用，无需注册登录 · 识别在本机完成，数据不上传</div>
@@ -210,17 +221,19 @@
 <script>
 (function(){
   var C = window.ZAC_CONFIG || {};
-  function base(){
-    if (C.siteUrl && /^https?:\/\//i.test(C.siteUrl)) return C.siteUrl.replace(/\/+$/,'/');
-    if (/^https?:$/.test(location.protocol)) return location.origin + location.pathname.replace(/[^/]*$/, '');
-    return '';
+  // 两个码各指一处：iOS 直接进 App Store，安卓进下载落地页（国内直连）。
+  // 都是绝对地址，所以从 file:// 打印出来也是能扫的真码。
+  function draw(id, url, fallback){
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (!window.QR || !url) { el.innerHTML = fallback; return; }
+    try {
+      el.innerHTML = window.QR.svg(url, {quiet:2, dark:'#0b1f16', light:'#ffffff'});
+      el.title = url;
+    } catch(e) { el.innerHTML = fallback; }
   }
-  var el = document.getElementById('qr');
-  var url = base() || (C.iosUrl || '');
-  var tip = document.getElementById('qrtip');
-  if (tip) tip.textContent = base() ? '扫码打开官网（iOS / 安卓都在这里）' : '扫码到 App Store 安装（安卓请到官网下载安装包）';
-  if (!el || !window.QR || !url) return;
-  try { el.innerHTML = window.QR.svg(url, {quiet:2, dark:'#0b1f16', light:'#ffffff'}); el.title = url; } catch(e){}
+  draw('qr',     C.iosUrl,     'App Store<br>搜索<br>「证安查」');
+  draw('qr-and', C.androidPath, '安卓<br>见官网');
 })();
 </script>
 </body>

@@ -223,13 +223,27 @@
       }
     });
     document.querySelectorAll('[data-android-link]').forEach(function (el) {
-      if (URLS.android) {
-        el.href = URLS.android;
-        el.setAttribute('download', '');
-      } else {
+      if (!URLS.android) {
         el.classList.add('is-disabled');
         el.textContent = '部署后自动生效';
+        return;
       }
+      // 自动区分「APK 直链」和「下载落地页」：前者触发下载，后者只是跳转。
+      // 落地页加 download 属性没有意义（跨域会被忽略），文案也要跟着改，否则用户以为点错。
+      var isLanding = typeof C.androidIsLanding === 'boolean'
+        ? C.androidIsLanding
+        : !/\.apk(\?|#|$)/i.test(URLS.android);
+      el.href = URLS.android;
+      if (isLanding) {
+        el.removeAttribute('download');
+        el.target = '_blank';
+        el.rel = 'noopener';
+        el.textContent = '打开安卓下载页';
+      } else {
+        el.setAttribute('download', '');
+        el.textContent = '下载 APK';
+      }
+      el.setAttribute('data-android-landing', isLanding ? '1' : '0');
     });
     /* 结构化数据里补上下载地址，便于搜索引擎收录 */
     document.querySelectorAll('script[type="application/ld+json"]').forEach(function (tag) {

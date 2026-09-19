@@ -17,9 +17,15 @@ window.ZAC_CONFIG = {
      注意：iOS 版是"更新中的版本"，与安卓 APK 的版本号不一定相同（见下）。 */
   iosUrl: 'https://apps.apple.com/cn/app/id6810502885',
 
-  /* Android：APK 地址。可以是完整网址，也可以是相对本站的路径。
-     （把 apk 放到本站 download/ 目录下即可直接用相对路径） */
-  androidPath: 'download/zhengancha-2.0.2-build23.apk',
+  /* Android 下载地址。当前用「虾分发」的下载落地页（国内速度好、自带二维码与统计）。
+     可以是任意一种（改完刷新页面即可，二维码会自动重算）：
+       1) 下载落地页（当前）  'https://uz5.pps3.com/5zukgw'
+       2) APK 直链（本站）    'download/zhengancha-2.0.2-build23.apk'
+       3) 对象存储 / CDN      'https://your-bucket.oss-cn-xxx.aliyuncs.com/zhengancha-2.0.2-build23.apk'
+     链接类型会被自动识别：不以 .apk 结尾的按"落地页"处理（按钮文案变「打开安卓下载页」、
+     不加 download 属性）；需要强制指定时设 androidIsLanding: true/false。
+     提示：APK 不要提交进 Git 仓库（仓库内单文件 100MB 硬限制），用落地页/Release/对象存储。 */
+  androidPath: 'https://uz5.pps3.com/5zukgw',
 
   /* 安卓 APK（本站 download/ 里那个包）的版本信息 */
   version: '2.0.2',
