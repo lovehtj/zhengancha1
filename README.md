@@ -1,0 +1,174 @@
+# 证安查官网（静态站点）
+
+一个**零依赖、可离线打开**的产品官网：介绍、使用说明、下载（扫码）、推广卖点、常见问题。
+没有框架、没有构建步骤、不加载任何 CDN（字体用系统栈、图标用内联 SVG、二维码在浏览器里本地生成）。
+
+## 目录结构
+
+```
+证安查官网/
+├── index.html                    首页（介绍 + 三方对比 + 下载二维码 + FAQ）
+├── guide.html                    使用说明（含侧边目录）
+├── policy.html                   隐私政策（由应用内正文生成，见下）
+├── assets/
+│   ├── site.css                  设计系统与全部样式
+│   ├── site.js                   交互：二维码渲染/标签页/滚动出现/复制/目录高亮
+│   ├── qr.js                     二维码生成器（自研，已与 Apple CoreImage 逐模块交叉验证）
+│   ├── config.js                 ★ 唯一需要修改的配置（网址、版本号、邮箱）
+│   └── app-icon.png              App 图标（取自 iOS 1024 图标）
+├── materials/                    三份可打印材料（与 上架资料/ 同步）
+│   ├── 一页速查卡.html
+│   ├── 推广卖点.html
+│   └── App介绍与详细使用说明.html
+├── download/
+│   └── zhengancha-2.0.2-build23.apk   安卓安装包（234 MB）
+├── 工具/
+│   ├── apple_qr.swift            用 Apple CoreImage 生成二维码矩阵（验证基准）
+│   ├── 校验二维码.js              把 qr.js 与 Apple 实现逐模块比对
+│   ├── 渲染自检.js                无头 Chrome 实测：横向溢出/控制台报错/二维码是否真渲染/标签页交互/深色模式对比度
+│   ├── 打印排版自检.js            打印媒体 + A4 尺寸下量内容高度，确认"一页速查卡"确实只有一页
+│   └── 生成隐私政策页.js          从 android_app/assets/privacy_policy.txt 生成 policy.html
+└── README.md
+```
+
+## 本地预览
+
+```bash
+cd 证安查官网
+python3 -m http.server 8899
+# 浏览器打开 http://127.0.0.1:8899/
+```
+
+> 直接双击 `index.html`（`file://`）也能看排版，但**下载二维码会显示"待生成"**——
+> 因为二维码需要一个可被手机访问的 `http(s)` 地址。要本地扫码测试，用上面的命令起服务，
+> 然后把手机连到同一个 Wi-Fi，访问 `http://<电脑局域网IP>:8899/`。
+
+## 部署（三步）
+
+1. **改配置**：编辑 `assets/config.js`
+
+   ```js
+   siteUrl: 'https://你的域名/',                        // 建议填，二维码与链接都以它为准
+   iosUrl: 'https://apps.apple.com/cn/app/id6810502885',  // 已填：证安查（纯 ASCII 短链，等价于带中文 slug 的链接）
+   appStoreVersion: '2.0.0', appStoreBuild: '17',        // App Store 上"当前公开"的版本
+   androidPath: 'download/zhengancha-2.0.2-build23.apk',
+   version: '2.0.2', build: '23',
+   contactEmail: 'qinshunhuan@vip.qq.com'
+   ```
+
+2. **上传**：把整个 `证安查官网/` 目录传到任意静态托管（Nginx / 对象存储 OSS / COS / GitHub Pages / Vercel 均可）。
+   - 若把 APK 放到 CDN 或对象存储，把 `androidPath` 改成完整网址即可；
+   - 正式服务器建议开启 **Range 断点续传**（234 MB 的包，弱网下很重要），
+     本地 `python3 -m http.server` 不支持 Range，仅供预览。
+
+3. **自测**：手机扫首页的「Android」二维码 → 应直接开始下载 APK；
+   扫「分享给同事」二维码 → 应打开官网首页。
+
+## 二维码是怎么来的
+
+- `assets/qr.js` 是一个**自研的纯前端二维码生成器**（字节模式 / 纠错等级 M / 版本 1–10 自动选择，
+  含完整 Reed-Solomon 纠错与 8 种掩码择优），输出内联 SVG，所以：
+  - 不依赖任何在线二维码 API，断网也能用；
+  - 改了 `config.js` 的网址，二维码**立刻跟着变**，无需重新生成图片。
+- 正确性经过交叉验证：`工具/校验二维码.js` 会把 `qr.js` 的模块矩阵与
+  **Apple 系统实现（CoreImage CIQRCodeGenerator）**逐模块比对。
+
+  ```bash
+  cd 证安查官网
+  node 工具/校验二维码.js     # 需要 macOS 自带的 swift
+  ```
+
+  当前结果：**10/10 完全一致**（覆盖版本 2/3/4/5/7/8/9/10、中文 UTF-8、以及掩码择优）。
+  其中版本 7 以上会用到"校正图形与版本信息"，是最容易写错的部分——
+  当初就是靠这个脚本发现并修掉了「校正图形被误跳过导致长网址二维码不可扫」的问题。
+
+> 含数字的长网址与 Apple 实现无法逐模块比对：Apple 会把数字串切成"数字模式+字节模式"混合分段，
+> 而 `qr.js` 统一走字节模式。两者都符合规范、都可扫描，只是编码方式不同。
+
+## 隐私政策页（三方口径一致）
+
+App Store 要求三处隐私表述一致：① App Store Connect 隐私问卷 ② App 内置
+`android_app/assets/privacy_policy.txt` ③ 官网政策页。手工维护三份必然漂移，
+所以本站的 `policy.html` 是**从 ② 生成**的：
+
+```bash
+node 工具/生成隐私政策页.js     # 改完应用内正文后重新生成即可
+```
+
+生成脚本会打印章节数与引导段数，便于确认没有解析遗漏。
+App Store Connect 里填的隐私政策 URL 建议就填本页地址（或在 `config.js`
+里把 `privacyUrl` 指向同内容的其它地址）。
+
+## 两个自检工具（改完样式/文案建议各跑一次）
+
+```bash
+python3 -m http.server 8899 &        # 自检需要一个 http 地址
+node 工具/渲染自检.js                 # 390 / 768 / 1280 三档视口 + 深色模式
+node 工具/打印排版自检.js             # 三份材料的 A4 内容高度与页数
+```
+
+`渲染自检.js` 在无头 Chrome 里真的打开页面并执行 JS，检查：
+横向溢出（`scrollWidth > clientWidth`）、控制台报错、下载二维码是否**真的**渲染成
+SVG、标签页点击是否切换、滚动出现是否全部触发、深色模式正文对比度。
+`打印排版自检.js` 会给出"内容高 / 单页高 / 超出多少 px"，方便精准压缩。
+
+> 踩过的坑：`.reveal` 是"滚进视口才淡入"，所以自检里必须真的滚动一遍；
+> 而页面有 `scroll-behavior: smooth`，连续 `scrollTo` 会互相打断，
+> 必须先临时关掉平滑滚动，否则会误报"内容全部不可见"。
+
+## 生成三份材料的 PDF
+
+```bash
+cd ../上架资料
+CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+for f in 一页速查卡 推广卖点 App介绍与详细使用说明; do
+  "$CHROME" --headless=new --disable-gpu --no-pdf-header-footer \
+    --virtual-time-budget=4000 --print-to-pdf="$f.pdf" "file://$PWD/$f.html"
+done
+```
+
+当前结果：一页速查卡 **1 页**、推广卖点 **1 页**、使用说明 **8 页**。
+
+> 材料里的下载二维码需要先填 `assets/config.js` 的 `siteUrl` 才会出现
+> （`file://` 下无法推导网址）。没配置时那格会退化为「App Store 搜索『证安查』」的文字提示，
+> 打印出来依然可用。要印二维码就：填 `siteUrl` → 重新生成 PDF。
+
+## 两个版本号，别写混
+
+iOS 走 App Store 审核，**线上公开的版本往往落后于安卓包**。所以 `config.js` 里分两组：
+
+| 字段 | 含义 | 当前值 |
+|---|---|---|
+| `version` / `build` | 本站 `download/` 里那个 APK 的版本 | 2.0.2 / 23 |
+| `appStoreVersion` / `appStoreBuild` | App Store 上**当前公开**的版本 | 2.0.0 / 17 |
+
+页面上的 iOS 卡片显示前者语义的"App Store 当前 X"，安卓卡片显示安装包版本，页脚与
+`policy.html`（"适用版本"）两端分开写。**发新版后先更新这里**，别让官网写的版本比线上还新。
+
+## 更新内容时的检查清单
+
+- [ ] 新版发布后：改 `assets/config.js` 的 `version` / `build` / `apkSize` / `iosSize`，替换 `download/` 下的 APK
+- [ ] 三份材料（`materials/*.html` 与 `上架资料/*.html`）如内容有变，两处都要改（站点内副本的脚本路径是 `../assets/`，仓库原件是 `../证安查官网/assets/`）
+- [ ] `node 工具/校验二维码.js` 确认二维码仍与 Apple 实现一致
+- [ ] `node 工具/渲染自检.js` 与 `node 工具/打印排版自检.js` 全绿
+- [ ] 改过应用内隐私政策正文 → `node 工具/生成隐私政策页.js` 重新生成 policy.html
+- [ ] 填好 `siteUrl` 后重新生成三份 PDF，让纸质材料上也有二维码
+- [ ] App Store 新版本过审发布后：更新 `appStoreVersion` / `appStoreBuild`（iOS 与实际线上保持一致）
+- [ ] 更新 `androidPath` 里的 APK 文件名与 `version` / `build`
+
+> 纸质材料的二维码有个兜底：`siteUrl` 未配置时，二维码指向 **App Store**（而不是留空），
+> 所以现在打印出来就能扫；配好 `siteUrl` 后重新生成，二维码会自动改为指向官网。
+- [ ] 手机实扫一次 iOS / Android / 官网 三个二维码
+- [ ] 打印两份材料确认仍是「一页速查卡 = 1 页」
+
+## 设计与实现说明
+
+- **一个主色**：`#07C160`（取自 App 内主色），配深绿墨色与中性灰；卡片圆角 18px、克制的阴影层级。
+- **纯 CSS 手机演示**：首页右侧的手机模型与"扫描证件 → 自动填表 → 落进台账"动画
+  全部由 CSS 完成（无图片、无视频），所以体积极小、任意分辨率都清晰。
+- **无障碍/健壮性**：语义化标签、`aria-selected`/`role="tabpanel"`、键盘方向键切换标签、
+  `:focus-visible` 焦点环、`prefers-reduced-motion` 关闭动画、
+  **无 JS 时内容默认可见**（`.reveal` 的隐藏只在 `html.js` 下生效）、`prefers-color-scheme` 支持深色模式。
+- **SEO**：`description` / `keywords` / Open Graph / `SoftwareApplication` 结构化数据（JSON-LD）。
+- **隐私一致性**：页面上的隐私表述与 App 内 `assets/privacy_policy.txt`、
+  App Store 隐私问卷（Data Not Collected）三方口径一致，不要单独改动其中一处。

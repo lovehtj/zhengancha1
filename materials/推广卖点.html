@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>证安查 · 推广卖点（对标 OA 手动录入）</title>
+<style>
+  /* ============ 证安查 · 推广卖点单页 ============
+     设计：A4 单页/双页可打印，屏幕上居中成"纸张"效果
+     零外部依赖（字体用系统栈，图标用内联 SVG） */
+  :root{
+    --brand:#07c160; --brand-600:#05a552; --brand-700:#048344;
+    --brand-50:#eefbf3; --brand-100:#d6f5e3;
+    --ink:#0c1f17; --ink-2:#35493f; --ink-3:#6b7d74;
+    --line:#e3ece7; --warn:#f5a623; --danger:#e5484d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    color:var(--ink); background:#eef2f0; line-height:1.55; font-size:14px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{
+    width:210mm; min-height:297mm; margin:22px auto; background:#fff; padding:13mm 14mm 11mm;
+    box-shadow:0 18px 50px -22px rgba(12,31,23,.35);
+  }
+  @media print{
+    @page{size:A4;margin:0}
+    body{background:#fff}
+    .sheet{margin:0;box-shadow:none;width:auto;min-height:auto;padding:11mm 12mm 9mm}
+    .screen-only{display:none !important}
+    .card,.box,.cmp tr{break-inside:avoid}
+  }
+
+  /* 抬头 */
+  .head{display:flex;align-items:center;gap:13px;padding-bottom:11px;border-bottom:2px solid var(--brand)}
+  .mark{
+    width:42px;height:42px;border-radius:13px;background:linear-gradient(150deg,var(--brand),var(--brand-700));
+    color:#fff;display:grid;place-items:center;font-weight:800;font-size:20px;flex:none;
+    box-shadow:0 8px 18px -8px rgba(7,193,96,.7);
+  }
+  .head h1{font-size:21.5px;letter-spacing:-.02em;line-height:1.25}
+  .head p{color:var(--ink-3);font-size:13px;margin-top:2px}
+  .head .ver{margin-left:auto;text-align:right;font-size:12px;color:var(--ink-3);line-height:1.5}
+  .head .ver b{color:var(--brand-700);font-size:13px}
+
+  /* 硬广一句 */
+  .punch{
+    margin-top:14px;background:linear-gradient(135deg,var(--brand-700),#075c33);color:#fff;
+    border-radius:13px;padding:12px 16px;
+  }
+  .punch b{display:block;font-size:19px;letter-spacing:-.02em;line-height:1.45}
+  .punch span{display:block;margin-top:4px;font-size:12.6px;color:rgba(255,255,255,.88)}
+
+  h2.sec{
+    font-size:14px;color:var(--brand-700);margin:11px 0 6px;padding-left:9px;
+    border-left:4px solid var(--brand);line-height:1.3;
+  }
+
+  /* 对比表 */
+  table.cmp{width:100%;border-collapse:collapse;font-size:12.4px;line-height:1.5}
+  table.cmp th,table.cmp td{border:1px solid var(--line);padding:5px 9px;vertical-align:top;text-align:left}
+  table.cmp thead th{background:#f7faf8;font-size:12.5px;color:var(--ink-3);font-weight:650}
+  table.cmp thead th.new{background:var(--brand-50);color:var(--brand-700)}
+  table.cmp td.dim{width:20%;font-weight:650;background:#fcfdfc;color:var(--ink-2)}
+  table.cmp td.old{color:var(--ink-3)}
+  table.cmp td.new{background:#fbfefc;color:var(--ink)}
+  .bad{color:var(--danger);font-weight:700}
+  .good{color:var(--brand-700);font-weight:700}
+
+  /* 场景 / 人群 */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .card{border:1px solid var(--line);border-radius:11px;padding:9px 12px}
+  .card h3{font-size:14px;margin-bottom:6px;display:flex;align-items:center;gap:7px}
+  .card h3 svg{width:16px;height:16px;color:var(--brand-600)}
+  .card ul{padding-left:15px;color:var(--ink-2);font-size:12.3px;line-height:1.5}
+  .card li{margin:2px 0}
+  .card.hi{background:var(--brand-50);border-color:var(--brand-100)}
+
+  /* 三条结论 */
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+  .three div{border:1px solid var(--line);border-radius:11px;padding:8px 10px}
+  .three b{display:block;font-size:14px;color:var(--brand-700);margin-bottom:3px}
+  .three span{font-size:11.8px;color:var(--ink-2)}
+
+  /* 结尾 */
+  .end{
+    margin-top:12px;border:1.5px dashed var(--brand-100);border-radius:12px;padding:10px 14px;
+    display:flex;align-items:center;gap:16px;background:#fbfefc;
+  }
+  .end .t{flex:1}
+  .end b{font-size:14.4px;display:block;letter-spacing:-.01em}
+  .end span{font-size:12.2px;color:var(--ink-2)}
+  .qr{width:76px;height:76px;flex:none;background:#fff;border:1px solid var(--line);border-radius:10px;
+      padding:6px;display:grid;place-items:center}
+  .qr svg{width:100%;height:100%}
+  .qr .ph{font-size:10.5px;color:var(--ink-3);text-align:center;line-height:1.35}
+  .foot{margin-top:9px;padding-top:7px;border-top:1px solid var(--line);
+        font-size:11px;color:var(--ink-3);display:flex;justify-content:space-between;gap:10px}
+  .hint{width:210mm;margin:0 auto 6px;font-size:12.5px;color:#5c6b64;text-align:right}
+  @media print{.hint{display:none}}
+</style>
+</head>
+<body>
+
+<div class="hint">想导出 PDF：浏览器里按 ⌘P → 目标「另存为 PDF」→ 边距「无」→ 保存</div>
+
+<div class="sheet">
+
+  <div class="head">
+    <div class="mark">证</div>
+    <div>
+      <h1>证安查 · 为什么要用它</h1>
+      <p>建筑施工三类证件的拍照识别与台账管理 · 对标 OA 手动录入</p>
+    </div>
+    <div class="ver">
+      <b>免费 · 无账号 · 无广告</b><br>
+      免费 · iOS 版 2.0.0（App Store）· 安卓版 2.0.2
+    </div>
+  </div>
+
+  <div class="punch">
+    <b>别再把时间浪费在"抄证件"上了。</b>
+    <span>别人在 OA 里一个字一个字敲证件，你拍张照就完事了。</span>
+  </div>
+
+  <h2 class="sec">六大优势（逐项对标 OA 手动填写）</h2>
+  <table class="cmp">
+    <thead>
+      <tr><th style="width:20%">对比维度</th><th>❌ OA 手动填写</th><th class="new">✅ 证安查</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="dim">录入速度</td>
+        <td class="old">一张证盯着敲：姓名、18 位证号、工种、发证机关、有效期…… <span class="bad">5 分钟起步</span></td>
+        <td class="new"><span class="good">拍照几秒自动识别</span>，一次可拍多张，批量录入</td>
+      </tr>
+      <tr>
+        <td class="dim">准确性</td>
+        <td class="old">证号长、字又小，敲错一个数字，后面全白费</td>
+        <td class="new"><span class="good">识别 + 规则纠错 + 联网验真</span>，证号一个不差</td>
+      </tr>
+      <tr>
+        <td class="dim">真假核验</td>
+        <td class="old">只会"抄"。证是真是假、过没过期，根本看不出来</td>
+        <td class="new">一键连 <span class="good">住建部 / 应急管理部官网</span>，假证、过期证当场现形</td>
+      </tr>
+      <tr>
+        <td class="dim">到期预警</td>
+        <td class="old">台账存进去就吃灰，等出事了才发现证早过期了</td>
+        <td class="new"><span class="good">红 / 橙 / 绿 / 黄四色</span>一眼看清，快到期自动标出，隐患提前消</td>
+      </tr>
+      <tr>
+        <td class="dim">证据留存</td>
+        <td class="old">照片散落相册，记录和照片对不上号</td>
+        <td class="new">证件照片 <span class="good">自动归档、按类存放</span>，检查时随时调出</td>
+      </tr>
+      <tr>
+        <td class="dim">报表导出</td>
+        <td class="old">手动整理、复制粘贴，半天干不完</td>
+        <td class="new"><span class="good">一键导出 Excel</span>，上报、打印、迎检 30 秒搞定</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">你熟悉的这些场景，我们都替你省掉了</h2>
+  <div class="cols">
+    <div class="card">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5l3 2"/></svg>现场那点事</h3>
+      <ul>
+        <li>新工人进场，对着证件一个字一个字敲进 OA……</li>
+        <li>敲错证号，联网查不到，来回折腾……</li>
+        <li>检查来了，翻箱倒柜找证件照片和有效期……</li>
+        <li>台账里的证早过期了，没人发现，直到出了事故……</li>
+      </ul>
+    </div>
+    <div class="card hi">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>证安查怎么解</h3>
+      <ul>
+        <li><b>拍照即录</b>：三类证件识别后自动填表，核对即存</li>
+        <li><b>官方验真</b>：住建部 / 应急管理部一键核查真伪与有效期</li>
+        <li><b>到期提醒</b>：四色状态 + 状态筛选，隐患提前暴露</li>
+        <li><b>照片归档</b>：登记即归档，记录与证据一一对应</li>
+        <li><b>一键报表</b>：Excel 台账直接发出去</li>
+        <li><b>数据自持</b>：识别在本机完成，数据只存在自己手机里</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">特别适合这些人</h2>
+  <div class="three">
+    <div><b>🧑‍💼 安全员 / 资料员</b><span>录入、台账、迎检，一个人轻松搞定，不用加班补录</span></div>
+    <div><b>🕵️ 监理人员</b><span>现场核验，拍张照就知道证真不真、过没过期</span></div>
+    <div><b>👷 项目经理</b><span>一键导出报表，向上汇报、迎检都有底气</span></div>
+  </div>
+
+  <div class="end">
+    <div class="t">
+      <b>证件管理，从"手工作业"变成"拍照即录、联网验真、到期提醒"。</b>
+      <span>监理放心，项目合规，你省时间。现在就用「证安查」——拍张照，试试就知道。</span>
+    </div>
+    <div class="qr" id="qr">App Store<br>搜索<br>「证安查」</div>
+  </div>
+
+  <div class="foot">
+    <span>证安查 · ZhengAnCha · 免费使用，无需注册登录</span>
+    <span>App Store 搜索「证安查」｜安卓扫码下载 APK</span>
+  </div>
+  <div id="qrtip" style="margin-top:8px;color:var(--brand-700);font-weight:650;font-size:11.5px;text-align:right">扫码下载 App</div>
+
+
+</div>
+
+<!-- 二维码：从官网目录复用同一套生成器（含配置）；离线/无脚本时退化为文字提示 -->
+<script src="../assets/config.js" onerror="void 0"></script>
+<script src="../assets/qr.js" onerror="void 0"></script>
+<script>
+(function(){
+  var C = window.ZAC_CONFIG || {};
+  function base(){
+    if (C.siteUrl && /^https?:\/\//i.test(C.siteUrl)) return C.siteUrl.replace(/\/+$/,'/');
+    if (/^https?:$/.test(location.protocol)) return location.origin + location.pathname.replace(/[^/]*$/, '');
+    return '';
+  }
+  var el = document.getElementById('qr');
+  // 目标优先用官网地址；官网还没部署时回落到 App Store（纸面上至少有一个能扫的码）
+  var url = base() || (C.iosUrl || '');
+  var tip = document.getElementById('qrtip');
+  if (tip) tip.textContent = base() ? '扫码打开官网（iOS / 安卓都在这里）' : '扫码到 App Store 安装（安卓请到官网下载安装包）';
+  if (!el || !window.QR || !url) return;
+  try {
+    el.innerHTML = window.QR.svg(url, {quiet:2, dark:'#0b1f16', light:'#ffffff'});
+    el.title = url;
+  } catch(e){ /* 保持文字提示 */ }
+})();
+</script>
+</body>
+</html>

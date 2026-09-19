@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>证安查 · App 介绍与详细使用说明</title>
+<style>
+  /* ============ 证安查 · 介绍与详细使用说明（可打印文档） ============
+     面向第一次使用的用户；打印/转 PDF 后可直接发给项目部 */
+  :root{
+    --brand:#07c160; --brand-700:#048344; --brand-50:#eefbf3; --brand-100:#d6f5e3;
+    --ink:#0c1f17; --ink-2:#35493f; --ink-3:#6b7d74; --line:#e3ece7;
+    --warn:#f5a623; --danger:#e5484d; --retired:#b8892c; --info:#2f6fed;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:#eef2f0;color:var(--ink);line-height:1.78;font-size:14.5px;-webkit-font-smoothing:antialiased;
+  }
+  .doc{
+    width:210mm;margin:20px auto;background:#fff;padding:18mm 17mm 14mm;
+    box-shadow:0 18px 50px -22px rgba(12,31,23,.35);
+  }
+  @media print{
+    @page{size:A4;margin:16mm 15mm}
+    body{background:#fff;font-size:11.5pt}
+    .doc{margin:0;width:auto;box-shadow:none;padding:0}
+    .hint,.screen-only{display:none !important}
+    h2,h3{break-after:avoid}
+    table,.callout,.blk,.step,li{break-inside:avoid}
+    a{color:inherit;text-decoration:none}
+    .pagebreak{break-before:page}
+  }
+  .hint{width:210mm;margin:0 auto 6px;font-size:12.5px;color:#5c6b64;text-align:right}
+
+  /* 封面 */
+  .cover{border:1px solid var(--line);border-radius:16px;padding:22px 24px;background:
+    linear-gradient(150deg,#f7fdf9,#ffffff 60%)}
+  .cover .top{display:flex;align-items:center;gap:14px}
+  .mark{width:54px;height:54px;border-radius:15px;background:linear-gradient(150deg,var(--brand),var(--brand-700));
+        color:#fff;display:grid;place-items:center;font-weight:800;font-size:23px;flex:none;
+        box-shadow:0 10px 22px -10px rgba(7,193,96,.75)}
+  .cover h1{font-size:26px;letter-spacing:-.02em;line-height:1.25}
+  .cover .sub{color:var(--ink-3);font-size:13px;margin-top:3px}
+  .cover .lead{margin-top:16px;font-size:15px;color:var(--ink-2)}
+  .cover .lead b{color:var(--brand-700)}
+  .cover .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+  .chip{font-size:12px;background:var(--brand-50);color:var(--brand-700);border:1px solid var(--brand-100);
+        border-radius:999px;padding:4px 11px;font-weight:600}
+  .chip.plain{background:#f6f8f7;color:var(--ink-2);border-color:var(--line)}
+
+  /* 目录 */
+  .toc{border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-top:16px;columns:2;column-gap:26px}
+  .toc b{display:block;font-size:13px;color:var(--ink-3);letter-spacing:.06em;margin-bottom:6px;column-span:all}
+  .toc a{display:block;color:var(--ink-2);font-size:13.5px;padding:2.5px 0;break-inside:avoid}
+
+  h2{font-size:19px;margin:30px 0 12px;padding-bottom:7px;border-bottom:2px solid var(--brand-50);
+     letter-spacing:-.01em;scroll-margin-top:20px}
+  h2 .n{color:var(--brand);font-weight:800;margin-right:8px}
+  h3{font-size:15.5px;margin:20px 0 8px;color:var(--brand-700)}
+  p{color:var(--ink-2);margin-bottom:10px}
+  strong{color:var(--ink)}
+  ul,ol{color:var(--ink-2);padding-left:20px;margin-bottom:12px}
+  li{margin:4px 0}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#f5f8f6;border:1px solid var(--line);
+       padding:1px 5px;border-radius:5px;color:var(--brand-700)}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 16px}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  thead th{background:#f7faf8;font-size:12.5px;color:var(--ink-3);font-weight:650}
+  tbody tr:nth-child(even) td{background:#fcfdfc}
+
+  .callout{border-left:4px solid var(--brand);background:var(--brand-50);border-radius:0 12px 12px 0;
+           padding:12px 15px;margin:12px 0;font-size:13.8px;color:var(--ink-2)}
+  .callout b{color:var(--ink)}
+  .callout.warn{border-color:var(--warn);background:#fff9ec;color:#6b4a06}
+  .callout.warn b{color:#b3521a}
+  .callout.danger{border-color:var(--danger);background:#fff1f1;color:#7a2327}
+
+  ol.steps{counter-reset:s;list-style:none;padding:0}
+  ol.steps li{counter-increment:s;position:relative;padding-left:36px;margin:10px 0;color:var(--ink-2)}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:2px;width:23px;height:23px;border-radius:8px;
+    background:var(--brand-50);color:var(--brand-700);display:grid;place-items:center;font-size:12px;font-weight:800}
+
+  .q{border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin:9px 0;break-inside:avoid}
+  .q b{display:block;margin-bottom:4px;color:var(--brand-700);font-size:14.5px}
+  .q p{margin:0;font-size:13.6px}
+
+  .foot{margin-top:26px;border-top:1px solid var(--line);padding-top:14px;display:flex;align-items:center;gap:14px}
+  .foot .t{flex:1;font-size:12px;color:var(--ink-3);line-height:1.6}
+  .qr{width:82px;height:82px;flex:none;border:1px solid var(--line);border-radius:10px;padding:6px;display:grid;place-items:center;
+      font-size:10.5px;color:var(--ink-3);text-align:center;line-height:1.3}
+  .qr svg{width:100%;height:100%}
+  svg{max-width:100%}
+</style>
+</head>
+<body>
+
+<div class="hint">想导出 PDF：⌘P → 目标「另存为 PDF」→ 边距「默认」→ 保存</div>
+
+<div class="doc">
+
+  <div class="cover">
+    <div class="top">
+      <div class="mark">证</div>
+      <div>
+        <h1>证安查 · App 介绍与详细使用说明</h1>
+        <div class="sub">面向第一次使用的用户 · 看完就能上手 · iOS 版 2.0.0（App Store）· 安卓版 2.0.2（build 23）</div>
+      </div>
+    </div>
+    <p class="lead">
+      证安查是一款<strong>帮施工、监理企业管好证件</strong>的工具：三类证件<strong>拍照即录</strong>、
+      <strong>一键连官方核验</strong>、<strong>到期自动标色</strong>、<strong>台账一键导出</strong>。
+      识别全程在本机完成，数据只保存在你自己的手机里。
+    </p>
+    <div class="chips">
+      <span class="chip">拍照识别</span>
+      <span class="chip">住建部 / 应急部核验</span>
+      <span class="chip">到期提醒</span>
+      <span class="chip">Excel 导出</span>
+      <span class="chip">照片归档</span>
+      <span class="chip">备份恢复</span>
+      <span class="chip plain">免费 · 无账号 · 无广告</span>
+      <span class="chip plain">iOS 16+ / Android 8+</span>
+    </div>
+  </div>
+
+  <nav class="toc">
+    <b>目录</b>
+    <a href="#s1">一、这个 App 是干什么的</a>
+    <a href="#s2">二、谁适合用</a>
+    <a href="#s3">三、安装与权限</a>
+    <a href="#s4">四、界面认识</a>
+    <a href="#s5">五、拍照识别，登记一张证件</a>
+    <a href="#s6">六、手写登记</a>
+    <a href="#s7">七、联网查询补全（验真）</a>
+    <a href="#s8">八、查看 / 修改 / 删除</a>
+    <a href="#s9">九、搜索与状态筛选</a>
+    <a href="#s10">十、导出 Excel 台账</a>
+    <a href="#s11">十一、证件照片归档</a>
+    <a href="#s12">十二、备份与恢复（防丢失）</a>
+    <a href="#s13">十三、设置项说明</a>
+    <a href="#s14">十四、常见问题 FAQ</a>
+    <a href="#s15">十五、给首次使用者的建议</a>
+    <a href="#s16">十六、隐私与数据安全</a>
+  </nav>
+
+  <h2 id="s1"><span class="n">一</span>这个 App 是干什么的</h2>
+  <p>在工地现场，有三类证件必须有效、不能过期：</p>
+  <ul>
+    <li><strong>特种作业人员证</strong>——电工、焊工、架子工、塔吊司机、高处作业等人员的证；</li>
+    <li><strong>安全生产许可证</strong>——企业施工的"营业执照"之一；</li>
+    <li><strong>安全生产管理人员证</strong>——安全员、项目负责人等人的证。</li>
+  </ul>
+  <p>证件一旦过期或失效，属于<strong>重大事故隐患</strong>，可能被处罚。这个 App 就是帮你：</p>
+  <ul>
+    <li><strong>拍照就能录入</strong>：拍一张证件照片，自动识别出姓名、证号、工种、发证机关、有效期，不用手打；</li>
+    <li><strong>联网查真伪</strong>：一键连接政府官网，核对证件是否真实、是否在有效期内；</li>
+    <li><strong>到期自动提醒</strong>：快到期、已过期的证件，列表里用颜色标出来；</li>
+    <li><strong>一键导出</strong>：把台账导成 Excel，方便上报、打印、迎检。</li>
+  </ul>
+  <div class="callout"><b>一句话：拍照存证、联网验真、到期提醒、导出报表。</b></div>
+
+  <h2 id="s2"><span class="n">二</span>谁适合用</h2>
+  <ul>
+    <li>施工项目部的 <strong>安全员、资料员</strong>——录入、台账、迎检一个人搞定；</li>
+    <li><strong>监理单位</strong>现场核验人员——拍张照就知道证真不真、过没过期；</li>
+    <li>需要定期核查施工方证件是否有效的 <strong>项目管理人员 / 项目经理</strong>——一键导出报表。</li>
+  </ul>
+
+  <h2 id="s3"><span class="n">三</span>安装与权限</h2>
+  <table>
+    <thead><tr><th style="width:22%">平台</th><th>安装方式</th></tr></thead>
+    <tbody>
+      <tr><td>iPhone / iPad</td><td>App Store 搜索「证安查」安装，或访问 apps.apple.com/cn/app/id6810502885（需 iOS 16.0 及以上）</td></tr>
+      <tr><td>Android 手机</td><td>下载 APK 安装（需 Android 8.0 及以上）；首次安装如提示「未知来源 / 外部来源应用」，选择允许即可</td></tr>
+    </tbody>
+  </table>
+  <div class="callout warn">
+    第一次打开会请求 <b>相机</b> 与 <b>相册</b> 权限，请点「允许」，否则没法拍照识别。
+    App 不请求位置、通讯录、电话等权限，也不需要注册或登录。
+  </div>
+
+  <h2 id="s4"><span class="n">四</span>界面认识</h2>
+  <ul>
+    <li><strong>顶部</strong>：应用名「证安查」；右上角两个按钮——「<strong>数据管理</strong>」与「<strong>设置</strong>」；</li>
+    <li><strong>底部三个标签</strong>，对应三类台账，点一下切换：特种作业人员 / 安全生产许可证 / 管理人员；</li>
+    <li>每个标签页里，上面是「拍照识别 / 登记」区，下面是<strong>台账列表</strong>（可按所属单位分组折叠）。</li>
+  </ul>
+  <p>台账列表里，每条记录右侧的<strong>状态色块</strong>含义如下：</p>
+  <table>
+    <thead><tr><th style="width:20%">颜色</th><th style="width:34%">含义</th><th>建议动作</th></tr></thead>
+    <tbody>
+      <tr><td>🟢 正常</td><td>有效期充足</td><td>无需处理</td></tr>
+      <tr><td>🟠 即将到期</td><td>30 天内到期</td><td>提前安排换证 / 复审</td></tr>
+      <tr><td>🔴 已过期</td><td>已过期，属于隐患</td><td>尽快处理并留档</td></tr>
+      <tr><td>🟡 已退场</td><td>人员 / 企业已离场</td><td>保留记录备查</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="s5"><span class="n">五</span>拍照识别，登记一张证件（最常用）</h2>
+  <ol class="steps">
+    <li>点底部标签，选对类型（比如登记一个电工，就点「特种作业人员」）。</li>
+    <li>点「<strong>拍照识别</strong>」。</li>
+    <li>对准证件<strong>拍正、拍清晰</strong>：证件放平、光线充足、四角完整、避免反光。</li>
+    <li>App 会在本机自动识别，几秒后把姓名、证号、工种、发证机关、有效期填到表单里。</li>
+    <li><strong>核对</strong>识别结果（尤其证号与有效期），有错直接点输入框手改。</li>
+    <li>点「<strong>保存登记</strong>」。</li>
+  </ol>
+  <div class="callout">
+    <b>三个提效技巧：</b>
+    <ul style="margin:6px 0 0">
+      <li>可以从相册选已有照片：点「拍照识别」后选「从相册选择」；</li>
+      <li>一次可选多张走「<strong>批量识别</strong>」，适合新工人集中进场；</li>
+      <li>拍错台账标签也没关系——识别出属于其它类别时会自动跳到对应台账登记。</li>
+    </ul>
+  </div>
+
+  <h2 id="s6"><span class="n">六</span>手写登记（识别不准时用）</h2>
+  <p>照片太模糊识别不出来时，直接在登记区逐项填写：姓名、证件类型 / 工种、证号、所属单位、发证机关、初次领证日期、有效期至、备注，然后点「保存登记」。</p>
+  <p>「证件类型 / 工种」支持<strong>多选</strong>：展开「作业类别」后勾选多个「操作项目」，选中项会自动用 <code>/</code> 分隔，例如：</p>
+  <p><code>建筑架子工（普通脚手架）/ 电工作业（低压电工作业）</code></p>
+
+  <h2 id="s7"><span class="n">七</span>联网查询补全（验真 + 自动补全）</h2>
+  <p>这是最省心、也最准的功能。在记录详情页（或新建登记后）点「<strong>联网查询补全</strong>」，App 会自动按证件类型分流：</p>
+  <table>
+    <thead><tr><th style="width:26%">证件类型</th><th>App 的行为</th><th style="width:26%">你要做什么</th></tr></thead>
+    <tbody>
+      <tr><td>住建部证（普通证号）</td><td>直连住建部官网查询接口，补全权威信息</td><td>等提示即可</td></tr>
+      <tr><td>应急部证（证号 T 开头）</td><td>自动打开官方查询页，自动填表、自动识别验证码、自动提交并回填</td><td><strong>不要手动操作页面</strong>，等几秒</td></tr>
+      <tr><td>安全生产许可证</td><td>先按证书编号查；查不到时自动换「企业名称」再查一次</td><td>确保编号或企业名至少一个正确</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">联网查询需要手机能上网，可在设置里关闭。它是"锦上添花"——识别不出来或想确认真伪时用它最靠谱；平时不联网，识别与台账功能完全不受影响。</div>
+
+  <h2 id="s8"><span class="n">八</span>查看 / 修改 / 删除一条记录</h2>
+  <ul>
+    <li><strong>查看</strong>：在台账列表点一下某条记录进入编辑页；长按可直接预览全部字段。</li>
+    <li><strong>修改</strong>：改完点「保存修改」。若该记录已被删除，会明确提示保存失败，不会假装成功。</li>
+    <li><strong>删除</strong>：编辑页右上角删除图标，会二次确认（删除不可恢复）。</li>
+    <li><strong>退场标记</strong>：「已退场」开关用于区分"离场但需留档"的记录。</li>
+  </ul>
+
+  <h2 id="s9"><span class="n">九</span>搜索与状态筛选</h2>
+  <ul>
+    <li><strong>搜索</strong>：列表上方搜索框，输入姓名 / 证号 / 单位 / 工种快速定位；</li>
+    <li><strong>状态筛选</strong>：全部 / 正常 / 即将到期 / 已过期 / 已退场；</li>
+    <li><strong>按单位分组</strong>：台账按所属单位折叠展示，大项目也能快速翻找。</li>
+  </ul>
+  <p>在「数据管理」页顶部数据概览里，点「已过期 / 即将到期 / 已退场」的数字，可直接跳到特种作业人员台账的对应分类。</p>
+
+  <h2 id="s10"><span class="n">十</span>导出 Excel 台账</h2>
+  <ol class="steps">
+    <li>点右上角「数据管理」；</li>
+    <li>在「Excel 台账导出」里点要导出的类型（特种作业人员 / 安全生产许可证 / 管理人员）；</li>
+    <li>选择用微信、邮件等方式把文件发出去（或存到「文件」App）。</li>
+  </ol>
+  <p>同一页还可「导出识别日志」：包含每次识别的耗时、行数与结果摘要，遇到识别问题把该文件发给技术人员即可定位。</p>
+
+  <h2 id="s11"><span class="n">十一</span>证件照片归档</h2>
+  <p>每登记成功一张证件，照片会自动按分类归档，与台账记录一一对应。</p>
+  <ul>
+    <li>查看 / 删除：设置 →「证件文件管理」，可浏览、预览、删除已归档照片；</li>
+    <li>导出到相册：在文件管理里点导出图标；</li>
+    <li>照片保存到系统相册的「证件归档」目录，检查时可直接从相册调取。</li>
+  </ul>
+
+  <h2 id="s12"><span class="n">十二</span>备份 / 恢复数据（防丢失）</h2>
+  <ol class="steps">
+    <li>点右上角「数据管理」；</li>
+    <li>点「<strong>备份数据库</strong>」→ 生成一个 <code>.db</code> 备份文件，发到微信 / 网盘存好；</li>
+    <li>换手机或误删时，用「<strong>从备份恢复数据库</strong>」找回全部数据。</li>
+  </ol>
+  <div class="callout warn">
+    <b>强烈建议：每周备份一次</b>，或每次集中录入后备份一次。备份文件包含全部台账与设置，可跨设备迁移。
+    恢复时会先校验备份文件是否为完整数据库、是否含必需数据表；<b>选错文件会明确报错并保留原有数据</b>，不会破坏现有台账。
+  </div>
+  <div class="callout danger">
+    <b>注意：卸载 App 会一并清除本地数据。</b>卸载或换机前请务必先做一次备份。
+  </div>
+
+  <h2 id="s13"><span class="n">十三</span>设置项说明（不懂可以不动，默认即可）</h2>
+  <table>
+    <thead><tr><th style="width:30%">设置项</th><th>作用</th><th style="width:20%">建议</th></tr></thead>
+    <tbody>
+      <tr><td>识别后自动登记</td><td>识别完整后自动存进台账，不用再点保存</td><td>开着省事</td></tr>
+      <tr><td>OCR 模型档位</td><td>高精度识别更准；轻量更省内存</td><td>默认「高精度」</td></tr>
+      <tr><td>拍照前图像预处理</td><td>照片进模型前做尺寸归一 / 倾斜矫正等优化</td><td>默认即可</td></tr>
+      <tr><td>识别结果缓存</td><td>同一张照片重复识别秒出结果</td><td>开着</td></tr>
+      <tr><td>系统内置 OCR 引擎</td><td>与手机自带识别引擎联合识别，字段更全</td><td>开着</td></tr>
+      <tr><td>应急部特种作业类别常用显示</td><td>下拉框只显示常用作业类别，选得更快</td><td>开着</td></tr>
+      <tr><td>联网查询证件信息</td><td>识别后自动连官方查询并补全</td><td>需要验真时开</td></tr>
+      <tr><td>自定义工种类型</td><td>手动添加工地自有工种，加入下拉选项</td><td>按需</td></tr>
+      <tr><td>证件文件管理</td><td>查看 / 删除归档的证件照片</td><td>—</td></tr>
+      <tr><td>崩溃日志</td><td>出问题时导出日志给技术人员定位</td><td>—</td></tr>
+      <tr><td>关于证安查</td><td>查看当前版本号与简介</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="s14"><span class="n">十四</span>常见问题（FAQ）</h2>
+  <div class="q"><b>Q1：拍照识别不准 / 识别不出来？</b>
+    <p>证件放平、光线充足、别反光、四角拍全；确认设置里「拍照前图像预处理」与「系统内置 OCR 引擎」处于开启状态；仍然不行就直接手改，或点「联网查询补全」用官方数据覆盖。</p></div>
+  <div class="q"><b>Q2：证号是 T 开头，点联网补全后跳到网页了，正常吗？</b>
+    <p>正常。T 开头是应急管理部的证，App 会自动打开官方查询页并全自动查询，<strong>不要手动操作</strong>，等几秒结果会自己回填。</p></div>
+  <div class="q"><b>Q3：一个证号对应多种工种怎么办？</b>
+    <p>支持多选：在「证件类型 / 工种」下拉里展开作业类别，勾选多个操作项目，选中项会自动用 <code>/</code> 分隔保存。</p></div>
+  <div class="q"><b>Q4：怎么知道哪个证件快到期了？</b>
+    <p>台账列表里橙色=即将到期、红色=已过期、黄色=已退场、绿色=正常；也可以用「状态筛选」只看其中一类，定期扫一遍。</p></div>
+  <div class="q"><b>Q5：数据会不会丢？</b>
+    <p>数据存在手机本地，App 不会上传。建议定期「数据管理 → 备份数据库」，把备份文件发到微信 / 网盘。卸载 App 会清除本地数据，卸载前请先备份。</p></div>
+  <div class="q"><b>Q6：联网查询失败 / 提示查询不到？</b>
+    <p>先检查手机网络；再核对证号、姓名、企业名称是否与证件一致（联网查询按证号或企业名称精确匹配）；政府网站偶有维护时段，稍后再试。识别与台账功能不受影响。</p></div>
+
+  <h2 id="s15"><span class="n">十五</span>给首次使用者的 4 条建议</h2>
+  <ol class="steps">
+    <li>第一次用，先<strong>拍 1 张证试试</strong>，熟悉识别与保存流程。</li>
+    <li>录入后<strong>点一次「联网查询补全」</strong>，确认证号真实有效，顺便补齐权威字段。</li>
+    <li>每周或每次批量录入后，<strong>备份一次数据库</strong>。</li>
+    <li>用「状态筛选」定期扫一遍「即将到期 / 已过期」，把隐患提前消掉。</li>
+  </ol>
+
+  <h2 id="s16"><span class="n">十六</span>隐私与数据安全</h2>
+  <table>
+    <thead><tr><th style="width:34%">数据类型</th><th>App 的实际行为</th></tr></thead>
+    <tbody>
+      <tr><td>姓名 / 证件编号 / 单位</td><td>存入设备本地数据库，不出设备；仅在你主动使用「联网查询补全」时，经 HTTPS 直连政府官网公开查询服务</td></tr>
+      <tr><td>证件照片</td><td>仅在设备本地用于识别与归档，不上传</td></tr>
+      <tr><td>联系信息 / 位置 / 设备标识</td><td>不请求、不收集</td></tr>
+      <tr><td>使用数据与诊断</td><td>未接入任何第三方统计或广告 SDK</td></tr>
+    </tbody>
+  </table>
+  <p>因此 App Store 隐私标签为 <strong>Data Not Collected（不收集数据）</strong>。你可以随时在应用内查看、修改或删除任意一条台账记录。</p>
+
+  <div class="foot">
+    <div class="t">
+      <b>证安查 · 免费使用，无需注册登录</b><br>
+      App Store 搜索「证安查」｜安卓扫码下载 APK<br>
+      详细说明与常见问题见官网「使用说明」页；本说明随版本更新，请以官网为准。
+      <div id="qrtip" style="margin-top:3px;color:var(--brand-700);font-weight:650;font-size:11.5px">扫码下载 App</div>
+    </div>
+    <div class="qr" id="qr">App Store<br>搜索<br>「证安查」</div>
+  </div>
+
+</div>
+
+<script src="../assets/config.js" onerror="void 0"></script>
+<script src="../assets/qr.js" onerror="void 0"></script>
+<script>
+(function(){
+  var C = window.ZAC_CONFIG || {};
+  function base(){
+    if (C.siteUrl && /^https?:\/\//i.test(C.siteUrl)) return C.siteUrl.replace(/\/+$/,'/');
+    if (/^https?:$/.test(location.protocol)) return location.origin + location.pathname.replace(/[^/]*$/, '');
+    return '';
+  }
+  var el = document.getElementById('qr');
+  var url = base() || (C.iosUrl || '');
+  var tip = document.getElementById('qrtip');
+  if (tip) tip.textContent = base() ? '扫码打开官网（iOS / 安卓都在这里）' : '扫码到 App Store 安装（安卓请到官网下载安装包）';
+  if (!el || !window.QR || !url) return;
+  try { el.innerHTML = window.QR.svg(url, {quiet:2, dark:'#0b1f16', light:'#ffffff'}); el.title = url; } catch(e){}
+})();
+</script>
+</body>
+</html>

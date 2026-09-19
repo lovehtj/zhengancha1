@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>证安查 · 建筑证件拍照识别与台账管理｜特种作业·安全生产许可证·安全管理人员</title>
+<meta name="description" content="证安查是一款面向建筑施工企业的证件识别与台账管理 App。拍一张证件照，自动识别姓名、证号、工种、发证机关与有效期，支持住建部/应急管理部官方联网核验、到期提醒、证件照片归档与 Excel 台账导出。识别全程在本机完成，数据只存在你的手机里，无账号、无广告。">
+<meta name="keywords" content="证件识别,安全员,特种作业证,安全生产许可证,台账,OCR识别,建筑,到期提醒,施工,持证上岗,电工证,焊工证,塔吊,升降机,架子工,证书查询,档案">
+<meta name="theme-color" content="#07c160">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="assets/app-icon.png">
+<link rel="apple-touch-icon" href="assets/app-icon.png">
+<link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js');</script>
+<meta property="og:type" content="website">
+<meta property="og:title" content="证安查 · 拍一张证件，台账自动少一半活">
+<meta property="og:description" content="建筑三类证件拍照识别 + 官方联网核验 + 到期提醒 + Excel 导出。数据只存本机，无账号无广告。">
+<meta property="og:image" content="assets/app-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "证安查",
+  "alternateName": "ZhengAnCha",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "iOS 16.0+ / Android 8.0+",
+  "description": "面向建筑施工企业的证件识别与台账管理工具，支持特种作业人员、安全生产许可证、安全生产管理人员三类证件的拍照识别、官方联网核验、到期提醒与台账导出。",
+  "softwareVersion": "2.0.0",
+  "downloadUrl": "https://apps.apple.com/cn/app/id6810502885",
+  "inLanguage": "zh-CN",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" },
+  "featureList": [
+    "三类证件拍照自动识别（本地离线 OCR）",
+    "住建部 / 应急管理部官方联网核验",
+    "到期提醒与状态筛选",
+    "证件照片自动归档",
+    "Excel 台账导出",
+    "数据库备份与恢复"
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============ 顶栏 ============ -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html">
+      <img src="assets/app-icon.png" alt="证安查图标" width="30" height="30">
+      <span>证安查</span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="#how">怎么用</a>
+      <a href="#ledgers">三类台账</a>
+      <a href="#feature">功能</a>
+      <a href="#compare">对比 OA</a>
+      <a href="#download">下载</a>
+      <a href="#faq">常见问题</a>
+      <a href="guide.html">使用说明</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="#download">免费下载</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ Hero ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><path d="M12 3v18M5 8l7-5 7 5M5 8v8l7 5 7-5V8"/></svg>
+        建筑三类证件 · 拍照即录
+      </span>
+      <h1>拍一张证件，<br><em>台账自动少一半活</em></h1>
+      <p class="hero-sub">
+        特种作业人员、安全生产许可证、安全生产管理人员——对准证件拍一张，
+        姓名、证号、工种、发证机关、有效期自动填好；需要时一键连官方核验，快到期自动标红。
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#download">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+          扫码下载 App
+        </a>
+        <a class="btn btn-ghost" href="#how">看三步流程</a>
+      </div>
+      <div class="hero-meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>免费使用，无内购</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>无需注册登录</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>识别离线可用</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>数据只存本机</span>
+      </div>
+    </div>
+
+    <!-- 纯 CSS 手机演示：拍照识别 → 自动填表 → 落进台账 -->
+    <div class="phone-stage" aria-hidden="true">
+      <div class="float-badge fb-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 5v4l3 2"/></svg>
+        3 秒识别
+      </div>
+      <div class="float-badge fb-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7l7-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        官方联网核验
+      </div>
+      <div class="float-badge fb-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 8v5m0 3h.01M10.3 4l-7 12A2 2 0 005 19h14a2 2 0 001.7-3l-7-12a2 2 0 00-3.4 0z"/></svg>
+        到期自动提醒
+      </div>
+
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+
+          <!-- 屏 A：拍照识别 -->
+          <div class="screen a">
+            <div class="ph-bar"><span class="ph-dot">证</span><b>拍照识别</b></div>
+            <div class="doc">
+              <div class="scan"></div>
+              <div class="doc-title">建筑施工特种作业操作资格证书</div>
+              <div class="doc-line l"></div>
+              <div class="doc-line m"></div>
+              <div class="doc-line s"></div>
+              <div class="doc-line m"></div>
+              <div class="doc-seal">公章</div>
+            </div>
+            <div class="ph-fields">
+              <div class="ph-field"><span>姓名</span><i>唐湘平</i></div>
+              <div class="ph-field"><span>证号</span><i>鄂G082020000409</i></div>
+              <div class="ph-field"><span>有效期</span><i>2026-06-30</i></div>
+            </div>
+            <div class="ph-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              识别完成，请核对后保存
+            </div>
+          </div>
+
+          <!-- 屏 B：台账列表 -->
+          <div class="screen b">
+            <div class="ph-bar"><span class="ph-dot">台</span><b>特种作业人员</b></div>
+            <div class="ph-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+              搜姓名 / 证号 / 单位 / 工种
+            </div>
+            <div class="ph-row"><span class="ph-av">唐</span><span class="m"><b>唐湘平 · 塔吊安拆工</b><small>鄂G082020000409</small></span><span class="chip ok">正常</span></div>
+            <div class="ph-row"><span class="ph-av">陈</span><span class="m"><b>陈威军 · 架子工</b><small>粤B022023011296</small></span><span class="chip warn">即将到期</span></div>
+            <div class="ph-row"><span class="ph-av">胡</span><span class="m"><b>胡明 · 低压电工</b><small>T422202198711084715</small></span><span class="chip ok">正常</span></div>
+            <div class="ph-row"><span class="ph-av">孔</span><span class="m"><b>孔钢 · 专职安全员</b><small>鄂建安C2(2014)3001673</small></span><span class="chip bad">已过期</span></div>
+            <div class="ph-row"><span class="ph-av">李</span><span class="m"><b>李强 · 焊工</b><small>鄂A012019001234</small></span><span class="chip retire">已退场</span></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 信任条 ============ -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7l7-4z"/></svg>无账号体系</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg>无广告 · 无统计 SDK</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>数据仅存设备本地</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 3L4 14h6l-1 7 9-11h-6l1-7z"/></svg>双引擎离线识别</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v12H4zM4 11h16M9 7V5h6v2"/></svg>照片自动归档</span>
+  </div>
+</div>
+
+<!-- ============ 三步流程 ============ -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">三步，一张证就进台账了</span>
+      <h2>从"对着证件敲键盘"到"拍一下就完事"</h2>
+      <p>不用培训、不用配置。三类证件都能拍，一次拍多张也行。</p>
+    </div>
+    <div class="steps">
+      <div class="step card lift reveal">
+        <div class="step-n">1</div>
+        <h3>📷 拍照识别</h3>
+        <p>对准证件拍正拍清，App 在本机识别出 <strong>姓名 / 证号 / 工种 / 发证机关 / 初次领证 / 有效期</strong>，自动填进表单。</p>
+        <p style="margin-top:10px"><span class="chip ok">离线可用</span> <span class="chip ok">支持批量</span></p>
+      </div>
+      <div class="step card lift reveal d1">
+        <div class="step-n">2</div>
+        <h3>🌐 联网核验补全</h3>
+        <p>点一次 <code>联网查询补全</code>：住建部证直连官网查询；<strong>T 开头的应急部证</strong>会自动开页、自动填表、自动识别验证码，几秒回填权威数据。</p>
+        <p style="margin-top:10px"><span class="chip warn">需联网</span> <span class="chip ok">可关闭</span></p>
+      </div>
+      <div class="step card lift reveal d2">
+        <div class="step-n">3</div>
+        <h3>📤 提醒 + 导出</h3>
+        <p>列表里 <strong>红 / 橙 / 绿 / 黄</strong> 四色标出到期状态；要上报迎检，数据管理里一键导出 <strong>Excel 台账</strong>，30 秒发出去。</p>
+        <p style="margin-top:10px"><span class="chip ok">Excel 导出</span> <span class="chip ok">到期提醒</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 三类台账 ============ -->
+<section id="ledgers" style="background:var(--bg-soft); border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">底部三个标签，对号入座</span>
+      <h2>三类证件，三本台账，互不混淆</h2>
+      <p>拍错类别也没关系：识别出其它类型会自动跳到对应台账登记。</p>
+    </div>
+
+    <div data-tabs class="reveal">
+      <div class="tabs" role="tablist" aria-label="三类台账">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="p-worker" id="t-worker">🧑 特种作业人员</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-license" id="t-license">🏢 安全生产许可证</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-manager" id="t-manager">🪪 安全生产管理人员</button>
+      </div>
+
+      <div class="tabpanel is-on g2" id="p-worker" role="tabpanel" aria-labelledby="t-worker">
+        <div class="card">
+          <h3>特种作业人员</h3>
+          <p style="margin-bottom:16px">电工、焊工、架子工、塔吊司机与安拆工、高处作业、施工升降机……住建部与应急管理部两类证都能收。</p>
+          <dl class="kv">
+            <dt>登记字段</dt><dd>姓名 · 工种 · 证号 · 所属单位 · 发证机关 · 初次领证 · 有效期至 · 备注</dd>
+            <dt>工种来源</dt><dd>住建部按证号工种码自动判定；应急部取证件上的「作业类别 / 操作项目」</dd>
+            <dt>多人多证</dt><dd>同一个人多本证、一个证多个操作项目，都能分别登记</dd>
+          </dl>
+        </div>
+        <div class="card">
+          <h3>识别示例</h3>
+          <p style="margin-bottom:12px">以下为本地识别的典型结果（真实系统识别文本）：</p>
+          <div class="sample">姓名：唐湘平
+编号：鄂G082020000409
+操作类别：建筑起重机械安装拆卸工（塔式起重机）
+初次领证日期：2020-06-10
+有效期：2024-04-19 至 2026-06-30
+发证机关：湖北省住房和城乡建设厅</div>
+        </div>
+      </div>
+
+      <div class="tabpanel g2" id="p-license" role="tabpanel" aria-labelledby="t-license">
+        <div class="card">
+          <h3>安全生产许可证</h3>
+          <p style="margin-bottom:16px">企业施工资质证。证号形如「（鄂）JZ安许证字[2015]012042」，编号被 OCR 读残时会结合企业名称与地址省份自动补齐。</p>
+          <dl class="kv">
+            <dt>登记字段</dt><dd>企业名称 · 证号 · 发证机关 · 主要负责人 · 有效期至 · 备注</dd>
+            <dt>查询关键词</dt><dd>证书编号 或 企业名称（编号查不到时自动换企业名再查一次）</dd>
+            <dt>红章识别</dt><dd>自动检测红色公章区域单独识别，用于核对/补全企业名称</dd>
+          </dl>
+        </div>
+        <div class="card">
+          <h3>识别示例</h3>
+          <p style="margin-bottom:12px">信用代码与许可证号同时出现时不会串号：</p>
+          <div class="sample">统一社会信用代码：914211210770239057
+安全生产许可证
+编号：（鄂）JZ安许证字[2015]012042
+企业名称：湖北喆安建筑工程有限公司
+主要负责人：刘建国
+有效期：2024-07-04 至 2027-07-03</div>
+        </div>
+      </div>
+
+      <div class="tabpanel g2" id="p-manager" role="tabpanel" aria-labelledby="t-manager">
+        <div class="card">
+          <h3>安全生产管理人员</h3>
+          <p style="margin-bottom:16px">安全员（专职/兼职）、项目负责人等。证号形如「鄂建安C2（2014）3001673」，自动统一括号全半角。</p>
+          <dl class="kv">
+            <dt>登记字段</dt><dd>姓名 · 类别 · 证号 · 所属单位 · 发证机关 · 初次领证 · 有效期至 · 备注</dd>
+            <dt>类别校正</dt><dd>识别出的类别用字典做相似度匹配（如「建筑电I」→「建筑电工」）</dd>
+            <dt>跨省企业</dt><dd>企业名称省份与证号省份互校，避免跨省企业证号被误判</dd>
+          </dl>
+        </div>
+        <div class="card">
+          <h3>识别示例</h3>
+          <p style="margin-bottom:12px">两列版式（标签与值错位）也能取对姓名：</p>
+          <div class="sample">编号：鄂建安C2（2014）3001673
+姓名：孔钢
+类别：专职安全生产管理人员
+初次领证日期：2014-06-10
+有效期：2023-11-01
+企业名称：武汉铁盾民防工程有限公司</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 功能 Bento ============ -->
+<section id="feature">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">不只好用，还很稳</span>
+      <h2>为工地现场做的十件事</h2>
+      <p>每一条都来自真实现场问题：光线差、证件花、证号长、人在催。</p>
+    </div>
+
+    <div class="bento">
+      <div class="card b-6 feature reveal">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7l7-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>识别全在本机跑，证件照片不出手机</h3>
+        <p>内置 PP-OCRv6 模型，配合系统自带的 Apple Vision / Google ML Kit 双引擎联合识别。没有信号的地下室、塔吊下、信号差的工地照样能拍能识别。</p>
+        <div class="feature-cols">
+          <div><b>双引擎互补</b><span>本机模型认小字与证号，系统引擎认大字与标题，结果互补不丢字段</span></div>
+          <div><b>规则级纠错</b><span>证号省份简称、工种码、身份证校验位、2/29 闰日都会自动校正</span></div>
+          <div><b>结果可自证</b><span>每次识别都有耗时与结果日志，出问题可导出给技术人员定位</span></div>
+        </div>
+      </div>
+
+      <div class="card b-2 lift reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"/></svg></div>
+        <h3>官方联网核验</h3>
+        <p>一键对接 <strong>住建部</strong> 与 <strong>应急管理部</strong> 公开查询服务。住建部证的动态字体混淆由原生解码还原；应急部证的验证码自动识别、自动提交。</p>
+      </div>
+
+      <div class="card b-2 lift reveal d1">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></div>
+        <h3>批量录入</h3>
+        <p>一次选多张证件照连续识别，逐张登记、进度可见、随时可停。新工人集中进场时最省事。</p>
+      </div>
+
+      <div class="card b-2 lift reveal d2">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 8v5m0 3h.01"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>到期四色提醒</h3>
+        <p>绿=正常、橙=即将到期、红=已过期、黄=已退场。可按状态筛选，一眼看清隐患在哪。</p>
+      </div>
+
+      <div class="card b-3 lift reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 9h16M9 15h6"/></svg></div>
+        <h3>Excel 台账导出</h3>
+        <p>三类台账分别导出为 Excel，字段与登记表一致。上报、打印、迎检直接发文件，不用再复制粘贴整理。</p>
+      </div>
+
+      <div class="card b-3 lift reveal d1">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v12H4z"/><path d="M4 11h16M10 7V5h4v2"/></svg></div>
+        <h3>证件照片自动归档</h3>
+        <p>登记成功的证件照按分类自动保存，与台账一一对应。检查时要调原始照片，直接进「证件文件管理」找，不用翻相册。</p>
+      </div>
+
+      <div class="card b-2 lift reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7M21 4v5h-5"/></svg></div>
+        <h3>备份 / 恢复</h3>
+        <p>一键导出数据库备份发微信存好；换手机或误删时恢复。恢复前会校验备份文件是否完整，选错文件自动回滚，不会把台账弄丢。</p>
+      </div>
+
+      <div class="card b-2 lift reveal d1">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></div>
+        <h3>搜索与筛选</h3>
+        <p>按姓名、证号、单位、工种随时搜人；按单位分组折叠，几百人的台账也能秒定位。</p>
+      </div>
+
+      <div class="card b-2 lift reveal d2">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14M5 12h14M5 17h9"/></svg></div>
+        <h3>多工种 / 自定义</h3>
+        <p>一个人多个操作项目可多选，自动用「/」分隔；工地自有工种可自行添加进下拉选项。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 对比 OA ============ -->
+<section id="compare" style="background:var(--bg-soft); border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">别再把时间浪费在"抄证件"上</span>
+      <h2>和"在 OA 里一个字一个字敲"比一比</h2>
+      <p>同一个安全员，同样的活，差别在每天下班前那两小时。</p>
+    </div>
+
+    <div class="card cmp-card reveal" style="padding:0">
+      <table class="cmp">
+        <thead>
+          <tr><th class="dim">对比维度</th><th class="old">❌ OA 手动填写</th><th class="new">✅ 证安查</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="dim">录入速度</td><td class="old">一张证盯着敲：姓名、18 位证号、工种、发证机关、有效期……5 分钟起步</td><td class="new"><span class="newv">拍照几秒自动识别</span>，一次拍多张，批量录入</td></tr>
+          <tr><td class="dim">准确性</td><td class="old">证号长、字又小，敲错一个数字，后面全白费</td><td class="new"><span class="newv">识别 + 规则纠错 + 联网验真</span>，证号一个不差</td></tr>
+          <tr><td class="dim">真假核验</td><td class="old">只会"抄"。证是真是假、过没过期，根本看不出来</td><td class="new">一键连 <span class="newv">住建部 / 应急部官网</span> 验真，假证过期证当场现形</td></tr>
+          <tr><td class="dim">到期预警</td><td class="old">台账存进去就吃灰，等出事了才发现证早过期</td><td class="new"><span class="newv">四色状态</span>一眼看清，快到期自动标出</td></tr>
+          <tr><td class="dim">证据留存</td><td class="old">照片散落相册，记录和照片对不上号</td><td class="new">证件照 <span class="newv">自动归档、按类存放</span>，检查时随时调出</td></tr>
+          <tr><td class="dim">报表导出</td><td class="old">手动整理、复制粘贴，半天干不完</td><td class="new"><span class="newv">一键导出 Excel</span>，上报打印迎检 30 秒搞定</td></tr>
+        </tbody>
+      </table>
+
+      <!-- 移动端卡片式对比 -->
+      <div class="cmp-mobile" style="padding:6px 18px 14px">
+        <div class="row">
+          <div class="dim">录入速度</div>
+          <div class="o"><span class="tag">OA</span><span>一张证盯着敲，5 分钟起步</span></div>
+          <div class="n"><span class="tag">证安查</span><span>拍照几秒自动识别，支持批量</span></div>
+        </div>
+        <div class="row">
+          <div class="dim">准确性</div>
+          <div class="o"><span class="tag">OA</span><span>敲错一个数字，后面全白费</span></div>
+          <div class="n"><span class="tag">证安查</span><span>识别 + 规则纠错 + 联网验真</span></div>
+        </div>
+        <div class="row">
+          <div class="dim">真假核验</div>
+          <div class="o"><span class="tag">OA</span><span>只会抄，真假与有效期看不出来</span></div>
+          <div class="n"><span class="tag">证安查</span><span>一键连官方官网验真</span></div>
+        </div>
+        <div class="row">
+          <div class="dim">到期预警</div>
+          <div class="o"><span class="tag">OA</span><span>存进去就吃灰，过期无人知</span></div>
+          <div class="n"><span class="tag">证安查</span><span>四色状态 + 到期筛选</span></div>
+        </div>
+        <div class="row">
+          <div class="dim">证据留存</div>
+          <div class="o"><span class="tag">OA</span><span>照片散落相册，对不上号</span></div>
+          <div class="n"><span class="tag">证安查</span><span>证件照自动归档、与台账对应</span></div>
+        </div>
+        <div class="row">
+          <div class="dim">报表导出</div>
+          <div class="o"><span class="tag">OA</span><span>手动整理半天</span></div>
+          <div class="n"><span class="tag">证安查</span><span>一键导出 Excel</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g3" style="margin-top:22px">
+      <div class="card lift reveal"><h3>你熟悉的这些场景</h3>
+        <ul style="color:var(--ink-2);font-size:14.6px;margin-top:8px">
+          <li>新工人进场，对着证件一个字一个字敲……</li>
+          <li>敲错证号，联网查不到，来回折腾……</li>
+          <li>检查来了，翻箱倒柜找证件照片和有效期……</li>
+          <li>台账里的证早过期了，没人发现……</li>
+        </ul>
+      </div>
+      <div class="card lift reveal d1"><h3>这些，证安查都替你省掉了</h3>
+        <p>录入、核验、提醒、归档、导出，五件事都压到一台手机上完成，不用回办公室补录。</p>
+        <p style="margin-top:10px"><a href="guide.html">看完整使用说明 →</a></p>
+      </div>
+      <div class="card lift reveal d2"><h3>特别适合这些人</h3>
+        <ul style="color:var(--ink-2);font-size:14.6px;margin-top:8px">
+          <li><strong>安全员 / 资料员</strong>：录入、台账、迎检一个人搞定</li>
+          <li><strong>监理人员</strong>：现场拍一张就知道证真不真、过没过期</li>
+          <li><strong>项目经理</strong>：一键导出报表，汇报有底气</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 状态颜色 ============ -->
+<section class="tight">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">一眼看到期</span>
+      <h2>四种颜色，取代"翻台账找日期"</h2>
+    </div>
+    <div class="status-list">
+      <div class="status s-ok reveal"><div class="dot"></div><b>正常</b><span>有效期充足，放心</span></div>
+      <div class="status s-warn reveal d1"><div class="dot"></div><b>即将到期</b><span>30 天内到期，提前安排换证</span></div>
+      <div class="status s-bad reveal d2"><div class="dot"></div><b>已过期</b><span>属于隐患，尽快处理</span></div>
+      <div class="status s-retire reveal d3"><div class="dot"></div><b>已退场</b><span>人员/企业已离场，留档备查</span></div>
+    </div>
+    <p style="text-align:center;color:var(--ink-3);font-size:13.5px;margin-top:18px" class="reveal">到期多看一眼，隐患少一点。</p>
+  </div>
+</section>
+
+<!-- ============ 下载 ============ -->
+<section id="download" class="tight">
+  <div class="wrap">
+    <div class="dl-band reveal">
+      <div class="dl-head">
+        <span class="eyebrow" style="background:rgba(255,255,255,.16);border-color:transparent;color:#fff">免费下载 · 无需注册</span>
+        <h2>用手机扫一下，直接装</h2>
+        <p>iPhone 用相机或微信扫 iOS 码，直接跳 App Store；安卓用浏览器扫安卓码下载安装包。iOS 版在 App Store 上架更新（当前 <span data-as-version>2.0.0</span>），安卓安装包版本 <span data-version>2.0.2</span>。</p>
+      </div>
+
+      <div class="dl-cards">
+        <div class="dl-card">
+          <header>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.7c0-2.2 1.8-3.2 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.9-.8-1.5 0-2.9.9-3.6 2.2-1.6 2.7-.4 6.7 1.1 8.9.7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7 1.3 0 1.7.7 2.9.7 1.2 0 2-1.1 2.7-2.2.9-1.3 1.2-2.5 1.2-2.6-.1 0-2.5-1-2.5-3.5zM14.3 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.7-.9 2.7 1 .1 2-.6 2.6-1.3z"/></svg>
+            <h3>iPhone / iPad</h3>
+          </header>
+          <div class="meta">App Store 当前 <span data-as-version>2.0.0</span>（build <span data-as-build>17</span>） · iOS <span data-min-ios>16.0+</span> · 约 <span data-ios-size>168 MB</span> · 免费</div>
+          <div class="qr-box"><div data-qr="ios"></div></div>
+          <div class="url-line" data-qr-url="ios">https://apps.apple.com/cn/app/id6810502885</div>
+          <div class="dl-actions">
+            <a class="btn btn-primary btn-sm" data-ios-link href="#download">打开 App Store</a>
+            <button class="btn btn-ghost btn-sm" data-copy="ios">复制链接</button>
+          </div>
+        </div>
+
+        <div class="dl-card">
+          <header>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 9h12v8a2 2 0 01-2 2h-1v3h-2v-3h-2v3H9v-3H8a2 2 0 01-2-2V9zm-2 .5A1.5 1.5 0 015.5 11v4a1.5 1.5 0 01-3 0v-4A1.5 1.5 0 014 9.5zm16 0A1.5 1.5 0 0121.5 11v4a1.5 1.5 0 01-3 0v-4A1.5 1.5 0 0120 9.5zM15.5 3l1-1.7-1.3-.7-1 1.8A7 7 0 0012 2c-.8 0-1.5.1-2.2.4l-1-1.8-1.3.7 1 1.7A5.9 5.9 0 006 7h12a5.9 5.9 0 00-2.5-4zM10 5.2a.7.7 0 110-1.4.7.7 0 010 1.4zm4 0a.7.7 0 110-1.4.7.7 0 010 1.4z"/></svg>
+            <h3>Android 手机</h3>
+          </header>
+          <div class="meta">安装包 <span data-version>2.0.2</span>（build <span data-build>23</span>） · <span data-min-android>Android 8.0+</span> · 约 <span data-apk-size>234 MB</span></div>
+          <div class="qr-box"><div data-qr="android"></div></div>
+          <div class="url-line" data-qr-url="android">—</div>
+          <div class="dl-actions">
+            <a class="btn btn-primary btn-sm" data-android-link href="#download">下载 APK</a>
+            <button class="btn btn-ghost btn-sm" data-copy="android">复制链接</button>
+          </div>
+        </div>
+
+        <div class="dl-card">
+          <header>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1"/></svg>
+            <h3>分享给同事</h3>
+          </header>
+          <div class="meta">把官网二维码发到项目群，谁都能自己装</div>
+          <div class="qr-box"><div data-qr="site"></div></div>
+          <div class="url-line" data-qr-url="site">—</div>
+          <div class="dl-actions">
+            <button class="btn btn-ghost btn-sm btn-block" data-copy="site">复制官网链接</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="dl-tip">
+        安装提示：iPhone 扫码后跳转 App Store 直接安装；安卓首次安装如提示「未知来源 / 外部来源应用」，选择允许即可。
+        所有版本数据格式一致，换手机用「数据管理 → 备份/恢复」即可迁移。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 隐私 ============ -->
+<section class="tight">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">隐私说明</span>
+      <h2>证件信息不是流量，我们不做收集</h2>
+      <p>App Store 隐私标签为 <strong>Data Not Collected（不收集数据）</strong>，因为数据根本没有离开你的设备。</p>
+    </div>
+    <div class="privacy">
+      <div class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div>
+        <h3>照片与台账只在本机</h3>
+        <p>OCR 全程在设备上完成，证件照片与台账存于应用沙盒内的 SQLite 与归档目录，不上传任何自有服务器。</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7l7-4z"/></svg></div>
+        <h3>联网核验只发必要信息</h3>
+        <p>只有你主动点「联网查询补全」时，才把证书编号或企业名称经 HTTPS 提交至住建部 / 应急管理部公开查询服务，仅用于验真。</p>
+      </div>
+      <div class="card reveal d2">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg></div>
+        <h3>没有账号、广告与统计</h3>
+        <p>不请求通讯录、位置、设备标识；未接入任何第三方统计或广告 SDK；没有登录墙，卸载即清空。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" style="background:var(--bg-soft); border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">常见问题</span>
+      <h2>上手前最常问的 8 件事</h2>
+    </div>
+    <div class="faq" style="max-width:820px">
+      <details class="qa reveal" open>
+        <summary>拍照识别不准 / 识别不出来怎么办？</summary>
+        <div class="ans">
+          <ul>
+            <li>证件放平、光线充足、别反光、四角拍全（这是最有效的三件事）；</li>
+            <li>设置里「拍照前图像预处理」保持开启；</li>
+            <li>仍然识别不全，直接手动改几个字段，或点「联网查询补全」用官方数据覆盖。</li>
+          </ul>
+        </div>
+      </details>
+      <details class="qa reveal">
+        <summary>证号是 T 开头，点联网补全后跳到网页了，正常吗？</summary>
+        <div class="ans">正常。T 开头是应急管理部的证，App 会自动打开官方查询页，自动填表、自动识别验证码、自动查询，<strong>不要手动去点它</strong>，等几秒结果会自己回填。</div>
+      </details>
+      <details class="qa reveal">
+        <summary>一个人有多本证、一本证有多个工种，怎么记？</summary>
+        <div class="ans">多本证分别登记即可。同一本证的多个操作项目，在「证件类型 / 工种」下拉里展开作业类别后勾选多个，会自动用 <code>/</code> 分隔显示。</div>
+      </details>
+      <details class="qa reveal">
+        <summary>怎么一眼看出哪些证快到期了？</summary>
+        <div class="ans">台账列表里橙色=即将到期（30 天内）、红色=已过期、黄色=已退场、绿色=正常；也可以用上方「状态筛选」只看某一类。</div>
+      </details>
+      <details class="qa reveal">
+        <summary>数据会不会丢？换手机怎么办？</summary>
+        <div class="ans">数据存在手机本地。建议<strong>每周</strong>或每次集中录入后，到「数据管理 → 备份数据库」导出备份文件发到微信/网盘存好；换手机时在新机用「从备份恢复数据库」即可。恢复前会校验备份是否完整，选错文件会自动回滚，不会破坏现有台账。</div>
+      </details>
+      <details class="qa reveal">
+        <summary>联网查询失败 / 提示查询不到？</summary>
+        <div class="ans">先检查手机网络；再核对证号、姓名是否与证件一致（联网查询按证号或企业名称精确匹配）；政府网站偶有维护时段，稍后再试即可。识别与台账功能不受影响，可以照常使用。</div>
+      </details>
+      <details class="qa reveal">
+        <summary>支持几类证件？拍错标签会怎样？</summary>
+        <div class="ans">支持特种作业人员（住建部 / 应急管理部）、安全生产许可证、安全生产管理人员三类。拍错标签也没关系：识别出属于其它类别时会自动跳到对应台账登记，不会记错本子。</div>
+      </details>
+      <details class="qa reveal">
+        <summary>需要联网才能用吗？</summary>
+        <div class="ans">不需要。识别、台账、提醒、导出、备份全部离线可用；只有「联网查询补全」需要网络，且可以在设置里关掉。地下车库、塔吊下、信号差的工地照样能录。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 结尾 CTA ============ -->
+<section class="endcta">
+  <div class="wrap reveal">
+    <h2>证件管理，从"手工作业"变成"拍照即录"</h2>
+    <p>监理放心，项目合规，你省时间。现在就用证安查——拍张照，试试就知道。</p>
+    <div class="hero-cta" style="justify-content:center">
+      <a class="btn btn-primary" href="#download">扫码下载</a>
+      <a class="btn btn-ghost" href="guide.html">看详细使用说明</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 页脚 ============ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:8px">
+          <img src="assets/app-icon.png" alt="" width="26" height="26">
+          <span>证安查</span>
+        </a>
+        <p style="font-size:13px;max-width:30em">面向建筑施工企业的证件识别与台账管理工具。iOS 版 <span data-as-version>2.0.0</span>（App Store）· 安卓版 <span data-version>2.0.2</span>（build <span data-build>23</span>）。</p>
+      </div>
+      <div class="foot-links">
+        <a href="index.html">首页</a>
+        <a href="guide.html">使用说明</a>
+        <a href="#download">下载</a>
+        <a href="#faq">常见问题</a>
+        <a href="#compare">对比 OA</a>
+        <a href="policy.html" data-policy-link>隐私政策</a>
+        <a data-ios-link href="https://apps.apple.com/cn/app/id6810502885" target="_blank" rel="noopener">App Store</a>
+      </div>
+      <div style="font-size:13px">
+        <div>联系邮箱</div>
+        <a data-contact href="mailto:qinshunhuan@vip.qq.com">qinshunhuan@vip.qq.com</a>
+      </div>
+    </div>
+    <p class="foot-note">
+      本页由证安查团队维护。识别与台账数据均保存在用户设备本地；仅在用户主动使用「联网查询补全」时，
+      将证书编号或企业名称等必要信息提交至住房和城乡建设部、应急管理部官方公开查询服务，用于证件真伪核验。
+      本站不设置 Cookie、不接入第三方统计与广告脚本。
+    </p>
+    <p class="foot-note" style="margin-top:10px">© <span data-year>2026</span> 证安查 · ZhengAnCha</p>
+  </div>
+</footer>
+
+<script src="assets/config.js"></script>
+<script src="assets/qr.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
