@@ -63,6 +63,9 @@
 
 /* ---------- 基础 ---------- */
 * { box-sizing: border-box; }
+/* 任何设了 display 的类（如 .chip）都会盖掉 hidden 的默认 display:none，
+   所以显式兜底一次；「审核中」标注靠 hidden 开关，不能失效。 */
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;

@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>证安查 · 一页速查卡</title>
+<link rel="icon" href="../assets/app-icon.png">
+<link rel="apple-touch-icon" href="../assets/app-icon.png">
 <style>
   /* ============ 证安查 · 一页速查卡（A4 单页） ============
      目标：打印/贴工位，一页看完所有高频操作
@@ -124,6 +126,10 @@
       <div class="tab"><b>🏢 安全生产许可证</b>企业施工资质证</div>
       <div class="tab"><b>🪪 安全生产管理人员</b>安全员 / 项目负责人</div>
     </div>
+    <ul class="tight" style="margin-top:7px">
+      <li><b>多个工地</b>：右上角「项目切换器」切换，台账只看这个工地；「全部项目」＝所有工地（项目→单位 两级）</li>
+      <li><b>台账"空了"先看左上角当前项目</b>——多半是项目选错，不是数据丢了</li>
+    </ul>
   </div>
 
   <div class="blk">
@@ -175,18 +181,18 @@
     <div class="blk" style="margin-top:0">
       <h2>多工种 / 识别不准</h2>
       <ul class="tight">
-        <li><b>多工种</b>：下拉框展开「作业类别」→ 勾选多个「操作项目」→ 自动用 <code>/</code> 分隔</li>
-        <li><b>识别不准</b>：放平 · 光线足 · 四角拍全 → 还不行就 <b>手改</b> 或 <b>联网补全</b></li>
-        <li><b>批量录入</b>：拍照识别里可一次选多张，连续登记，随时可停</li>
+        <li><b>多工种</b>：勾选多个「操作项目」，自动用 <code>/</code> 分隔</li>
+        <li><b>识别不准</b>：放平 · 光线足 · 四角拍全 → 还不行就<b>手改</b></li>
+        <li><b>工种/日期空着？</b>宁可留空也不填错，手补一下</li>
+        <li><b>批量录入</b>：一次选多张，连续登记，随时可停</li>
       </ul>
     </div>
     <div class="blk" style="margin-top:0">
-      <h2>设置：默认即可（保持这些开着）</h2>
+      <h2>设置：默认即可（改完记得点「保存设置」）</h2>
       <ul class="tight">
-        <li>✅ 识别后自动登记</li>
-        <li>✅ 系统内置 OCR 引擎（联合识别更准）</li>
-        <li>✅ 识别结果缓存（同一张图秒出）</li>
-        <li>✅ 应急部类别常用显示（下拉更快）</li>
+        <li>✅ 自动登记 · 结果缓存 · 应急部常用显示（<b>均默认开，别关</b>）</li>
+        <li>⬜ <b>只启用原生系统内置 OCR：保持关闭</b>（关着才是两套引擎一起上、更准）</li>
+        <li>⬜ 自动联网查询住建部信息（默认关，需验真时开）</li>
       </ul>
     </div>
   </div>

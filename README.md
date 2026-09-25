@@ -20,8 +20,8 @@
 │   ├── 一页速查卡.html
 │   ├── 推广卖点.html
 │   └── App介绍与详细使用说明.html
-├── download/
-│   └── zhengancha-2.0.2-build23.apk   安卓安装包（234 MB）
+├── （无 download/）                 安卓安装包不放站点里 —— 由虾分发托管，
+│                                    androidPath 指向其下载落地页（见「两个版本号」）
 ├── 工具/
 │   ├── apple_qr.swift            用 Apple CoreImage 生成二维码矩阵（验证基准）
 │   ├── 校验二维码.js              把 qr.js 与 Apple 实现逐模块比对
@@ -30,6 +30,70 @@
 │   └── 生成隐私政策页.js          从 android_app/assets/privacy_policy.txt 生成 policy.html
 └── README.md
 ```
+
+## 部署到 GitHub Pages
+
+站点是纯静态、零依赖，直接丢给 Pages 即可。已备好：`.nojekyll`（关闭 Jekyll，构建更快且不会
+忽略下划线开头的文件）、`.gitignore`（挡住 APK / `.DS_Store`，避免再撞 100MB 限制）、
+`404.html`（Pages 会自动使用）、`robots.txt`。
+
+### 关键坑：Pages 的分支源只能选「/ 根目录」或「/docs」
+
+「Deploy from a branch」的 Folder 只有 **`/ (root)`** 和 **`/docs`** 两个选项，**选不了任意子目录**。
+所以按站点放哪，三选一：
+
+| 站点位置 | 配置方式 |
+|---|---|
+| 仓库根目录（`index.html` 就在根） | Settings → Pages → Source: **Deploy from a branch** → `main` → **`/ (root)`** ✅ 最省事 |
+| 仓库的 `docs/` 目录 | Source → `main` → **`/docs`** |
+| 任意子目录（如 `证安查官网/`） | 必须用 **GitHub Actions**：仓库里已有 `.github/workflows/deploy-pages.yml`，把里面的 `path` 改成 `证安查官网`，然后 Settings → Pages → Source 选 **GitHub Actions** |
+
+> ⚠️ 最常见的翻车方式：把站点放进了子目录，却把 Source 设成 `/ (root)`。
+> 这样部署会「成功」但打开是 404（根目录没有 index.html）。
+
+### 要推上去的文件（就这些，约 332 KB）
+
+```
+index.html  guide.html  policy.html  404.html
+robots.txt  .nojekyll   .gitignore   README.md
+assets/     materials/  工具/   .github/
+```
+
+**不要**推 `*.apk / *.ipa`（已在 `.gitignore` 里拦住）。
+安卓包托管在虾分发落地页、iOS 走 App Store，站点里不需要留二进制。
+
+### 部署后自检
+
+```bash
+# 1) 站点地址（项目站点形如 https://<用户名>.github.io/<仓库名>/）
+open https://lovehtj.github.io/zhengancha1/
+
+# 2) 用自检工具跑一遍线上地址（横向溢出/控制台报错/二维码是否真渲染/深色模式）
+node 工具/渲染自检.js https://lovehtj.github.io/zhengancha1/
+node 工具/打印排版自检.js
+
+# 3) 手机实扫首页三个二维码：iOS→App Store、安卓→虾分发下载页、分享→本页
+```
+
+### 「Status: Queued」卡住时按顺序查这四件事
+
+1. **私有仓库**：Free 账号的 Pages **只支持公开仓库**（私有仓库需 Pro/Team/Enterprise）。
+   Settings → Pages 若提示升级，就是这个原因。
+2. **Actions 面板**：仓库 → **Actions** → 看 `pages build and deployment` 这次运行到哪一步；
+   Queued 是排队（共享执行器，正常 1–5 分钟），`In progress` 才是真在构建。
+   构建超过 **10 分钟**会超时失败。
+3. **Source/Folder 是否配对**（见上面的表格，子目录配 root 是最常见的错）。
+4. **仓库体积**：Pages 站点上限 **1GB**；若把整个工作区（Android 工程、benchmark、IPA/APK）
+   都推上去了，构建会很慢甚至失败。仓库里只应有站点文件。
+
+> 若以上都没问题，等 5–10 分钟通常会自动变成 `Deployed`；改配置后建议
+> Actions → 选中那次运行 → **Re-run all jobs**，比反复推送更快。
+
+### 绑定自定义域名（可选）
+
+有域名的话：Settings → Pages → Custom domain 填域名 → 在其 DNS 添加 `CNAME` 记录指向
+`lovehtj.github.io`；勾选 Enforce HTTPS。同时把 `assets/config.js` 的 `siteUrl` 改成该域名，
+这样页内「分享给同事」的二维码会指向正式域名（不填则自动用当前访问地址，也是对的）。
 
 ## 本地预览
 
@@ -50,9 +114,10 @@ python3 -m http.server 8899
    ```js
    siteUrl: 'https://你的域名/',                        // 建议填，二维码与链接都以它为准
    iosUrl: 'https://apps.apple.com/cn/app/id6810502885',  // 已填：证安查（纯 ASCII 短链，等价于带中文 slug 的链接）
-   appStoreVersion: '2.0.0', appStoreBuild: '17',        // App Store 上"当前公开"的版本
-   androidPath: 'download/zhengancha-2.0.2-build23.apk',
-   version: '2.0.2', build: '23',
+   appStoreVersion: '2.0.4', appStoreBuild: '32',        // 上架包版本
+   appStoreInReview: true,                              // 已提交未过审 → 页面标注「审核中」；过审后改 false
+   androidPath: 'https://uz5.pps3.com/5zukgw',   // 虾分发落地页（非 .apk 结尾 → 按落地页处理）
+   version: '2.0.4', build: '32',
    contactEmail: 'qinshunhuan@vip.qq.com'
    ```
 
@@ -139,22 +204,24 @@ iOS 走 App Store 审核，**线上公开的版本往往落后于安卓包**。�
 
 | 字段 | 含义 | 当前值 |
 |---|---|---|
-| `version` / `build` | 本站 `download/` 里那个 APK 的版本 | 2.0.2 / 23 |
-| `appStoreVersion` / `appStoreBuild` | App Store 上**当前公开**的版本 | 2.0.0 / 17 |
+| `version` / `build` | `androidPath` 那个下载页当前提供的包版本 | 2.0.4 / 32 |
+| `appStoreVersion` / `appStoreBuild` | iOS 上架包版本（与安卓同版） | 2.0.4 / 32 |
+| `appStoreInReview` | 上架包是否仍在审核中（true → 页面显示「审核中」） | `true` |
 
 页面上的 iOS 卡片显示前者语义的"App Store 当前 X"，安卓卡片显示安装包版本，页脚与
 `policy.html`（"适用版本"）两端分开写。**发新版后先更新这里**，别让官网写的版本比线上还新。
 
 ## 更新内容时的检查清单
 
-- [ ] 新版发布后：改 `assets/config.js` 的 `version` / `build` / `apkSize` / `iosSize`，替换 `download/` 下的 APK
+- [ ] 新版发布后：先把 APK 传到虾分发（站点不分发安装包），再改 `assets/config.js` 的
+      `version` / `build` / `apkSize` / `iosSize`，**务必与下载页实际提供的构建一致**
 - [ ] 三份材料（`materials/*.html` 与 `上架资料/*.html`）如内容有变，两处都要改（站点内副本的脚本路径是 `../assets/`，仓库原件是 `../证安查官网/assets/`）
 - [ ] `node 工具/校验二维码.js` 确认二维码仍与 Apple 实现一致
 - [ ] `node 工具/渲染自检.js` 与 `node 工具/打印排版自检.js` 全绿
 - [ ] 改过应用内隐私政策正文 → `node 工具/生成隐私政策页.js` 重新生成 policy.html
 - [ ] 填好 `siteUrl` 后重新生成三份 PDF，让纸质材料上也有二维码
 - [ ] App Store 新版本过审发布后：更新 `appStoreVersion` / `appStoreBuild`（iOS 与实际线上保持一致）
-- [ ] 更新 `androidPath` 里的 APK 文件名与 `version` / `build`
+- [ ] 若换了下载渠道：更新 `androidPath`（直链 .apk 结尾按直链处理，否则按落地页处理）
 
 > 纸质材料的二维码有个兜底：`siteUrl` 未配置时，二维码指向 **App Store**（而不是留空），
 > 所以现在打印出来就能扫；配好 `siteUrl` 后重新生成，二维码会自动改为指向官网。

@@ -15,6 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="证安查 · 拍一张证件，台账自动少一半活">
 <meta property="og:description" content="建筑三类证件拍照识别 + 官方联网核验 + 到期提醒 + Excel 导出。数据只存本机，无账号无广告。">
+<meta property="og:url" content="index.html">
 <meta property="og:image" content="assets/app-icon.png">
 <script type="application/ld+json">
 {
@@ -25,7 +26,7 @@
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "iOS 16.0+ / Android 8.0+",
   "description": "面向建筑施工企业的证件识别与台账管理工具，支持特种作业人员、安全生产许可证、安全生产管理人员三类证件的拍照识别、官方联网核验、到期提醒与台账导出。",
-  "softwareVersion": "2.0.0",
+  "softwareVersion": "2.0.4",
   "downloadUrl": "https://apps.apple.com/cn/app/id6810502885",
   "inLanguage": "zh-CN",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" },
@@ -56,6 +57,7 @@
       <a href="#compare">对比 OA</a>
       <a href="#download">下载</a>
       <a href="#faq">常见问题</a>
+      <a href="#changelog">更新日志</a>
       <a href="guide.html">使用说明</a>
     </nav>
     <div class="nav-cta">
@@ -204,7 +206,7 @@
     <div class="sec-head reveal">
       <span class="eyebrow">底部三个标签，对号入座</span>
       <h2>三类证件，三本台账，互不混淆</h2>
-      <p>拍错类别也没关系：识别出其它类型会自动跳到对应台账登记。</p>
+      <p>拍错类别也没关系：识别出其它类型会自动跳到对应台账登记，批量上传也会自动归类。</p>
     </div>
 
     <div data-tabs class="reveal">
@@ -336,19 +338,25 @@
         <p>登记成功的证件照按分类自动保存，与台账一一对应。检查时要调原始照片，直接进「证件文件管理」找，不用翻相册。</p>
       </div>
 
-      <div class="card b-2 lift reveal">
+      <div class="card b-3 lift reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg></div>
+        <h3>多个工程项目分开管</h3>
+        <p>一个 App 管好几个工地：右上角项目切换器切一下，台账就只看这个项目的人；选「全部项目」按 <strong>项目 → 单位</strong> 两级看全局。人员证跟项目走、企业许可证跟公司走，提醒不重不漏。</p>
+      </div>
+
+      <div class="card b-3 lift reveal d1">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7M21 4v5h-5"/></svg></div>
         <h3>备份 / 恢复</h3>
         <p>一键导出数据库备份发微信存好；换手机或误删时恢复。恢复前会校验备份文件是否完整，选错文件自动回滚，不会把台账弄丢。</p>
       </div>
 
-      <div class="card b-2 lift reveal d1">
+      <div class="card b-3 lift reveal d2">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></div>
         <h3>搜索与筛选</h3>
         <p>按姓名、证号、单位、工种随时搜人；按单位分组折叠，几百人的台账也能秒定位。</p>
       </div>
 
-      <div class="card b-2 lift reveal d2">
+      <div class="card b-3 lift reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14M5 12h14M5 17h9"/></svg></div>
         <h3>多工种 / 自定义</h3>
         <p>一个人多个操作项目可多选，自动用「/」分隔；工地自有工种可自行添加进下拉选项。</p>
@@ -464,7 +472,7 @@
       <div class="dl-head">
         <span class="eyebrow" style="background:rgba(255,255,255,.16);border-color:transparent;color:#fff">免费下载 · 无需注册</span>
         <h2>用手机扫一下，直接装</h2>
-        <p>iPhone 扫 iOS 码直接跳 App Store；安卓扫安卓码进入下载页取安装包。iOS 版在 App Store 更新（当前 <span data-as-version>2.0.0</span>），安卓包版本 <span data-version>2.0.2</span>。</p>
+        <p>iPhone 扫 iOS 码直接跳 App Store；安卓扫安卓码进入下载页取安装包。iOS 版在 App Store 更新（当前 <span data-as-version>2.0.4</span><span data-as-review hidden>，上架包审核中，商店页暂时可能还是旧版</span>），安卓包版本 <span data-version>2.0.4</span>。</p>
       </div>
 
       <div class="dl-cards">
@@ -473,7 +481,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.7c0-2.2 1.8-3.2 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.9-.8-1.5 0-2.9.9-3.6 2.2-1.6 2.7-.4 6.7 1.1 8.9.7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7 1.3 0 1.7.7 2.9.7 1.2 0 2-1.1 2.7-2.2.9-1.3 1.2-2.5 1.2-2.6-.1 0-2.5-1-2.5-3.5zM14.3 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.7-.9 2.7 1 .1 2-.6 2.6-1.3z"/></svg>
             <h3>iPhone / iPad</h3>
           </header>
-          <div class="meta">App Store 当前 <span data-as-version>2.0.0</span>（build <span data-as-build>17</span>） · iOS <span data-min-ios>16.0+</span> · 约 <span data-ios-size>168 MB</span> · 免费</div>
+          <div class="meta">App Store <span data-as-version>2.0.4</span>（build <span data-as-build>32</span>）<span data-as-review hidden> · <span class="chip warn">审核中</span></span> · iOS <span data-min-ios>16.0+</span> · 约 <span data-ios-size>168 MB</span> · 免费</div>
           <div class="qr-box"><div data-qr="ios"></div></div>
           <div class="url-line" data-qr-url="ios">https://apps.apple.com/cn/app/id6810502885</div>
           <div class="dl-actions">
@@ -487,7 +495,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 9h12v8a2 2 0 01-2 2h-1v3h-2v-3h-2v3H9v-3H8a2 2 0 01-2-2V9zm-2 .5A1.5 1.5 0 015.5 11v4a1.5 1.5 0 01-3 0v-4A1.5 1.5 0 014 9.5zm16 0A1.5 1.5 0 0121.5 11v4a1.5 1.5 0 01-3 0v-4A1.5 1.5 0 0120 9.5zM15.5 3l1-1.7-1.3-.7-1 1.8A7 7 0 0012 2c-.8 0-1.5.1-2.2.4l-1-1.8-1.3.7 1 1.7A5.9 5.9 0 006 7h12a5.9 5.9 0 00-2.5-4zM10 5.2a.7.7 0 110-1.4.7.7 0 010 1.4zm4 0a.7.7 0 110-1.4.7.7 0 010 1.4z"/></svg>
             <h3>Android 手机</h3>
           </header>
-          <div class="meta">安装包 <span data-version>2.0.2</span>（build <span data-build>23</span>） · <span data-min-android>Android 8.0+</span> · 约 <span data-apk-size>234 MB</span></div>
+          <div class="meta">安装包 <span data-version>2.0.4</span>（build <span data-build>32</span>） · <span data-min-android>Android 8.0+</span> · 约 <span data-apk-size>234 MB</span></div>
           <div class="meta" style="margin-top:-6px">扫码或点按钮进入下载页（国内直连，页面自带二维码）</div>
           <div class="qr-box"><div data-qr="android"></div></div>
           <div class="url-line" data-qr-url="android">https://uz5.pps3.com/5zukgw</div>
@@ -552,7 +560,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">常见问题</span>
-      <h2>上手前最常问的 8 件事</h2>
+      <h2>上手前最常问的 9 件事</h2>
     </div>
     <div class="faq" style="max-width:820px">
       <details class="qa reveal" open>
@@ -560,7 +568,7 @@
         <div class="ans">
           <ul>
             <li>证件放平、光线充足、别反光、四角拍全（这是最有效的三件事）；</li>
-            <li>设置里「拍照前图像预处理」保持开启；</li>
+            <li>设置里把「识别结果缓存」保持开启（同一张图重识别会秒回）；</li>
             <li>仍然识别不全，直接手动改几个字段，或点「联网查询补全」用官方数据覆盖。</li>
           </ul>
         </div>
@@ -587,11 +595,125 @@
       </details>
       <details class="qa reveal">
         <summary>支持几类证件？拍错标签会怎样？</summary>
-        <div class="ans">支持特种作业人员（住建部 / 应急管理部）、安全生产许可证、安全生产管理人员三类。拍错标签也没关系：识别出属于其它类别时会自动跳到对应台账登记，不会记错本子。</div>
+        <div class="ans">支持特种作业人员（住建部 / 应急管理部）、安全生产许可证、安全生产管理人员三类。拍错标签也没关系：识别出属于其它类别时会自动跳到对应台账登记——单张拍照立刻跳转并登记，批量上传也会在本批处理完后自动归类。万一照片太糊、连类型都判断不出来，会明确提示"已按当前台账登记"，请核对一下，不会闷着不出声。</div>
+      </details>
+      <details class="qa reveal">
+        <summary>录进去的人不见了 / 台账是空的？</summary>
+        <div class="ans">九成是<strong>当前项目不对</strong>——看左上角那行小字是哪个工地。点右上角<strong>项目切换器</strong>切到对应项目，或选「<strong>全部项目</strong>」一次看全部；数据没有丢，只是被项目过滤掉了。录错项目也不用删了重录，进编辑页改「所属项目」即可。</div>
       </details>
       <details class="qa reveal">
         <summary>需要联网才能用吗？</summary>
         <div class="ans">不需要。识别、台账、提醒、导出、备份全部离线可用；只有「联网查询补全」需要网络，且可以在设置里关掉。地下车库、塔吊下、信号差的工地照样能录。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 版本更新日志 ============ -->
+<section id="changelog">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">版本更新日志</span>
+      <h2>每次更新，改的都是现场真会遇到的事</h2>
+      <p>按版本倒序排列。App Store 上的版本节奏由审核决定，安卓包以下载页显示的最新构建为准。</p>
+    </div>
+    <div class="faq" style="max-width:820px">
+      <details class="qa reveal" open>
+        <summary>v2.0.4 · 构建 32 <span class="chip ok">最新构建</span> <span class="chip ok">双端同版</span></summary>
+        <div class="ans">
+          <ul>
+            <li><strong>工种识别不再丢项</strong>：证件的「操作类别／作业类别」标签与内容分成两行时，
+              此前会把下一行的标签当成工种（甚至只登记出一个冒号）。现在能正确取到内容，
+              并自动补全被换行截断的工种名（如「…安装拆卸工（塔式起」+「重机）」→ 完整工种）。</li>
+            <li><strong>日期不再出现"看上去正常实际不存在"的值</strong>：识别把月份或日期读错时
+              （例如读出 5 月 38 日、0 月 42 日），此前会原样写进台账，导致到期排序与
+              「即将到期／已过期」判断出错；现在这类非法日期一律不采纳，改用证件自带的年限规律推算，
+              推不出就留空由你手动补。</li>
+            <li><strong>顺带修掉一个偶发闪退</strong>：日期字段残缺时，内部的年限推算会越界读取，
+              在部分机型上直接崩溃；已修并补了回归测试。</li>
+            <li><strong>更稳的字段提取</strong>：同一行印着两个字段、或「有效期」旁跟着「初次领证日期」时，
+              不会再互相串值。</li>
+            <li><strong>顺手把"识别到底有多准"量出来了</strong>：用 App 里真实的提取逻辑，
+              跑 48 张现场证件、276 个标注字段，默认设置下字段提取准确率 <strong>74.6%</strong>；
+              其中证号 87.5%、发证机关 91.7%、单位 90.9%、有效期至 74.5%。
+              工种（43.2%）与初次领证日期（59.5%）仍是短板——这两项受证件本身的印刷质量、
+              水印遮挡和反光影响最大，本次修的是"别再取错"，取不到时宁可留空也不会瞎填。</li>
+          </ul>
+          <p style="margin-top:10px;font-size:13px;color:#666">本次只改识别后的字段提取规则，
+            识别引擎、台账数据与界面均无变化；升级后原有数据不受影响。</p>
+          <p style="margin-top:8px;font-size:13px;color:#666"><strong>双端同版本</strong>：这一次
+            iOS 与安卓都是 <strong>2.0.4（build 32）</strong>。iOS 的上架包已提交 App Store 审核，
+            过审后商店页会自动更新到 2.0.4；审核期间商店页可能仍显示旧版，属正常。</p>
+        </div>
+      </details>
+      <details class="qa reveal" open>
+        <summary>v2.0.3 · 构建 31 <span class="chip">识别修复</span></summary>
+        <div class="ans">
+          <ul>
+            <li><strong>安卓识别准确率大幅提升</strong>：修好了检测框坐标换算的一处缺陷——
+              证件越靠下、文字行越容易被整行漏掉或认错。实测同一批 48 张证件、
+              276 个字段的提取准确率从 <strong>50.7% 提升到 64.5%</strong>，
+              已与 iOS 版持平（此前安卓明显低于 iOS）。</li>
+            <li><strong>底部文字不再丢失</strong>：此前图片最下方的编号、日期行会因裁剪越界被整行跳过，
+              现在正常识别；顺带消除了越界后"整图重算一遍"导致的偶发卡顿（单张识别从 5s+ 回到 2.6s 左右）。</li>
+            <li>iOS 版同步修正了同一处换算逻辑，识别同样更稳。</li>
+          </ul>
+          <p style="margin-top:10px;font-size:13px;color:#666">本次只改识别引擎内部的坐标换算，
+            台账数据、字段规则、界面均无变化；升级后原有数据不受影响。
+            双端包均已产出。</p>
+        </div>
+      </details>
+      <details class="qa reveal">
+        <summary>v2.0.2 · 构建 30 <span class="chip">多工程项目</span></summary>
+        <div class="ans">
+          <ul>
+            <li><strong>一个 App 管多个工程项目</strong>：左上角（「数据管理」旁）新增项目切换器——
+              点一下切到另一个工地，台账就只看这个项目的人；切换器的选择会记住，下次打开还停在你上次看的项目。</li>
+            <li><strong>「全部项目」视图</strong>：切到「全部项目」可一次看所有工地的人，按
+              <strong>项目 → 单位</strong> 两级分组（同一家公司在多个项目下会分别列出）。</li>
+            <li><strong>项目与单位是两回事</strong>：项目＝工地，单位＝企业。单看某个项目时，依然按「所属单位」分组；
+              登记时会自动带上当前项目，所属单位可用项目默认值预填、也可改。</li>
+            <li><strong>到期提醒更贴合现场</strong>：提醒范围＝当前项目的人员证 ＋ 全部企业级安全生产许可证；
+              若别的项目也有快到期的证，会补一句「（其它项目还有 N 张即将到期）」，避免漏提醒。</li>
+            <li><strong>人员可以改归属</strong>：在人员编辑页可改「所属项目」；录错了项目不用删了重录。</li>
+            <li><strong>导出带项目列</strong>：人员类台账导出的 Excel 增加「所属项目」列，并支持按项目导出——
+              文件里就是本项目的记录，文件名也带项目名，多个项目不会混淆。</li>
+            <li><strong>修了恢复备份后要重启才见效</strong>：从备份恢复数据库后，台账会立刻刷新
+              （此前需要重启 App 才显示恢复后的数据）。</li>
+            <li><strong>配色更耐看</strong>：项目分组表头的颜色调整为与整体一致的绿色系深浅，不再刺眼。</li>
+          </ul>
+          <p style="margin-top:10px;font-size:13px;color:#666">升级后首次打开会自动完成数据升级，
+            并在设备上留一份升级前的备份副本；原有台账数据不会丢失。</p>
+        </div>
+      </details>
+      <details class="qa reveal">
+        <summary>v2.0.2 <span class="chip">拍错台账也能自动归类</span></summary>
+        <div class="ans">
+          <ul>
+            <li><strong>拍错台账标签也没关系</strong>：识别出其它类别会自动归类——单张拍照立刻跳转并登记；批量上传混进别的证件，也会在本批处理完后自动归位，不会因为一张不对就中断整批。</li>
+            <li><strong>识别更准</strong>：证件标题有错字、漏字也能判断类型；「有效期至」不会再被其它日期顶替；姓名与所属单位提取更干净。</li>
+            <li><strong>官方核验更可信</strong>：联网查到的不是你查的那条记录时，不再打「官方核验」标记。</li>
+            <li><strong>用起来不卡</strong>：识别途中切换标签或页面不会再让识别卡住；照片归档失败会明确提示，不再"没存上却看不出来"。</li>
+            <li><strong>更放心</strong>：导出的台账在 Excel / WPS 中打开更安全；从备份恢复数据库中途失败时，会保留你的备份副本并给出保存路径。</li>
+          </ul>
+        </div>
+      </details>
+      <details class="qa reveal">
+        <summary>v2.0.1 <span class="chip">iOS 本地化</span></summary>
+        <div class="ans">
+          <ul>
+            <li>iOS 系统语言标签完善为简体中文（此前商店页显示为英文）。</li>
+          </ul>
+        </div>
+      </details>
+      <details class="qa reveal">
+        <summary>v2.0.0 <span class="chip">首个正式版</span></summary>
+        <div class="ans">
+          <ul>
+            <li>首个正式版本：三类台账（特种作业人员 / 安全生产许可证 / 安全生产管理人员）+ 拍照识别 + 官方联网核验 + 到期提醒 + 导出与备份。</li>
+            <li>安卓端修复 release 版拍照闪退，识别更快，证件文件预览更稳定。</li>
+          </ul>
+        </div>
       </details>
     </div>
   </div>
@@ -620,13 +742,14 @@
           <img src="assets/app-icon.png" alt="" width="26" height="26">
           <span>证安查</span>
         </a>
-        <p style="font-size:13px;max-width:30em">面向建筑施工企业的证件识别与台账管理工具。iOS 版 <span data-as-version>2.0.0</span>（App Store）· 安卓版 <span data-version>2.0.2</span>（build <span data-build>23</span>）。</p>
+        <p style="font-size:13px;max-width:30em">面向建筑施工企业的证件识别与台账管理工具。iOS 版 <span data-as-version>2.0.4</span>（App Store）· 安卓版 <span data-version>2.0.4</span>（build <span data-build>32</span>）。</p>
       </div>
       <div class="foot-links">
         <a href="index.html">首页</a>
         <a href="guide.html">使用说明</a>
         <a href="#download">下载</a>
         <a href="#faq">常见问题</a>
+        <a href="#changelog">更新日志</a>
         <a href="#compare">对比 OA</a>
         <a href="policy.html" data-policy-link>隐私政策</a>
         <a data-ios-link href="https://apps.apple.com/cn/app/id6810502885" target="_blank" rel="noopener">App Store</a>

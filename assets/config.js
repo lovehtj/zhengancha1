@@ -13,32 +13,42 @@ window.ZAC_CONFIG = {
   /* iOS：App Store 应用链接。
      这里刻意用**纯 ASCII 短链**：你从 App Store 复制到的链接是
        https://apps.apple.com/cn/app/证安查/id6810502885
-     两者等价，但短链不含中文，二维码更小、也不会被百分号编码搞坏。
-     注意：iOS 版是"更新中的版本"，与安卓 APK 的版本号不一定相同（见下）。 */
+     两者等价，但短链不含中文，二维码更小、也不会被百分号编码搞坏。 */
   iosUrl: 'https://apps.apple.com/cn/app/id6810502885',
 
-  /* Android 下载地址。当前用「虾分发」的下载落地页（国内速度好、自带二维码与统计）。
-     可以是任意一种（改完刷新页面即可，二维码会自动重算）：
-       1) 下载落地页（当前）  'https://uz5.pps3.com/5zukgw'
-       2) APK 直链（本站）    'download/zhengancha-2.0.2-build23.apk'
-       3) 对象存储 / CDN      'https://your-bucket.oss-cn-xxx.aliyuncs.com/zhengancha-2.0.2-build23.apk'
-     链接类型会被自动识别：不以 .apk 结尾的按"落地页"处理（按钮文案变「打开安卓下载页」、
-     不加 download 属性）；需要强制指定时设 androidIsLanding: true/false。
-     提示：APK 不要提交进 Git 仓库（仓库内单文件 100MB 硬限制），用落地页/Release/对象存储。 */
+  /* Android 下载地址。可以是任意一种（改完刷新页面即可，二维码会自动重算）：
+       1) 直链（.apk 结尾，浏览器直接下载）
+       2) 下载落地页（非 .apk 结尾按落地页处理，按钮文案变「打开安卓下载页」）
+     链接类型自动识别；需要强制指定时设 androidIsLanding: true/false。
+     提示：APK 不要提交进 Git 仓库（仓库内单文件 100MB 硬限制），用直链/Release/对象存储。
+
+     ⚠️ 腾讯 COS 默认域名**不能**公开分发 APK/IPA（实测：HEAD 返回 200，GET 却是
+     <Code>DownloadForbidden</Code>，「please use custom domain instead」；Range 请求同样被拦）。
+     要用 COS 必须绑定**自有域名 + ICP 备案**，例如 dl.zhengancha.cn → 该 bucket；
+     否则继续用虾分发（当前）。 */
   androidPath: 'https://uz5.pps3.com/5zukgw',
 
-  /* 安卓 APK（本站 download/ 里那个包）的版本信息 */
-  version: '2.0.2',
-  build: '23',
+  /* 安卓 APK 的版本信息。build 必须与上面 androidPath 实际提供的包一致，
+     否则官网写的版本会比能下到的包新/旧（用户会以为"下载坏了"或"更新没生效"）。
+     ⚠️ 每次换包后请核对这里：`androidPath` 指向的下载页当前提供的包，
+     必须与下面的 version/build 是同一个构建（APK 由你手动上传，站点不参与分发）。 */
+  version: '2.0.4',
+  build: '32',
 
-  /* App Store 上**当前公开**的版本（与上面的安卓包不同步：iOS 走审核，
-     线上可能还是旧版。填这里才能如实展示，别让官网写的版本比线上还新） */
-  appStoreVersion: '2.0.0',
-  appStoreBuild: '17',
+  /* App Store 的版本 = 上架包（2.0.4 / build 32），与安卓包同版本。
+     ⚠️ appStoreInReview：上架包**已提交但还没过审**时为 true ——
+     此时 App Store 商店页上能下到的仍是旧版，官网会如实标注「审核中」，
+     免得用户以为"更新没生效"。
+     **苹果过审、商店页真的显示 2.0.4 之后，把这里改成 false**，标注自动消失。 */
+  appStoreVersion: '2.0.4',
+  appStoreBuild: '32',
+  appStoreInReview: true,
   apkSize: '234 MB',
   iosSize: '168 MB',
   minAndroid: 'Android 8.0+',
-  minIOS: 'iOS 16.0+',
+  /* ⚠️ 这里只写版本号本身：页面里的写法是「iOS <span data-min-ios>16.0+</span>」，
+     自带 iOS 字样。以前这里写成 'iOS 16.0+'，渲染出来是「iOS iOS 16.0+」。 */
+  minIOS: '16.0+',
 
   /* 联系方式（隐私政策/支持页面用） */
   contactEmail: 'qinshunhuan@vip.qq.com',

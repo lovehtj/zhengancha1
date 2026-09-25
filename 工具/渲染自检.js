@@ -17,7 +17,13 @@ const BASE = process.argv[2] || 'http://127.0.0.1:8899';
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const PORT = 9333;
 
-const PAGES = ['/index.html', '/guide.html', '/policy.html'];
+const PAGES = [
+  '/index.html', '/guide.html', '/policy.html', '/404.html',
+  // 打印材料（可直接 ⌘P 存 PDF）：自带二维码绘制脚本，同样要盯 JS 报错与横向溢出
+  '/materials/App介绍与详细使用说明.html',
+  '/materials/一页速查卡.html',
+  '/materials/推广卖点.html'
+];
 const VIEWPORTS = [
   { name: '手机 390', width: 390, height: 844, mobile: true },
   { name: '平板 768', width: 768, height: 1024, mobile: false },
@@ -141,6 +147,9 @@ const PROBE = `(() => {
     });
     await cdp.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-color-scheme', value: 'light' }] });
     for (const page of PAGES) {
+      // materials/ 下是可打印的 A4 定宽sheet（794px＝A4@96dpi），**本来就不做响应式**，
+      // 窄视口下的横向溢出是设计使然，不是 bug。所以这几页只在桌面宽度下检查。
+      if (page.startsWith('/materials/') && vp.width < 1000) continue;
       cdp.events.length = 0;
       await cdp.send('Page.navigate', { url: BASE + page });
       await sleep(1100);

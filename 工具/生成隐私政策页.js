@@ -122,7 +122,7 @@ const html = `<!DOCTYPE html>
     </div>
     <div class="p-meta">
 ${dates.map((d) => `      <span>${esc(d)}</span>`).join('\n')}
-      <span>适用版本：iOS <span data-as-version>2.0.0</span> · 安卓 <span data-version>2.0.2</span></span>
+      <span>适用版本：iOS <span data-as-version>2.0.4</span> · 安卓 <span data-version>2.0.4</span></span>
     </div>
 
 ${intro.length ? `    <div class="p-intro reveal">

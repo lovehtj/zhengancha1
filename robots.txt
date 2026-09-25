@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# 证安查官网（静态站点）。页面：index.html / guide.html / policy.html
+# 站点上线后如绑定了自定义域名，可在此追加 Sitemap 行。

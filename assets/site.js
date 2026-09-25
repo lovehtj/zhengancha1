@@ -176,6 +176,12 @@
     document.querySelectorAll('[data-as-build]').forEach(function (el) {
       el.textContent = C.appStoreBuild || '';
     });
+    // iOS 上架包已提交、尚未过审时，页面上如实标注「审核中」。
+    // 过审后把 config.js 的 appStoreInReview 改成 false，这些标注自动隐藏。
+    var inReview = C.appStoreInReview === true;
+    document.querySelectorAll('[data-as-review]').forEach(function (el) {
+      el.hidden = !inReview;
+    });
     document.querySelectorAll('[data-apk-size]').forEach(function (el) {
       el.textContent = C.apkSize || '';
     });
@@ -245,6 +251,19 @@
       }
       el.setAttribute('data-android-landing', isLanding ? '1' : '0');
     });
+    /* og:image / og:url 相对路径对社交平台抓取无效，运行时补成绝对地址 */
+    var b = baseUrl();
+    if (b) {
+      document.querySelectorAll('meta[property="og:image"]').forEach(function (m) {
+        if (!/^https?:/i.test(m.getAttribute('content') || '')) {
+          m.setAttribute('content', b + String(m.getAttribute('content') || '').replace(/^\/+/, ''));
+        }
+      });
+      document.querySelectorAll('meta[property="og:url"]').forEach(function (m) {
+        m.setAttribute('content', b);
+      });
+    }
+
     /* 结构化数据里补上下载地址，便于搜索引擎收录 */
     document.querySelectorAll('script[type="application/ld+json"]').forEach(function (tag) {
       try {
