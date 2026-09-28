@@ -182,6 +182,12 @@
     document.querySelectorAll('[data-as-review]').forEach(function (el) {
       el.hidden = !inReview;
     });
+    // 安卓新包"上传中"提示：与 iOS 的「审核中」同一套机制。
+    // 新包传到下载页后，把 config.js 的 androidPendingUpload 改成 false，提示自动隐藏。
+    var apkPending = C.androidPendingUpload === true;
+    document.querySelectorAll('[data-apk-pending]').forEach(function (el) {
+      el.hidden = !apkPending;
+    });
     document.querySelectorAll('[data-apk-size]').forEach(function (el) {
       el.textContent = C.apkSize || '';
     });

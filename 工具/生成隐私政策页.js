@@ -18,7 +18,7 @@ const OUT = path.join(ROOT, 'policy.html');
 // 只改这两行即可。数值要与「下载区显示的最新构建」和上架目录里的包一致，
 // 否则又会出现"政策页写的版本、下载页写的版本、商店里的版本"三个数不一样。
 const IOS_VERSION = '2.0.6';      // iOS：最新构建（build 35）
-const ANDROID_VERSION = '2.0.4';  // 安卓：最新构建（build 32）
+const ANDROID_VERSION = '2.0.6';  // 安卓：本次上架构建（build 35，与 iOS 同版本）
 
 const raw = fs.readFileSync(SRC, 'utf8').replace(/\r\n/g, '\n');
 // 去掉发布前提示行（应用内文本末尾会带一句"请替换邮箱"的备注）

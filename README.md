@@ -117,7 +117,8 @@ python3 -m http.server 8899
    appStoreVersion: '2.0.6', appStoreBuild: '35',        // iOS 上架包版本（只指 iOS）
    appStoreInReview: true,                              // 已提交未过审 → 页面标注「审核中」；过审后改 false
    androidPath: 'https://uz5.pps3.com/5zukgw',   // 虾分发落地页（非 .apk 结尾 → 按落地页处理）
-   version: '2.0.4', build: '32',                       // 安卓包版本（只指安卓）——自 2.0.6 起 iOS 与安卓不同版
+   version: '2.0.6', build: '35',                       // 安卓包版本（本次上架；包传完后把 androidPendingUpload 改 false）
+   androidPendingUpload: true,                          // 安卓新包上传中 → 页面提示"下载页可能仍是旧版"
    contactEmail: 'qinshunhuan@vip.qq.com'
    ```
 
