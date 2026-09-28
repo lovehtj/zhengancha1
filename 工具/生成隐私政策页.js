@@ -14,6 +14,12 @@ const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, '..', 'android_app', 'assets', 'privacy_policy.txt');
 const OUT = path.join(ROOT, 'policy.html');
 
+// ── 版本号：官网政策页显示的"适用版本" ──────────────────────────────
+// 只改这两行即可。数值要与「下载区显示的最新构建」和上架目录里的包一致，
+// 否则又会出现"政策页写的版本、下载页写的版本、商店里的版本"三个数不一样。
+const IOS_VERSION = '2.0.6';      // iOS：最新构建（build 35）
+const ANDROID_VERSION = '2.0.4';  // 安卓：最新构建（build 32）
+
 const raw = fs.readFileSync(SRC, 'utf8').replace(/\r\n/g, '\n');
 // 去掉发布前提示行（应用内文本末尾会带一句"请替换邮箱"的备注）
 const lines = raw.split('\n').filter((l) => !l.includes('请将上述联系邮箱替换'));
@@ -122,7 +128,7 @@ const html = `<!DOCTYPE html>
     </div>
     <div class="p-meta">
 ${dates.map((d) => `      <span>${esc(d)}</span>`).join('\n')}
-      <span>适用版本：iOS <span data-as-version>2.0.4</span> · 安卓 <span data-version>2.0.4</span></span>
+      <span>适用版本：iOS <span data-as-version>${IOS_VERSION}</span> · 安卓 <span data-version>${ANDROID_VERSION}</span></span>
     </div>
 
 ${intro.length ? `    <div class="p-intro reveal">

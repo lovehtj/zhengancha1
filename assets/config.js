@@ -35,13 +35,16 @@ window.ZAC_CONFIG = {
   version: '2.0.4',
   build: '32',
 
-  /* App Store 的版本 = 上架包（2.0.4 / build 32），与安卓包同版本。
+  /* App Store 的版本 = 上架包（2.0.6 / build 35）。
+     ⚠️ 从 2.0.6 起 **iOS 与安卓不再同版本**：iOS 走 App Store（2.0.6 / 35），
+     安卓仍是 2.0.4（build 32，本机已无法构建安卓包）。上面的 version/build 只指安卓，
+     这里的 appStoreVersion/appStoreBuild 只指 iOS，两者**不要混着改**。
      ⚠️ appStoreInReview：上架包**已提交但还没过审**时为 true ——
-     此时 App Store 商店页上能下到的仍是旧版，官网会如实标注「审核中」，
+     此时 App Store 商店页上能下到的仍是旧版（当前线上是 2.0.1），官网会如实标注「审核中」，
      免得用户以为"更新没生效"。
-     **苹果过审、商店页真的显示 2.0.4 之后，把这里改成 false**，标注自动消失。 */
-  appStoreVersion: '2.0.4',
-  appStoreBuild: '32',
+     **苹果过审、商店页真的显示 2.0.6 之后，把这里改成 false**，标注自动消失。 */
+  appStoreVersion: '2.0.6',
+  appStoreBuild: '35',
   appStoreInReview: true,
   apkSize: '234 MB',
   iosSize: '168 MB',

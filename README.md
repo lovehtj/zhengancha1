@@ -114,10 +114,10 @@ python3 -m http.server 8899
    ```js
    siteUrl: 'https://你的域名/',                        // 建议填，二维码与链接都以它为准
    iosUrl: 'https://apps.apple.com/cn/app/id6810502885',  // 已填：证安查（纯 ASCII 短链，等价于带中文 slug 的链接）
-   appStoreVersion: '2.0.4', appStoreBuild: '32',        // 上架包版本
+   appStoreVersion: '2.0.6', appStoreBuild: '35',        // iOS 上架包版本（只指 iOS）
    appStoreInReview: true,                              // 已提交未过审 → 页面标注「审核中」；过审后改 false
    androidPath: 'https://uz5.pps3.com/5zukgw',   // 虾分发落地页（非 .apk 结尾 → 按落地页处理）
-   version: '2.0.4', build: '32',
+   version: '2.0.4', build: '32',                       // 安卓包版本（只指安卓）——自 2.0.6 起 iOS 与安卓不同版
    contactEmail: 'qinshunhuan@vip.qq.com'
    ```
 
