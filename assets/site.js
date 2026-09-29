@@ -219,17 +219,24 @@
      · iOS：配置了 iosUrl → 按钮直连 App Store；未配置 → 指向 App Store 搜索页
        （宁可给一个能用但文案诚实的按钮，也不要一个点不动的死按钮）
      · Android：配置了 APK 地址 → 直链并触发下载 */
-  /* ---------- 微信内置浏览器：跳 App Store / 下 APK 都会被拦 ---------- */
+  /* ---------- 微信内置浏览器：App Store 跳转会被拦（**只针对 iOS**） ---------- */
   /*
      背景（真机反馈 2026-09-28）：在 iPhone 微信里打开官网，点「打开 App Store」**没有任何反应**。
-     原因不是站点写错链接 —— 微信内置浏览器**主动拦截**跳转 App Store 与下载安装包，
-     这一点在 Android 侧早就写进了下载区文案（"微信内置浏览器会拦截 APK 下载"），
-     但页面里其实**没有**任何微信判断逻辑，所以那句承诺是空头支票。
-     现在补上：微信环境下 ① 顶部显示提示条 ② 点下载按钮时弹出可操作的三步引导
-     （"点了没反应"与"告诉用户怎么办"是完全不同的体验）。
-     非微信环境一律不显示，避免误伤。 */
+     原因不是站点写错链接 —— 微信内置浏览器**主动拦截**跳转 App Store，
+     页面里的链接本身是好的（Safari 里能正常跳）。所以这里做两件事：
+       ① 微信 + iOS 时，在下载区显示提示条
+       ② 点「打开 App Store」时代替"没反应"，弹出可操作的三步引导
+
+     ⚠️ **只管 iOS**：安卓下载走的是虾分发落地页，微信里本来就能打开，**不拦、不提示**
+     （2026-09-28 明确要求）。所以这里同时判断微信 与 iOS，两者都满足才生效。 */
   function isWeChat() {
     return /MicroMessenger/i.test(navigator.userAgent);
+  }
+  function isIOS() {
+    var ua = navigator.userAgent;
+    // iPadOS 13+ 可能把自己报成 Mac，故加上"触屏 Mac"的判据
+    return /iPhone|iPad|iPod/i.test(ua) ||
+      (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
   }
 
   function showWxGuide() {
@@ -242,16 +249,18 @@
   }
 
   function bindWeChatGuide() {
-    if (!isWeChat()) return;
+    // 微信 + iOS 才需要（安卓在微信里能正常下载，不打扰）
+    if (!isWeChat() || !isIOS()) return;
 
-    // ① 顶部提示条（HTML 里默认 hidden，只有微信环境才放出来）
+    // ① 顶部提示条（HTML 里默认 hidden，只有微信 + iOS 才放出来）
     document.querySelectorAll('[data-wx-hint]').forEach(function (el) {
       el.hidden = false;
     });
 
-    // ② 点下载按钮 → 微信里跳不动，改为给出引导（捕获阶段拦下，避免"点了没反应"）
+    // ② 点「打开 App Store」→ 微信里跳不动，改为给出引导（捕获阶段拦下，避免"点了没反应"）
+    //    注意只拦 [data-ios-link]：安卓按钮保持原样，微信里点它会正常进下载页。
     document.addEventListener('click', function (ev) {
-      var a = ev.target.closest && ev.target.closest('[data-ios-link],[data-android-link]');
+      var a = ev.target.closest && ev.target.closest('[data-ios-link]');
       if (!a) return;
       ev.preventDefault();
       showWxGuide();
