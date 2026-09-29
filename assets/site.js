@@ -219,6 +219,65 @@
      · iOS：配置了 iosUrl → 按钮直连 App Store；未配置 → 指向 App Store 搜索页
        （宁可给一个能用但文案诚实的按钮，也不要一个点不动的死按钮）
      · Android：配置了 APK 地址 → 直链并触发下载 */
+  /* ---------- 微信内置浏览器：跳 App Store / 下 APK 都会被拦 ---------- */
+  /*
+     背景（真机反馈 2026-09-28）：在 iPhone 微信里打开官网，点「打开 App Store」**没有任何反应**。
+     原因不是站点写错链接 —— 微信内置浏览器**主动拦截**跳转 App Store 与下载安装包，
+     这一点在 Android 侧早就写进了下载区文案（"微信内置浏览器会拦截 APK 下载"），
+     但页面里其实**没有**任何微信判断逻辑，所以那句承诺是空头支票。
+     现在补上：微信环境下 ① 顶部显示提示条 ② 点下载按钮时弹出可操作的三步引导
+     （"点了没反应"与"告诉用户怎么办"是完全不同的体验）。
+     非微信环境一律不显示，避免误伤。 */
+  function isWeChat() {
+    return /MicroMessenger/i.test(navigator.userAgent);
+  }
+
+  function showWxGuide() {
+    var g = document.querySelector('[data-wx-guide]');
+    if (g) g.hidden = false;
+  }
+  function hideWxGuide() {
+    var g = document.querySelector('[data-wx-guide]');
+    if (g) g.hidden = true;
+  }
+
+  function bindWeChatGuide() {
+    if (!isWeChat()) return;
+
+    // ① 顶部提示条（HTML 里默认 hidden，只有微信环境才放出来）
+    document.querySelectorAll('[data-wx-hint]').forEach(function (el) {
+      el.hidden = false;
+    });
+
+    // ② 点下载按钮 → 微信里跳不动，改为给出引导（捕获阶段拦下，避免"点了没反应"）
+    document.addEventListener('click', function (ev) {
+      var a = ev.target.closest && ev.target.closest('[data-ios-link],[data-android-link]');
+      if (!a) return;
+      ev.preventDefault();
+      showWxGuide();
+    }, true);
+
+    // ③ 浮层上的三个按钮
+    document.querySelectorAll('[data-wx-guide-close]').forEach(function (el) {
+      el.addEventListener('click', hideWxGuide);
+    });
+    document.querySelectorAll('[data-wx-guide-try]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        // 部分微信版本其实能跳，给用户留一条"仍要尝试"的路；
+        // 跳不动也不会更糟（微信会静默忽略），浮层留着让他还能复制链接。
+        var a = document.querySelector('[data-ios-link]');
+        var url = (a && a.getAttribute('href')) || '';
+        if (url && /^https?:/i.test(url)) window.location.href = url;
+      });
+    });
+    // 点遮罩空白处也关掉
+    document.querySelectorAll('[data-wx-guide]').forEach(function (el) {
+      el.addEventListener('click', function (ev) {
+        if (ev.target === el) hideWxGuide();
+      });
+    });
+  }
+
   function bindDownloadLinks() {
     document.querySelectorAll('[data-ios-link]').forEach(function (el) {
       if (URLS.ios) {
@@ -285,6 +344,7 @@
   function boot() {
     fillVersion();
     bindDownloadLinks();
+  bindWeChatGuide();
     document.querySelectorAll('[data-qr]').forEach(renderQr);
     bindTabs(); bindReveal(); bindNav(); bindCopy(); bindToc();
   }

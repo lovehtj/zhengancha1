@@ -577,3 +577,63 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .card, .status { break-inside: avoid; box-shadow: none; }
   section { padding: 18px 0; }
 }
+
+
+/* ============ 微信内置浏览器提示 ============ */
+/* 背景：微信会拦截「跳 App Store」与「下载 APK」，在微信里点下载按钮会"没反应"。
+   与其让用户以为网站坏了，不如当场给出可操作的三步。仅微信环境显示（site.js 判定 UA）。 */
+.wx-hint {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 214, 102, .14);
+  border: 1px solid rgba(255, 214, 102, .45);
+  color: #ffe9b0;
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+.wx-hint b { color: #ffd666; white-space: nowrap; }
+.wx-hint span { display: block; }
+
+.wx-guide {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, .68);
+}
+.wx-guide[hidden] { display: none; }
+.wx-guide-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 22px 20px 18px;
+  border-radius: 16px;
+  background: #161b22;
+  border: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+  color: #e6edf3;
+}
+.wx-guide-card h3 { margin: 0 0 10px; font-size: 17px; color: #fff; }
+.wx-guide-card p { margin: 0 0 12px; font-size: 13.5px; line-height: 1.65; color: #b9c2cc; }
+.wx-guide-card ol { margin: 0 0 16px; padding-left: 20px; font-size: 13.5px; line-height: 1.9; color: #e6edf3; }
+.wx-guide-card b { color: #3ddc84; }
+.wx-guide-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.wx-guide-actions .btn { font-size: 13px; }
+/* 浮层是深色卡片，而 .btn-ghost 的配色是给浅色卡片用的（color: var(--ink)），
+   直接复用会变成"黑字压黑底"看不清 —— 这里显式覆盖成浅色。 */
+.wx-guide-actions .btn-ghost {
+  color: #d7dde4;
+  border-color: rgba(255, 255, 255, .28);
+  background: transparent;
+}
+.wx-guide-actions .btn-ghost:hover {
+  color: #fff;
+  border-color: #3ddc84;
+  background: rgba(61, 220, 132, .12);
+}

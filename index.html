@@ -519,8 +519,17 @@
         </div>
       </div>
 
+      <!-- 微信内置浏览器提示：只有微信里才显示（由 site.js 判断 UA 后取消 hidden）。
+           微信会拦截"跳 App Store"和"下载 APK"，点了没反应是微信的限制，不是网站坏了。 -->
+      <div class="wx-hint" data-wx-hint hidden>
+        <b>你正在微信里打开本页</b>
+        <span>微信会拦截「跳转 App Store」与「下载安装包」，点下载按钮可能没有反应。
+          请点右上角 <b>⋯</b> → <b>在 Safari / 浏览器中打开</b>，再点下载即可正常安装。</span>
+      </div>
+
       <p class="dl-tip">
-        安装提示：<strong>安卓请用系统相机或浏览器扫码</strong>——微信内置浏览器会拦截 APK 下载（页面在微信里会提示"用浏览器打开"）；首次安装如提示「未知来源 / 外部来源应用」，选择允许即可。iPhone 扫码后跳 App Store 直接安装。
+        安装提示：<strong>推荐用系统相机或浏览器扫码安装</strong>——微信内置浏览器会拦截「跳转 App Store」和 APK 下载（在微信里打开本页会看到提示）；
+        首次安装安卓包如提示「未知来源 / 外部来源应用」，选择允许即可。
         所有版本数据格式一致，换手机用「数据管理 → 备份/恢复」即可迁移。
       </p>
     </div>
@@ -808,6 +817,24 @@
     <p class="foot-note" style="margin-top:10px">© <span data-year>2026</span> 证安查 · ZhengAnCha</p>
   </div>
 </footer>
+
+<!-- 微信引导浮层：点下载按钮但跳不动时弹出（由 site.js 控制） -->
+<div class="wx-guide" data-wx-guide hidden role="dialog" aria-modal="true" aria-labelledby="wx-guide-title">
+  <div class="wx-guide-card">
+    <h3 id="wx-guide-title">请改用浏览器打开本页</h3>
+    <p>微信内置浏览器会拦截跳转「App Store」和下载安装包 —— 这是微信的限制，不是网站坏了。</p>
+    <ol>
+      <li>点右上角的 <b>⋯</b></li>
+      <li>选「<b>在 Safari 中打开</b>」（安卓选「在浏览器打开」）</li>
+      <li>回到本页，再点下载按钮</li>
+    </ol>
+    <div class="wx-guide-actions">
+      <button class="btn btn-primary btn-sm" type="button" data-copy="ios">复制 App Store 链接</button>
+      <button class="btn btn-ghost btn-sm" type="button" data-wx-guide-try>仍要尝试打开</button>
+      <button class="btn btn-ghost btn-sm" type="button" data-wx-guide-close>知道了</button>
+    </div>
+  </div>
+</div>
 
 <script src="assets/config.js"></script>
 <script src="assets/qr.js"></script>
