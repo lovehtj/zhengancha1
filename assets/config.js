@@ -46,7 +46,7 @@ window.ZAC_CONFIG = {
      **苹果过审、商店页真的显示 2.0.6 之后，把这里改成 false**，标注自动消失。 */
   appStoreVersion: '2.0.6',
   appStoreBuild: '35',
-  appStoreInReview: true,
+  appStoreInReview: false,
   apkSize: '234 MB',   // ⚠️ 这是 2.0.4 包的大小；2.0.6 的 APK 传好后按实际值改
   iosSize: '168 MB',
   minAndroid: 'Android 8.0+',
