@@ -42,21 +42,12 @@ window.ZAC_CONFIG = {
      ⚠️ appStoreInReview：上架包**已提交但还没过审**时为 true ——
      此时 App Store 商店页上能下到的仍是上一版（线上是 2.0.6 / build 35），官网会如实标注「审核中」，
      免得用户以为"更新没生效"。
-<<<<<<< HEAD
      **苹果过审、商店页真的显示 2.0.7 之后，把这里改成 false**，标注自动消失。 */
   appStoreVersion: '2.0.7',
   appStoreBuild: '47',
   appStoreInReview: true,
   apkSize: '159 MB',   // 2.0.7 安卓包实际大小（159,002,756 字节）
   iosSize: '140 MB',   // 2.0.7 iOS 包实际大小（140,240,402 字节）
-=======
-     **苹果过审、商店页真的显示 2.0.6 之后，把这里改成 false**，标注自动消失。 */
-  appStoreVersion: '2.0.6',
-  appStoreBuild: '35',
-  appStoreInReview: false,
-  apkSize: '234 MB',   // ⚠️ 这是 2.0.4 包的大小；2.0.6 的 APK 传好后按实际值改
-  iosSize: '168 MB',
->>>>>>> 8a15e49440af21d22eeadb8498debe028de1e7dd
   minAndroid: 'Android 8.0+',
   minIOS: '16.0+',
 
