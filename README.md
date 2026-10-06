@@ -107,28 +107,43 @@ python3 -m http.server 8899
 > 因为二维码需要一个可被手机访问的 `http(s)` 地址。要本地扫码测试，用上面的命令起服务，
 > 然后把手机连到同一个 Wi-Fi，访问 `http://<电脑局域网IP>:8899/`。
 
-## 部署（三步）
+## 部署（四步）
 
 1. **改配置**：编辑 `assets/config.js`
 
    ```js
    siteUrl: 'https://你的域名/',                        // 建议填，二维码与链接都以它为准
    iosUrl: 'https://apps.apple.com/cn/app/id6810502885',  // 已填：证安查（纯 ASCII 短链，等价于带中文 slug 的链接）
-   appStoreVersion: '2.0.6', appStoreBuild: '35',        // iOS 上架包版本（只指 iOS）
+   appStoreVersion: '2.0.7', appStoreBuild: '47',        // iOS 上架包版本（只指 iOS）
    appStoreInReview: true,                              // 已提交未过审 → 页面标注「审核中」；过审后改 false
    androidPath: 'https://uz5.pps3.com/5zukgw',   // 虾分发落地页（非 .apk 结尾 → 按落地页处理）
-   version: '2.0.6', build: '35',                       // 安卓包版本（本次上架；包传完后把 androidPendingUpload 改 false）
+   version: '2.0.7', build: '47',                       // 安卓包版本（本次上架；包传完后把 androidPendingUpload 改 false）
    androidPendingUpload: true,                          // 安卓新包上传中 → 页面提示"下载页可能仍是旧版"
    contactEmail: 'qinshunhuan@vip.qq.com'
    ```
 
-2. **上传**：把整个 `证安查官网/` 目录传到任意静态托管（Nginx / 对象存储 OSS / COS / GitHub Pages / Vercel 均可）。
+2. **打版本戳**（改完 `assets/` 里任何文件都要做，否则老用户会用到缓存里的旧脚本）：
+
+   ```bash
+   node 工具/生成资源版本戳.js          # 给 HTML 里的 assets 引用写上 ?v=<内容指纹>
+   node 工具/生成资源版本戳.js --check  # 只检查（部署前自检用，过期则退出码 1）
+   ```
+
+   > **为什么必须做**：静态托管（GitHub Pages）给 HTML 和 JS 都发 `Cache-Control: max-age=600`，
+   > 微信内置浏览器还会额外缓存。改版后可能命中「**新 HTML + 旧 site.js**」——
+   > 页面是新文案、交互却是旧逻辑，且用户完全无感。带上内容指纹后，assets 变一个字节 URL 就变，
+   > 缓存必然失效。四个资源共用一个戳（同一站点快照），方便排查线上到底是哪一版。
+
+3. **上传**：把整个 `证安查官网/` 目录传到任意静态托管（Nginx / 对象存储 OSS / COS / GitHub Pages / Vercel 均可）。
    - 若把 APK 放到 CDN 或对象存储，把 `androidPath` 改成完整网址即可；
-   - 正式服务器建议开启 **Range 断点续传**（234 MB 的包，弱网下很重要），
+   - 正式服务器建议开启 **Range 断点续传**（159 MB 的包，弱网下很重要），
      本地 `python3 -m http.server` 不支持 Range，仅供预览。
 
-3. **自测**：手机扫首页的「Android」二维码 → 应直接开始下载 APK；
+4. **自测**：手机扫首页的「Android」二维码 → 应直接开始下载 APK；
    扫「分享给同事」二维码 → 应打开官网首页。
+
+   > 想在微信里复测新改动：**用带参数的地址打开**（如 `https://zhengancha.cn/?t=2`）即可绕过缓存；
+   > 微信里直接重新打开同一条链接，可能仍命中 10 分钟内的旧缓存。
 
 ## 二维码是怎么来的
 
@@ -205,8 +220,8 @@ iOS 走 App Store 审核，**线上公开的版本往往落后于安卓包**。�
 
 | 字段 | 含义 | 当前值 |
 |---|---|---|
-| `version` / `build` | `androidPath` 那个下载页当前提供的包版本 | 2.0.4 / 32 |
-| `appStoreVersion` / `appStoreBuild` | iOS 上架包版本（与安卓同版） | 2.0.4 / 32 |
+| `version` / `build` | `androidPath` 那个下载页当前提供的包版本 | 2.0.7 / 47 |
+| `appStoreVersion` / `appStoreBuild` | iOS 上架包版本（与安卓同版） | 2.0.7 / 47 |
 | `appStoreInReview` | 上架包是否仍在审核中（true → 页面显示「审核中」） | `true` |
 
 页面上的 iOS 卡片显示前者语义的"App Store 当前 X"，安卓卡片显示安装包版本，页脚与
@@ -218,6 +233,7 @@ iOS 走 App Store 审核，**线上公开的版本往往落后于安卓包**。�
       `version` / `build` / `apkSize` / `iosSize`，**务必与下载页实际提供的构建一致**
 - [ ] 三份材料（`materials/*.html` 与 `上架资料/*.html`）如内容有变，两处都要改（站点内副本的脚本路径是 `../assets/`，仓库原件是 `../证安查官网/assets/`）
 - [ ] `node 工具/校验二维码.js` 确认二维码仍与 Apple 实现一致
+- [ ] 动过 `assets/` 里任何文件 → `node 工具/生成资源版本戳.js`（否则用户会撞上「新 HTML + 旧 JS」的缓存错配）
 - [ ] `node 工具/渲染自检.js` 与 `node 工具/打印排版自检.js` 全绿
 - [ ] 改过应用内隐私政策正文 → `node 工具/生成隐私政策页.js` 重新生成 policy.html
 - [ ] 填好 `siteUrl` 后重新生成三份 PDF，让纸质材料上也有二维码
