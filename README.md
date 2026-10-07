@@ -56,6 +56,19 @@ cd /Users/lovehtj/Documents/GitHub/zhengancha && \
 
 ---
 
+## 🔗 App Store Connect 里要填的地址
+
+| 字段 | 值 |
+|---|---|
+| 隐私政策 URL | **`https://zhengancha.cn/policy.html`**（由 `工具/生成隐私政策页.js` 从 App 内置政策正文生成，见下） |
+| 支持 URL | `https://zhengancha.cn/` |
+
+> 隐私政策 URL 属应用级「App 信息」，改完即生效、**不需要重新送审**；
+> 页面上的"适用版本"由 `工具/生成隐私政策页.js` 顶部的 `IOS_VERSION` / `ANDROID_VERSION` 决定，
+> **发新版后先更新这两行并重跑生成器**（别让官网写的版本比线上还新）。
+
+---
+
 ## ⚠️ 部署前必做：`node 工具/发布前自检.js`
 
 2026-10-06 的真实事故：官网部署后**"下载既没有地址也没有二维码"**。
