@@ -4,14 +4,38 @@
    为什么这么做：App Store 审核要求三方口径一致
      ① App Store Connect 隐私问卷   ② App 内置 assets/privacy_policy.txt   ③ 官网政策页
    手工维护三处必然漂移，所以这里把 ② 作为唯一数据源，直接生成 ③。
-   用法：node 工具/生成隐私政策页.js
+   用法：node 工具/生成隐私政策页.js [应用内政策正文路径]
+        路径可省略：脚本会按下列顺序自动找（找到即用，并打印实际用的是哪个）
+          1) 命令行参数
+          2) 环境变量 ZAC_PRIVACY_SRC
+          3) ../android_app/assets/privacy_policy.txt（站点位于 App 工作区内时）
+          4) ~/Downloads/dsharness/android_app/assets/privacy_policy.txt（本机布局）
    ============================================================ */
 'use strict';
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const SRC = path.join(ROOT, '..', 'android_app', 'assets', 'privacy_policy.txt');
+// 政策正文源按多候选解析（站点已独立成仓库，源文件不在本仓库内）
+function resolveSrc() {
+  const cands = [];
+  if (process.argv[2]) cands.push(path.resolve(process.argv[2]));
+  if (process.env.ZAC_PRIVACY_SRC) cands.push(path.resolve(process.env.ZAC_PRIVACY_SRC));
+  cands.push(path.join(ROOT, '..', 'android_app', 'assets', 'privacy_policy.txt'));
+  if (process.env.HOME) {
+    cands.push(path.join(process.env.HOME, 'Downloads', 'dsharness', 'android_app', 'assets', 'privacy_policy.txt'));
+  }
+  for (const c of cands) if (fs.existsSync(c)) return { file: c, tried: cands };
+  return { file: null, tried: cands };
+}
+const _src = resolveSrc();
+if (!_src.file) {
+  console.error('❌ 找不到应用内隐私政策正文（三方口径一致的唯一数据源）。已尝试：');
+  _src.tried.forEach((c) => console.error('   - ' + c));
+  console.error('用法：node 工具/生成隐私政策页.js <android_app/assets/privacy_policy.txt>');
+  process.exit(2);
+}
+const SRC = _src.file;
 const OUT = path.join(ROOT, 'policy.html');
 
 // ── 版本号：官网政策页显示的"适用版本" ──────────────────────────────
@@ -20,6 +44,7 @@ const OUT = path.join(ROOT, 'policy.html');
 const IOS_VERSION = '2.0.7';      // iOS：最新构建（build 47）
 const ANDROID_VERSION = '2.0.7';  // 安卓：本次上架构建（build 47，与 iOS 同版本）
 
+console.log('  政策正文源：' + SRC);
 const raw = fs.readFileSync(SRC, 'utf8').replace(/\r\n/g, '\n');
 // 去掉发布前提示行（应用内文本末尾会带一句"请替换邮箱"的备注）
 const lines = raw.split('\n').filter((l) => !l.includes('请将上述联系邮箱替换'));
@@ -147,8 +172,7 @@ ${intro.map((p) => `      <p>${esc(p)}</p>`).join('\n')}
 ${body}
 
     <p style="color:var(--ink-3);font-size:13px;margin-top:18px">
-      本页内容与 App 内置隐私政策正文一致（由 <code>工具/生成隐私政策页.js</code> 从
-      <code>android_app/assets/privacy_policy.txt</code> 生成，避免多处维护产生偏差）。
+      本页内容与 App 内置隐私政策正文一致。
     </p>
   </div>
 </section>
