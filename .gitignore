@@ -1,1 +1,21 @@
+# ---- 二进制安装包一律不进 Git（GitHub 仓库内单文件 100MB 硬限制）----
+# 安卓 APK 已托管在虾分发落地页，iOS 走 App Store，这里不需要留副本
 *.apk
+*.aab
+*.ipa
+download/*.apk
+
+# ---- 系统 / 编辑器垃圾 ----
+.DS_Store
+**/.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# ---- 工具依赖（如需在本地跑自检脚本）----
+工具/node_modules/
+node_modules/
+
+# ---- 本地临时产物 ----
+*.pdf.orig
+*.bak

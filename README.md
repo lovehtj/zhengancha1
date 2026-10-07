@@ -32,6 +32,30 @@
 └── README.md
 ```
 
+## 📍 本仓库是官网的**唯一源头**
+
+官网源码**只在这里**（`/Users/lovehtj/Documents/GitHub/zhengancha`）。
+工作区里的 `证安查官网/` 是一条**指向本仓库的符号链接**（不是副本），所以两边永远一致、不会漂移。
+
+```bash
+# 改官网 → 直接改这里 → 自检 → 提交推送
+node 工具/发布前自检.js          # 必须通过
+node 工具/生成资源版本戳.js      # 改过 assets/ 后要重跑（加 ?v= 内容指纹）
+git add -A && git commit -m "官网：..." && git push
+```
+
+> 备份脚本 `dsharness/备份/backup_zac.sh` 已适配符号链接（`tar -h` 解引用），
+> 并在归档后**校验 `证安查官网/index.html` 确实入档**，避免软链被当成空链接而静默丢失。
+
+需要给外部（托管商/同事）一份整包时：
+
+```bash
+cd /Users/lovehtj/Documents/GitHub/zhengancha && \
+  zip -qr /tmp/证安查官网.zip . -x ".DS_Store" -x "*/.DS_Store" -x ".git/*"
+```
+
+---
+
 ## ⚠️ 部署前必做：`node 工具/发布前自检.js`
 
 2026-10-06 的真实事故：官网部署后**"下载既没有地址也没有二维码"**。
