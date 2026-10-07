@@ -1,0 +1,43 @@
+# 用 GitHub Actions 发布静态站点到 Pages
+# 适用场景：站点放在仓库**子目录**（分支方式的 Pages 只能选 / 或 /docs，选不了任意子目录）。
+# 如果你的站点内容已经放在仓库根目录，也可以用它（把下面的 path 改成 '.' 即可），
+# 或者在 Settings → Pages 里改用「Deploy from a branch → main → /(root)」而不需要本文件。
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只跑一个部署；新的推送取消排队中的旧任务
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # ↓↓↓ 如果站点在子目录，把 path 改成那个目录，例如 path: '证安查官网'
+      # 发布前自检：冲突标记 / JS 语法 / config.js 可加载且键唯一 / 资源齐全 / 下载要素非空
+      # 为什么必须有：2026-10-06 曾把带 git 冲突标记的半成品 config.js 部署上线，
+      # 它是语法错误 → window.ZAC_CONFIG 未生成 → 页面上"下载既没地址也没二维码"。
+      - name: 发布前自检
+        run: node 工具/发布前自检.js
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - id: deployment
+        uses: actions/deploy-pages@v4
