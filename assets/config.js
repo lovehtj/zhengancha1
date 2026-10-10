@@ -28,27 +28,27 @@ window.ZAC_CONFIG = {
      否则继续用虾分发（当前）。 */
   androidPath: 'https://uz5.pps3.com/5zukgw',
 
-  /* 安卓 APK 的版本信息 = 本次上架 / 下载页提供的构建（2.0.7 / build 47，与 iOS 同版本）。
-     本站按"下载页实际提供的包"填写：2.0.7 的 APK 已传到下载页，所以 androidPendingUpload 为 false，
-     页面上的"新包上传中"提示不显示。
-     ⚠️ 下次换包时务必同步这里：若下载页提供的不是 2.0.7/47，请改成实际值，
+  /* 安卓 APK 的版本信息 = 本次上架 / 下载页提供的构建（2.0.8 / build 50，与 iOS 同版本）。
+     本站按"下载页实际提供的包"填写：2.0.8 的 APK **尚未**传上虾分发，故 androidPendingUpload 暂设 true，
+     页面会如实提示"下载页可能仍是旧版"。**包传完后立刻改 false。**
+     ⚠️ 下次换包时务必同步这里：若下载页提供的不是 2.0.8/50，请改成实际值，
      否则官网写的版本会比能下到的包新（用户会以为"下载坏了"或"更新没生效"）。 */
-  version: '2.0.7',
-  build: '47',
+  version: '2.0.8',
+  build: '50',
   /* 安卓新包上传中：true 时页面提示"下载页可能仍是旧版"。包传完后改 false。 */
-  androidPendingUpload: false,
+  androidPendingUpload: true,
 
-  /* App Store 的版本 = 本次提交的构建（2.0.7 / build 47）。
+  /* App Store 的版本 = 本次提交的构建（2.0.8 / build 50）。
      ⚠️ appStoreInReview：上架包**已提交但还没过审**时为 true ——
      此时 App Store 商店页上能下到的仍是上一版（线上是 2.0.6 / build 35），官网会如实标注「审核中」，
      免得用户以为"更新没生效"。
-     **苹果过审、商店页真的显示 2.0.7 之后，把这里改成 false**，标注自动消失。 */
-  appStoreVersion: '2.0.7',
-  appStoreBuild: '47',
+     **苹果过审、商店页真的显示 2.0.8 之后，把这里改成 false**，标注自动消失。 */
+  appStoreVersion: '2.0.8',
+  appStoreBuild: '50',
   appStoreInReview: true,
-  apkSize: '159 MB',   // 2.0.7 安卓包实际大小（159,002,756 字节）
-  iosSize: '140 MB',   // 2.0.7 iOS 包实际大小（140,240,402 字节）
-  minAndroid: 'Android 8.0+',
+  apkSize: '135 MB',   // 2.0.8 安卓包实际大小（141,718,876 字节，仅 arm64）
+  iosSize: '140 MB',   // 2.0.8 iOS 包实际大小（146,533,018 字节）
+  minAndroid: 'Android 8.0+（64 位）',
   minIOS: '16.0+',
 
   /* 联系方式（隐私政策/支持页面用） */
