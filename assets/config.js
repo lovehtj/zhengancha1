@@ -29,7 +29,7 @@ window.ZAC_CONFIG = {
   androidPath: 'https://uz5.pps3.com/5zukgw',
 
   /* 安卓 APK 的版本信息 = 本次上架 / 下载页提供的构建（2.0.9 / build 53，与 iOS 同版本）。
-     本站按"下载页实际提供的包"填写：2.0.9 的 APK **尚未重新上传虾分发**（虾分发上现在仍是 2.0.8），
+     本站按"下载页实际提供的包"填写：2.0.9 的 APK **已于 2026-10-11 重新上传虾分发**，
        APK 已于 2026-10-11 上传虾分发，故 androidPendingUpload 为 false。
      ⚠️ 包传到虾分发后把 androidPendingUpload 改回 false；下次换包时也要同步这里的版本号：
      若下载页提供的不是 2.0.9/53，请改成实际值，
