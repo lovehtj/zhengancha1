@@ -29,14 +29,14 @@ window.ZAC_CONFIG = {
   androidPath: 'https://uz5.pps3.com/5zukgw',
 
   /* 安卓 APK 的版本信息 = 本次上架 / 下载页提供的构建（2.0.8 / build 50，与 iOS 同版本）。
-     本站按"下载页实际提供的包"填写：2.0.8 的 APK **尚未**传上虾分发，故 androidPendingUpload 暂设 true，
-     页面会如实提示"下载页可能仍是旧版"。**包传完后立刻改 false。**
+     本站按"下载页实际提供的包"填写：2.0.8 的 APK **已上传虾分发（2026-10-10）**，故 androidPendingUpload 为 false，
+       页面直接按 2.0.8 展示，不再提示"新包上传中"。
      ⚠️ 下次换包时务必同步这里：若下载页提供的不是 2.0.8/50，请改成实际值，
      否则官网写的版本会比能下到的包新（用户会以为"下载坏了"或"更新没生效"）。 */
   version: '2.0.8',
   build: '50',
   /* 安卓新包上传中：true 时页面提示"下载页可能仍是旧版"。包传完后改 false。 */
-  androidPendingUpload: true,
+  androidPendingUpload: false,
 
   /* App Store 的版本 = 本次提交的构建（2.0.8 / build 50）。
      ⚠️ appStoreInReview：上架包**已提交但还没过审**时为 true ——
