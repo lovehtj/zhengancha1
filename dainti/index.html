@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>江汉区老旧电梯更新项目 · 进度看台</title>
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">江</div>
+    <div class="brand-text">
+      <h1>江汉区住宅老旧电梯更新项目 <span class="tag">提前批 · EPC</span></h1>
+      <p id="subtitle">进度看台 · 加载中…</p>
+    </div>
+  </div>
+
+  <div class="topbar-stats" id="topStats"></div>
+
+  <div class="topbar-actions">
+    <div class="seg" id="basemapSeg">
+      <button data-map="standard" class="on">标准</button>
+      <button data-map="satellite">卫星</button>
+      <button data-map="dark">暗色</button>
+    </div>
+    <div class="seg" id="viewSeg">
+      <button data-view="point" class="on">点位</button>
+      <button data-view="community">小区</button>
+      <button data-view="heat">热力</button>
+    </div>
+    <button class="icon-btn" id="btnTimeline" title="时间轴 / 甘特">▤</button>
+    <button class="icon-btn" id="btnReport" title="导出周报">⎙</button>
+    <button class="icon-btn" id="btnFit" title="复位视图">⤢</button>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- ============ 左栏 ============ -->
+  <aside class="col col-left">
+    <section class="card">
+      <div class="card-hd"><h2>项目总览</h2><span class="hint" id="sourceHint"></span></div>
+      <div class="kpi-grid" id="kpiGrid"></div>
+      <div class="coverage" id="coverage"></div>
+      <div class="card-hd card-hd-sub"><h2>街道分布</h2><span class="hint">点击筛选</span></div>
+      <div id="streetChart" class="street-strip"></div>
+    </section>
+
+    <section class="card grow">
+      <div class="tabs" id="leftTabs">
+        <button data-tab="funnel" class="on">阶段推进</button>
+        <button data-tab="risk">风险 <b id="riskBadge">0</b></button>
+        <button data-tab="people">联系人</button>
+      </div>
+      <div class="tab-body">
+        <div class="tab-pane on" id="paneFunnel"><div id="funnel" class="funnel"></div></div>
+        <div class="tab-pane" id="paneRisk"><div id="riskPanel" class="risk-panel"></div></div>
+        <div class="tab-pane" id="panePeople"><div id="peoplePanel" class="people-panel"></div></div>
+      </div>
+    </section>
+  </aside>
+
+  <!-- ============ 中间:地图 + 时间轴抽屉 ============ -->
+  <section class="map-wrap">
+    <div class="map-stage">
+      <div id="map"></div>
+
+      <div class="map-overlay map-legend" id="legend"></div>
+
+      <div class="map-overlay map-filter">
+        <input id="search" type="search" placeholder="搜索小区 / 楼栋 / 地址 / 设备代码…" autocomplete="off">
+        <div class="chips" id="streetChips"></div>
+      </div>
+
+      <div class="map-overlay map-statusbar" id="statusbar"></div>
+      <div class="map-overlay map-note" id="geoNote"></div>
+    </div>
+
+    <!-- 时间轴 / 甘特抽屉 -->
+    <div class="timeline-drawer" id="timelineDrawer">
+      <div class="tl-head">
+        <h3>时间轴 · 里程碑推进</h3>
+        <div class="tl-modes" id="tlModes">
+          <button data-tl="month" class="on">每月新增</button>
+          <button data-tl="cum">累积曲线</button>
+          <button data-tl="matrix">阶段×月份</button>
+        </div>
+        <span class="tl-hint" id="tlHint"></span>
+        <button class="icon-btn sm" id="btnTlClose" title="收起">✕</button>
+      </div>
+      <div class="tl-body" id="tlBody"></div>
+    </div>
+  </section>
+
+  <!-- ============ 右栏 ============ -->
+  <aside class="col col-right">
+    <section class="card grow">
+      <div class="card-hd">
+        <h2>小区清单</h2>
+        <span class="hint"><b id="listCount">0</b> 个 · 按台数</span>
+      </div>
+      <div id="communityList" class="community-list"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-hd"><h2>明细</h2><span class="hint" id="detailHint">点击地图或清单</span></div>
+      <div id="detailPanel" class="detail-panel">
+        <div class="empty">未选择点位</div>
+      </div>
+    </section>
+  </aside>
+</main>
+
+<footer class="footbar">
+  <span id="footLeft"></span>
+  <span class="sep">|</span>
+  <span id="footAsOf"></span>
+  <span class="sep">|</span>
+  <span>坐标 WGS-84 → GCJ-02 对齐高德底图</span>
+</footer>
+
+<script src="vendor/leaflet.js"></script>
+<script src="data/plan.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
