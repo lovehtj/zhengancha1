@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>江汉区老旧电梯更新项目 · 进度看台</title>
 <link rel="stylesheet" href="vendor/leaflet.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=202610152111">
 </head>
 <body>
 
@@ -31,9 +31,11 @@
       <button data-view="community">小区</button>
       <button data-view="heat">热力</button>
     </div>
+    <button class="icon-btn" id="btnEdit" title="编辑模式：改阶段/日期/品牌，拖拽纠偏坐标">✎</button>
     <button class="icon-btn" id="btnTimeline" title="时间轴 / 甘特">▤</button>
     <button class="icon-btn" id="btnReport" title="导出周报">⎙</button>
     <button class="icon-btn" id="btnFit" title="复位视图">⤢</button>
+    <div class="user-chip" id="userChip"></div>
   </div>
 </header>
 
@@ -75,6 +77,33 @@
         <div class="chips" id="streetChips"></div>
       </div>
 
+      <div class="edit-bar" id="editBar">
+        <div class="eb-row">
+          <span class="eb-title">✎ 编辑模式</span>
+          <button class="mini-btn" id="btnMulti" title="开启后点圆点/清单可多选，然后批量改">多选</button>
+          <label class="eb-auto" title="改动后自动保存，无需手点保存">
+            <input type="checkbox" id="autoSave" checked><span>自动保存</span></label>
+          <span class="eb-hint" id="editHint">点圆点改阶段/日期/品牌；「小区」视图拖气泡纠偏坐标</span>
+          <span class="eb-dirty" id="editDirty"></span>
+          <button class="mini-btn" id="btnSave">保存</button>
+          <button class="mini-btn" id="btnRevert">撤销未保存</button>
+          <button class="mini-btn" id="btnRestore" title="回退到上一次保存之前">撤销上次保存</button>
+          <button class="mini-btn" id="btnExport">导出 JSON</button>
+          <button class="mini-btn" id="btnImport">导入 JSON</button>
+          <button class="mini-btn" id="btnRebuild" title="重跑构建脚本，刷新风险/时间轴/周报">重建派生数据</button>
+          <button class="mini-btn" id="btnEditExit">退出编辑</button>
+        </div>
+        <div class="eb-row eb-batch" id="batchBar">
+          <span class="eb-sel">已选 <b id="selCount">0</b> 台</span>
+          <select id="bStage" title="批量设置当前阶段"><option value="">设为阶段…</option></select>
+          <select id="bKey" title="批量填写某个里程碑日期"><option value="">填里程碑…</option></select>
+          <input type="date" id="bDate" title="里程碑日期">
+          <button class="mini-btn primary" id="btnApply">应用到所选</button>
+          <button class="mini-btn" id="btnSelVisible" title="选中当前筛选结果里的全部点位">全选筛选结果</button>
+          <button class="mini-btn" id="btnSelClear">清空选择</button>
+        </div>
+      </div>
+
       <div class="map-overlay map-statusbar" id="statusbar"></div>
       <div class="map-overlay map-note" id="geoNote"></div>
     </div>
@@ -102,6 +131,10 @@
         <h2>小区清单</h2>
         <span class="hint"><b id="listCount">0</b> 个 · 按台数</span>
       </div>
+      <div class="list-search">
+        <input id="listSearch" type="search" placeholder="在清单里搜索小区 / 街道 / 社区…" autocomplete="off">
+        <button class="mini-btn" id="listSearchClear" title="清空">✕</button>
+      </div>
       <div id="communityList" class="community-list"></div>
     </section>
 
@@ -122,8 +155,25 @@
   <span>坐标 WGS-84 → GCJ-02 对齐高德底图</span>
 </footer>
 
+<div class="login-overlay" id="loginOverlay">
+  <form class="login-card" id="loginForm" autocomplete="on">
+    <div class="lg-mark">江</div>
+    <h2>江汉区老旧电梯更新项目</h2>
+    <p class="lg-sub">进度看台 · 需要授权后访问</p>
+    <label>用户名</label>
+    <input id="loginUser" name="username" autocomplete="username" placeholder="请输入用户名">
+    <label>口令</label>
+    <input id="loginPass" name="password" type="password" autocomplete="current-password" placeholder="请输入口令">
+    <button type="submit" id="loginBtn">登 录</button>
+    <div class="lg-msg" id="loginMsg"></div>
+    <div class="lg-foot">未授权用户无法查看项目数据<br>如需账号请联系项目管理员</div>
+  </form>
+</div>
+
 <script src="vendor/leaflet.js"></script>
-<script src="data/plan.js"></script>
-<script src="app.js"></script>
+<script src="local-users.js?v=202610152111" onerror="window.__NO_LOCAL_USERS__=1"></script>
+<script src="auth.js?v=202610152111"></script>
+<script src="data/plan.js?v=202610152111"></script>
+<script src="app.js?v=202610152111"></script>
 </body>
 </html>

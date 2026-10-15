@@ -6,7 +6,13 @@
   'use strict';
 
   const DATA = window.__PLAN_DATA__;
-  if (!DATA) { document.body.innerHTML = '<div style="padding:40px;color:#fff">数据未加载：请先运行 scripts/build_dataset.py</div>'; return; }
+  if (!DATA) {
+    // 两种可能:① 未登录,服务端故意不下发数据;② 真没构建过
+    document.body.classList.add('no-data');
+    if (window.__NEED_LOGIN__ && window.AUTH_UI) window.AUTH_UI.showLogin('');
+    else if (window.AUTH_UI) window.AUTH_UI.showLogin('未获取到数据，请先运行 scripts/build_dataset.py');
+    return;
+  }
 
   const META = DATA.meta;
   const ALL = DATA.points.slice();
@@ -60,6 +66,194 @@
     return [lat + dLat, lng + dLng];
   }
 
+  function gcj02ToWgs84(lat, lng) {
+    let wlat = lat, wlng = lng;
+    for (let i = 0; i < 10; i++) {
+      const [glat, glng] = wgs84ToGcj02(wlat, wlng);
+      wlat += lat - glat; wlng += lng - glng;
+    }
+    return [wlat, wlng];
+  }
+
+  /* ---------------- 编辑数据(界面覆盖层) ---------------- */
+  const EDIT = { api: false, ov: { points: {}, communities: {}, meta: {} }, snapshot: null };
+  const LS_KEY = 'dsh_elevator_overrides';
+
+  function ovPoint(seq) {
+    const k = String(seq);
+    return EDIT.ov.points[k] = EDIT.ov.points[k] || {};
+  }
+  function ovCom(name) {
+    return EDIT.ov.communities[name] = EDIT.ov.communities[name] || {};
+  }
+  let autoSaveTimer = null;
+  function markDirty() {
+    state.dirty = true;
+    updateDirtyLabel();
+    scheduleAutoSave();
+  }
+  function updateDirtyLabel(txt) {
+    const el2 = document.getElementById('editDirty');
+    if (!el2) return;
+    if (txt) { el2.textContent = txt; return; }
+    const n = Object.keys(EDIT.ov.points).length + Object.keys(EDIT.ov.communities).length;
+    el2.textContent = state.dirty ? (n ? `未保存 ${n} 处` : '') : '';
+  }
+  // 自动保存:改完停手 1.2 秒就落盘,省掉反复点「保存」
+  function scheduleAutoSave() {
+    if (!state.edit || !state.autoSave || !state.dirty) return;
+    clearTimeout(autoSaveTimer);
+    updateDirtyLabel('待保存…');
+    autoSaveTimer = setTimeout(async () => {
+      if (!state.dirty) return;
+      updateDirtyLabel('保存中…');
+      try {
+        await saveOverrides();
+        updateDirtyLabel(`已自动保存 ${new Date().toTimeString().slice(0, 5)}`);
+      } catch (e) {
+        updateDirtyLabel('自动保存失败，请手动保存');
+        toast('自动保存失败：' + (e.message || e), true);
+      }
+    }, 1200);
+  }
+  function toast(msg, isErr) {
+    let t = document.getElementById('toast');
+    if (!t) { t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; document.body.appendChild(t); }
+    t.textContent = msg;
+    t.className = 'toast show' + (isErr ? ' err' : '');
+    clearTimeout(t._h);
+    t._h = setTimeout(() => t.className = 'toast', 2600);
+  }
+  async function loadOverrides() {
+    try {
+      const r = await fetch('/api/overrides', { cache: 'no-store' });
+      if (r.status === 401) { EDIT.api = false; EDIT.needLogin = true; }
+      else if (r.ok) { EDIT.api = true; const d = await r.json(); return d && d.points ? d : EDIT.ov; }
+    } catch (e) { /* file:// 或没起服务 */ }
+    try {
+      const d = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
+      if (d && d.points) return d;
+    } catch (e) {}
+    return EDIT.ov;
+  }
+  async function saveOverrides() {
+    EDIT.ov.meta = { updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ') };
+    if (EDIT.api) {
+      const r = await fetch('/api/overrides', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(EDIT.ov),
+      });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+    } else {
+      localStorage.setItem(LS_KEY, JSON.stringify(EDIT.ov));   // 无服务时存浏览器本地
+    }
+    state.dirty = false;
+    document.getElementById('editDirty').textContent = '';
+  }
+
+  /* ---------------- 多选 / 批量编辑 ---------------- */
+  function setMulti(on) {
+    state.multi = !!on;
+    document.body.classList.toggle('multi', state.multi);
+    const b = document.getElementById('btnMulti');
+    if (b) b.classList.toggle('on', state.multi);
+    if (!state.multi) state.sel.clear();
+    updateSelCount();
+    if (state.edit) { redraw(); renderCommunityList(); if (state.selected) renderDetail(); }
+  }
+  function updateSelCount() {
+    const n = document.getElementById('selCount');
+    if (n) n.textContent = state.sel.size;
+  }
+  function togglePick(seq) {
+    state.sel.has(seq) ? state.sel.delete(seq) : state.sel.add(seq);
+    updateSelCount(); redraw(); renderCommunityList();
+    if (state.selected) renderDetail();
+  }
+  // 批量应用:把这些点位直接写进覆盖层,然后整体重算派生指标
+  function applyBatch() {
+    const stage = document.getElementById('bStage').value;
+    const key = document.getElementById('bKey').value;
+    const date = document.getElementById('bDate').value;
+    if (!state.sel.size) { toast('还没选点位', true); return; }
+    if (!stage && !(key && date)) { toast('请先选择「阶段」或「里程碑日期」', true); return; }
+    let n = 0;
+    state.sel.forEach(seq => {
+      const o = ovPoint(seq);
+      if (stage) { o.stage = stage; n++; }
+      if (key && date) { o.dates = o.dates || {}; o.dates[key] = date; n++; }
+    });
+    applyOverridesToMemory(); apply(); markDirty();
+    const desc = [stage ? '阶段' : null, key && date ? '里程碑' : null].filter(Boolean).join(' + ');
+    toast(`已对 ${state.sel.size} 台批量设置${desc}${state.autoSave ? '，正在自动保存' : '，记得保存'}`);
+  }
+
+  /* ---- 把覆盖层应用到内存数据(不重建整个页面) ---- */
+  function applyOverridesToMemory() {
+    const STG = {}; META.stages.forEach(x => STG[x.code] = x);
+    ALL.forEach(p => {
+      const o = EDIT.ov.points[String(p.seq)];
+      if (!o) return;
+      p.dates = Object.assign({}, p.dates || {});
+      Object.entries(o.dates || {}).forEach(([k, v]) => { v ? p.dates[k] = v : delete p.dates[k]; });
+      if (o.brand) p.brand = o.brand;
+      if (o.note) p.note = o.note;
+      p.edited = true;
+      let cur = 'S0';
+      META.stages.forEach(st => { if (st.key && p.dates[st.key]) cur = st.code; });
+      if (o.stage) cur = o.stage;
+      p.stage = cur; p._rank = RANK[cur]; p._group = GROUP_OF[cur];
+      const ds = Object.values(p.dates).sort();
+      p.firstDate = ds[0] || null; p.lastDate = ds[ds.length - 1] || null;
+      p.stalledDays = p.lastDate ? Math.round((new Date(META.asOf) - new Date(p.lastDate)) / 864e5) : null;
+      p.risk = !ds.length ? 'notstarted' : (p._rank >= 9 ? 'ok'
+        : p.stalledDays > 60 ? 'high' : p.stalledDays > 30 ? 'watch' : 'ok');
+    });
+    // 小区坐标纠偏
+    Object.entries(EDIT.ov.communities || {}).forEach(([name, c]) => {
+      if (!c.lat || !c.lng) return;
+      const [glat, glng] = wgs84ToGcj02(c.lat, c.lng);
+      (COM[name] ? [COM[name]] : []).forEach(x => { x._lat = glat; x._lng = glng; });
+      COMMUNITIES.filter(x => x.community === name).forEach(x => { x._lat = glat; x._lng = glng; });
+      ALL.filter(p => p.community === name).forEach((p, i, arr) => {
+        const n = arr.length, ang = i * 2.399963229728653;
+        const rad = (16 + 10 * Math.sqrt(n)) * Math.sqrt((i + 0.7) / n);
+        const cos = Math.cos(glat * Math.PI / 180) || 1;
+        p._lat = glat + (n === 1 ? 0 : rad * Math.cos(ang) / 111320);
+        p._lng = glng + (n === 1 ? 0 : rad * Math.sin(ang) / (111320 * cos));
+        p.geoConfidence = 'verified'; p.geoMethod = '界面拖拽纠偏(人工确认)';
+      });
+      META.geoByCommunity[name] = { confidence: 'verified',
+        method: '界面拖拽纠偏(人工确认)' + (c.note ? ';' + c.note : ''),
+        elevators: (META.geoByCommunity[name] || {}).elevators || 0 };
+    });
+    // 派生汇总重算
+    const rk = {}; META.stages.forEach((x, i) => rk[x.code] = i);
+    META.reached = {}; META.stages.forEach((x, i) => {
+      META.reached[x.code] = ALL.filter(p => rk[p.stage] >= i).length;
+    });
+    META.byStage = {}; ALL.forEach(p => META.byStage[p.stage] = (META.byStage[p.stage] || 0) + 1);
+    META.risk = { high: 0, watch: 0, ok: 0, notstarted: 0 };
+    ALL.forEach(p => META.risk[p.risk]++);
+    // 时间轴
+    META.timeline.stages.forEach(st => {
+      st.byMonth = {}; st.total = 0;
+      ALL.forEach(p => { const v = (p.dates || {})[st.key]; if (v) { st.byMonth[v.slice(0, 7)] = (st.byMonth[v.slice(0, 7)] || 0) + 1; st.total++; } });
+    });
+    const ms = new Set(); META.timeline.stages.forEach(st => Object.keys(st.byMonth).forEach(m => ms.add(m)));
+    META.timeline.months = [...ms].sort();
+    META.monthTotals = {}; META.timeline.months.forEach(m => {
+      META.monthTotals[m] = META.timeline.stages.reduce((a, st) => a + (st.byMonth[m] || 0), 0);
+    });
+    COMMUNITIES.forEach(c => {
+      const ps = c.points;
+      c.stageCounts = {}; ps.forEach(p => c.stageCounts[p.stage] = (c.stageCounts[p.stage] || 0) + 1);
+      c.maxStage = ps.reduce((a, p) => rk[p.stage] > rk[a] ? p.stage : a, 'S0');
+      c.avgStage = ps.reduce((a, p) => a + rk[p.stage], 0) / (ps.length || 1);
+      c.elevators = ps.length;
+    });
+  }
+
   /* ---- 点位坐标:小区中心 + 已在构建阶段算好的展开偏移 ---- */
   ALL.forEach(p => {
     const [glat, glng] = wgs84ToGcj02(p._clat != null ? p._clat : p.lat, p._clng != null ? p._clng : p.lng);
@@ -82,6 +276,8 @@
     brandOn: new Set(BRANDS), riskOn: new Set(RISK_ORDER),
     q: '', showHull: true, reviewOnly: false,
     tab: 'funnel', tlMode: 'month', tlOpen: false,
+    listQ: '', edit: false, dirty: false,
+    multi: false, sel: new Set(), autoSave: true,
     riskThreshold: 60, personOn: new Set(),
     selected: null, selectedCommunity: null,
   };
@@ -211,19 +407,21 @@
     vis.forEach(p => {
       const c = pointColor(p), r = pinRadius(p.floors);
       const sel = state.selected && state.selected.seq === p.seq;
+      const picked = state.multi && state.sel.has(p.seq);
+      const dimmed = state.multi && state.sel.size && !picked;
       const m = L.marker([p._lat, p._lng], {
         icon: L.divIcon({
           className: '', iconSize: [r, r], iconAnchor: [r / 2, r / 2],
-          html: `<div class="pin${sel ? ' sel' : ''}${p.geoConfidence === 'review' ? ' review' : ''}"
+          html: `<div class="pin${sel && !state.multi ? ' sel' : ''}${picked ? ' selmulti' : ''}${dimmed ? ' dimmed' : ''}${p.geoConfidence === 'review' ? ' review' : ''}"
             style="width:${r}px;height:${r}px;
             background:radial-gradient(circle at 32% 30%, ${shade(c, 40)}, ${shade(c, -35)})"></div>`,
         }),
-        zIndexOffset: sel ? 1000 : 0,
+        zIndexOffset: picked ? 1000 : (sel ? 900 : 0),
       });
       m.bindTooltip(`<b>${p.community}</b>${p.geoConfidence === 'review' ? ' <span style="color:#ffb020">· 坐标待复核</span>' : ''}<br>${STAGES[p._rank].name} · ${p.brand || '品牌未定'}<br>${p.floors}层 · ${p.households}户`
         + (p.dates && Object.keys(p.dates).length ? `<br><span style="opacity:.7">${Object.entries(p.dates).slice(-2).map(([k, v]) => k + ' ' + v).join('<br>')}</span>` : ''),
         { className: 'jh-tip', direction: 'top', offset: [0, -r / 2], opacity: 1 });
-      m.on('click', () => selectPoint(p, true));
+      m.on('click', () => { state.multi ? togglePick(p.seq) : selectPoint(p, true); });
       m.addTo(layers.markers);
       if (showLabel && (sel || vis.length <= 60)) {
         L.marker([p._lat, p._lng], {
@@ -256,6 +454,17 @@
       m.bindTooltip(`<b>${c.community}</b><br>${c.street}街道 · ${cnt}/${c.elevators} 台<br>最远 ${STAGES[RANK[c.maxStage]].name}`,
         { className: 'jh-tip', direction: 'top', offset: [0, -r / 2], opacity: 1 });
       m.on('click', () => selectCommunity(c, true));
+      if (state.edit) {
+        if (m.dragging) m.dragging.enable();
+        m.on('dragend', ev => {
+          const ll = ev.target.getLatLng();
+          const [wlat, wlng] = gcj02ToWgs84(ll.lat, ll.lng);
+          const o = ovCom(c.community);
+          o.lat = +wlat.toFixed(6); o.lng = +wlng.toFixed(6);
+          markDirty(); applyOverridesToMemory(); renderDetail(); redraw(); renderCommunityList();
+          toast(`${c.community} 坐标已记录（${o.lat}, ${o.lng}），记得保存`);
+        });
+      }
       m.addTo(layers.markers);
       if (on) L.marker([c._lat, c._lng], {
         interactive: false,
@@ -314,12 +523,14 @@
   function renderTopStats() {
     const c = META.counts, pr = META.progress;
     const items = [
-      [c.elevators, '电梯总台数', '台'], [pr.started, '已开工 · 台账', '台'],
-      [pr.delivered, '到货 · 台账', '台'], [pr.signed, '已签协议 · 台账', '台'],
-      [c.households, '涉及居民', '户'],
+      [c.elevators, '电梯总台数', '台', '项目台账总台数'],
+      [pr.started, '已开工', '台', '按逐台里程碑反推(台账口径)；官方口径见左侧「阶段推进」'],
+      [pr.delivered, '到货', '台', '按逐台里程碑反推(台账口径)；官方口径见左侧「阶段推进」'],
+      [pr.signed, '已签协议', '台', '按逐台里程碑反推(台账口径)；官方口径见左侧「阶段推进」'],
+      [c.households, '涉及居民', '户', '按各单元户数合计'],
     ];
     document.getElementById('topStats').innerHTML = items
-      .map(([v, l, u]) => `<div class="ts"><b>${v}<small>${u}</small></b><span>${l}</span></div>`).join('');
+      .map(([v, l, u, t]) => `<div class="ts" title="${t}"><b>${v}<small>${u}</small></b><span>${l}</span></div>`).join('');
   }
 
   function renderKpi() {
@@ -668,7 +879,9 @@
   /* ---------------- 右栏 ---------------- */
   function renderCommunityList() {
     const vis = visible();
+    const q = state.listQ;
     const list = COMMUNITIES.filter(c => c.points.some(hit))
+      .filter(c => !q || (c.community + c.street + (c.committee || '') + (c.brands || []).join('')).toLowerCase().includes(q))
       .sort((a, b) => b.points.filter(hit).length - a.points.filter(hit).length);
     document.getElementById('listCount').textContent = list.length;
     document.getElementById('communityList').innerHTML = list.map(c => {
@@ -676,9 +889,12 @@
       const cnt = c.points.filter(hit).length;
       const g = GROUP_BY_ID[GROUP_OF[c.maxStage]];
       const done = c.points.filter(p => p._rank >= 9).length;
+      const pickedN = state.multi ? c.points.filter(p => state.sel.has(p.seq)).length : 0;
       return `<div class="cc${sel ? ' sel' : ''}" data-c="${c.community}">
         <div class="cc-hd">
-          <span class="cc-name"><i class="dot" style="background:${comColor(c)}"></i><em>${c.community}</em></span>
+          <span class="cc-name">${state.multi
+            ? `<input type="checkbox" class="cc-chk" data-c="${c.community}" ${pickedN && pickedN === c.points.length ? 'checked' : ''}>`
+            : ''}<i class="dot" style="background:${comColor(c)}"></i><em>${c.community}</em>${pickedN ? `<span class="badge hi">已选${pickedN}</span>` : ''}</span>
           <span class="cc-cnt"><b>${cnt}</b>/${c.elevators} 台</span>
         </div>
         <div class="cc-stage">
@@ -690,10 +906,46 @@
       </div>`;
     }).join('');
     document.querySelectorAll('.cc').forEach(n =>
-      n.onclick = () => selectCommunity(COMMUNITIES.find(c => c.community === n.dataset.c), true));
+      n.onclick = ev => {
+        const c = COMMUNITIES.find(x => x.community === n.dataset.c);
+        if (state.multi) {
+          // 多选模式下点小区 = 整个小区一键勾选/取消
+          const ps = c.points;
+          const all = ps.every(p => state.sel.has(p.seq));
+          ps.forEach(p => all ? state.sel.delete(p.seq) : state.sel.add(p.seq));
+          updateSelCount(); redraw(); renderCommunityList();
+          return;
+        }
+        selectCommunity(c, true);
+      });
+    document.querySelectorAll('.cc-chk').forEach(cb => cb.onclick = ev => {
+      ev.stopPropagation();
+      const c = COMMUNITIES.find(x => x.community === cb.dataset.c);
+      c.points.forEach(p => cb.checked ? state.sel.add(p.seq) : state.sel.delete(p.seq));
+      updateSelCount(); redraw(); renderCommunityList();
+    });
+    // 清单是每次重建 DOM 的,渲染完必须把选中项重新滚进可见区,否则用户看不到选中的是谁
+    if (state.selectedCommunity) scrollListTo(state.selectedCommunity, false);
   }
 
   /* ---------------- 明细 ---------------- */
+  // 选中后把清单里对应那条滚动到可见位置,否则用户得自己翻列表找
+  function scrollListTo(name, flash) {
+    // 用 getBoundingClientRect 自己算偏移,比 scrollIntoView 可控:
+    // 后者会被紧接着的明细面板重排打断,结果停在半路(实测只滚到 495/1390)。
+    setTimeout(() => {
+      const L = document.getElementById('communityList');
+      if (!L) return;
+      const node = L.querySelector(`.cc[data-c="${CSS.escape(name)}"]`);
+      if (!node) return;
+      const lr = L.getBoundingClientRect(), nr = node.getBoundingClientRect();
+      L.scrollTop += (nr.top - lr.top) - (L.clientHeight - nr.height) / 2;
+      if (flash !== false) {
+        node.classList.add('flash');
+        setTimeout(() => node.classList.remove('flash'), 1200);
+      }
+    }, 40);
+  }
   function selectPoint(p, fly) {
     state.selected = p; state.selectedCommunity = p.community;
     if (fly) map.flyTo([p._lat, p._lng], Math.max(map.getZoom(), 16), { duration: .6 });
@@ -704,6 +956,7 @@
     state.selectedCommunity = c.community; state.selected = null;
     if (fly) map.flyToBounds(L.latLngBounds(c.points.map(p => [p._lat, p._lng])).pad(.8), { duration: .6, maxZoom: 17 });
     renderDetail(); redraw(); renderCommunityList();
+    scrollListTo(c.community);
   }
 
   function milestoneRows(p) {
@@ -719,9 +972,78 @@
     }).join('');
   }
 
+  // 编辑模式下把点位明细渲染成可编辑表单
+  function renderEditForm(p) {
+    const o = EDIT.ov.points[String(p.seq)] || {};
+    const curDates = o.dates || {};
+    const eff = k => (k in curDates) ? curDates[k] : ((p.dates || {})[k] || '');
+    const curStage = o.stage || p.stage;
+    const rows = META.stages.filter(x => x.code !== 'S0').map(st => {
+      const orig = (p.dates || {})[st.key] || '';
+      const val = eff(st.key);
+      return `<div class="ed-row${String(val) !== String(orig) ? ' changed' : ''}">
+        <label>${st.name}</label>
+        <input type="date" data-key="${st.key}" value="${val || ''}"></div>`;
+    }).join('');
+    return `
+      <div class="ed-sec"><span>编辑：第 ${p.seq} 台 · ${p.community}</span><span>${p.address.slice(0, 14)}</span></div>
+      <div class="ed-row${o.stage ? ' changed' : ''}">
+        <label>当前阶段</label>
+        <select data-field="stage">
+          ${META.stages.map(st => `<option value="${st.code}"${st.code === curStage ? ' selected' : ''}>${st.name}</option>`).join('')}
+        </select></div>
+      <div class="ed-row${o.brand ? ' changed' : ''}">
+        <label>品牌</label>
+        <select data-field="brand">
+          ${['', '日立', '通力', '奥的斯', '三菱', '蒂升', '康力', '未确定']
+            .map(b => `<option value="${b}"${(o.brand || p.brand || '') === b ? ' selected' : ''}>${b || '（未填）'}</option>`).join('')}
+        </select></div>
+      <div class="ed-sec" style="margin-top:9px"><span>里程碑日期</span><span>改动处带 •</span></div>
+      ${rows}
+      <div class="ed-sec" style="margin-top:9px"><span>备注</span></div>
+      <div class="ed-row"><textarea data-field="note" rows="2" placeholder="现场情况、协调难点…">${o.note || p.note || ''}</textarea></div>
+      <div class="ed-note">里程碑留空 = 该步未完成；当前阶段可手动覆盖（例如日期缺失但实际已推进）。
+        改完点上方「保存」。坐标纠偏：切到「小区」视图拖拽气泡。</div>`;
+  }
+
   function renderDetail() {
     const el = document.getElementById('detailPanel');
     const hint = document.getElementById('detailHint');
+
+    if (state.edit && state.multi && state.selectedCommunity === null && state.sel.size) {
+      hint.textContent = `已选 ${state.sel.size} 台`;
+      el.innerHTML = `<div class="ed-sec"><span>已选 ${state.sel.size} 台</span><span>用下方批量条应用</span></div>
+        <div class="dt-siblings">${ALL.filter(p => state.sel.has(p.seq)).slice(0, 60).map(p =>
+          `<div class="dt-sib picked"><span>${p.community} ${p.address.slice(0, 10)}</span></div>`).join('')}</div>
+        <div class="ed-note">点「清空选择」可重新选；上方批量条可统一设阶段或填里程碑日期。</div>`;
+      return;
+    }
+
+    if (state.edit && state.selected) {
+      const p = state.selected;
+      hint.textContent = '编辑中';
+      el.innerHTML = renderEditForm(p);
+      el.querySelectorAll('[data-key]').forEach(inp => inp.onchange = () => {
+        const k = inp.dataset.key, v = inp.value;
+        const orig = (p.dates || {})[k] || '';
+        const d = ovPoint(p.seq).dates = ovPoint(p.seq).dates || {};
+        if (v === orig) delete d[k]; else d[k] = v;
+        markDirty(); applyOverridesToMemory(); apply(); scrollListTo(p.community);
+      });
+      el.querySelector('[data-field="stage"]').onchange = e => {
+        ovPoint(p.seq).stage = e.target.value;
+        markDirty(); applyOverridesToMemory(); apply();
+      };
+      el.querySelector('[data-field="brand"]').onchange = e => {
+        const b = e.target.value;
+        if (b === (p.brand || '')) delete ovPoint(p.seq).brand; else ovPoint(p.seq).brand = b;
+        markDirty(); applyOverridesToMemory(); apply();
+      };
+      el.querySelector('[data-field="note"]').onchange = e => {
+        ovPoint(p.seq).note = e.target.value; markDirty();
+      };
+      return;
+    }
 
     if (state.selected) {
       const p = state.selected;
@@ -790,11 +1112,23 @@
         <div class="dt-row"><span>社区摸排</span><b>${c.survey || '—'}</b></div>
         <div class="dt-sec"><span>点位列表</span><b style="color:var(--accent)">${vis.length}</b></div>
         <div class="dt-siblings">
-          ${vis.map(s => `<div class="dt-sib" data-id="${s.seq}"><span>${s.address.slice(0, 16)}</span>
-            <span style="color:${GROUP_BY_ID[s._group].color};font-size:10px">${STAGES[s._rank].name}</span></div>`).join('')}
+          ${vis.map(s => {
+            const on = state.sel.has(s.seq);
+            return `<div class="dt-sib${state.multi && on ? ' picked' : ''}">
+              ${state.multi ? `<input type="checkbox" class="sib-chk" data-id="${s.seq}" ${on ? 'checked' : ''}>` : ''}
+              <span data-id="${s.seq}" style="flex:1">${s.address.slice(0, 16)}</span>
+              <span style="color:${GROUP_BY_ID[s._group].color};font-size:10px">${STAGES[s._rank].name}</span></div>`;
+          }).join('')}
         </div>`;
-      el.querySelectorAll('.dt-sib').forEach(n =>
-        n.onclick = () => selectPoint(ALL.find(x => x.seq === +n.dataset.id), true));
+      el.querySelectorAll('.sib-chk').forEach(cb => cb.onclick = ev => {
+        ev.stopPropagation();
+        const id = +cb.dataset.id;
+        cb.checked ? state.sel.add(id) : state.sel.delete(id);
+        updateSelCount(); redraw(); renderCommunityList(); renderDetail();
+      });
+      el.querySelectorAll('.dt-sib span[data-id]').forEach(n =>
+        n.onclick = () => state.multi ? togglePick(+n.dataset.id)
+                                      : selectPoint(ALL.find(x => x.seq === +n.dataset.id), true));
       return;
     }
     hint.textContent = '点击地图或清单';
@@ -847,6 +1181,161 @@
     state.tlMode = b.dataset.tl; renderTimeline();
   };
 
+  /* ---------------- 编辑模式 ---------------- */
+  function setEdit(on) {
+    if (window.__refreshEditBtn) window.__refreshEditBtn();
+    state.edit = !!on;
+    document.body.classList.toggle('editing', state.edit);
+    if (!state.edit) { setMulti(false); }
+    document.getElementById('btnEdit').classList.toggle('on', state.edit);
+    if (state.edit) {
+      EDIT.snapshot = JSON.stringify(EDIT.ov);
+      document.getElementById('editHint').textContent = EDIT.api
+        ? '「点位」视图点圆点改阶段/日期/品牌；「小区」视图拖气泡纠坐标'
+        : '未连本地服务：编辑仅存浏览器本地，可用「导出 JSON」备份';
+    } else {
+      document.getElementById('editDirty').textContent = '';
+    }
+    renderDetail(); redraw(); renderCommunityList();
+  }
+  // 点「编辑」时才校验权限:未登录/权限不够就弹登录框,登录成功直接进入编辑模式
+  (function gateEdit() {
+    const btn = document.getElementById('btnEdit');
+    btn.onclick = () => {
+      if (state.edit) { setEdit(false); return; }
+      const A = window.AUTH;
+      if (!A || A.mode === 'open' || A.can('editor')) { setEdit(true); return; }
+      const UI = window.AUTH_UI;
+      if (!UI || !UI.openLoginModal) { setEdit(true); return; }
+      UI.openLoginModal({
+        need: 'editor',
+        then: () => { if (window.AUTH.can('editor')) setEdit(true); },
+      });
+    };
+    // 已登录但只是只读:把按钮标灰,点了给出明确原因
+    const refresh = () => {
+      const A = window.AUTH;
+      if (!A) return;
+      const ok = A.mode === 'open' || A.can('editor');
+      btn.style.opacity = ok ? '' : '.45';
+      btn.title = ok ? '编辑模式：改阶段/日期/品牌，拖拽纠偏坐标'
+                     : (A.user ? `当前账号（${A.user.roleName}）无编辑权限`
+                               : '点击登录后可编辑');
+    };
+    refresh();
+    window.__refreshEditBtn = refresh;
+  })();
+
+  document.getElementById('btnSave').onclick = async () => {
+    clearTimeout(autoSaveTimer);
+    try {
+      await saveOverrides();
+      updateDirtyLabel(EDIT.api ? '已保存到文件' : '已保存到浏览器');
+      toast(EDIT.api ? '已保存到 data/overrides.json' : '已保存到浏览器本地');
+    } catch (e) { toast('保存失败：' + e.message, true); }
+  };
+  document.getElementById('autoSave').onchange = e => {
+    state.autoSave = e.target.checked;
+    if (state.autoSave && state.dirty) scheduleAutoSave();
+    toast(state.autoSave ? '已开启自动保存' : '已关闭自动保存，请手动点「保存」');
+  };
+  document.getElementById('btnRevert').onclick = () => {
+    if (!EDIT.snapshot) return;
+    EDIT.ov = JSON.parse(EDIT.snapshot);
+    state.dirty = false; document.getElementById('editDirty').textContent = '';
+    applyOverridesToMemory(); apply(); renderDetail();
+    toast('已撤销未保存的改动');
+  };
+  document.getElementById('btnRestore').onclick = async () => {
+    if (!EDIT.api) { toast('「撤销上次保存」需要本地服务（./serve.sh）', true); return; }
+    try {
+      const r = await fetch('/api/overrides/prev', { cache: 'no-store' });
+      const d = await r.json();
+      if (!d.ok || !d.exists) { toast('没有可回退的上一版', true); return; }
+      const np = Object.keys((d.data && d.data.points) || {}).length;
+      if (!confirm(`回退到上一次保存之前？\n\n上一版包含 ${np} 个点位的编辑，当前版本会保留以便再切回。`)) return;
+      const r2 = await fetch('/api/overrides/restore', { method: 'POST',
+        headers: { 'Content-Type': 'application/json' }, body: '{}' });
+      const d2 = await r2.json();
+      if (!d2.ok) { toast(d2.error || '回退失败', true); return; }
+      toast('已回退，正在刷新…');
+      setTimeout(() => location.reload(), 700);
+    } catch (e) { toast('回退失败：' + e.message, true); }
+  };
+
+  document.getElementById('btnExport').onclick = () => {
+    const blob = new Blob([JSON.stringify(EDIT.ov, null, 1)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'overrides.json'; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+  };
+  document.getElementById('btnImport').onclick = () => {
+    const f = document.createElement('input');
+    f.type = 'file'; f.accept = '.json,application/json';
+    f.onchange = () => {
+      const file = f.files[0]; if (!file) return;
+      const r = new FileReader();
+      r.onload = () => {
+        try {
+          const d = JSON.parse(r.result);
+          if (!d.points) throw new Error('不是有效的 overrides.json');
+          EDIT.ov = d; markDirty();
+          applyOverridesToMemory(); apply(); renderDetail();
+          toast('已导入，记得点「保存」');
+        } catch (e) { toast('导入失败：' + e.message, true); }
+      };
+      r.readAsText(file);
+    };
+    f.click();
+  };
+  /* ---- 多选 / 批量 ---- */
+  document.getElementById('btnMulti').onclick = () => setMulti(!state.multi);
+  document.getElementById('btnSelClear').onclick = () => {
+    state.sel.clear(); updateSelCount(); redraw(); renderCommunityList(); if (state.selected) renderDetail();
+  };
+  document.getElementById('btnSelVisible').onclick = () => {
+    const vis = visible();
+    vis.forEach(p => state.sel.add(p.seq));
+    updateSelCount(); redraw(); renderCommunityList(); if (state.selected) renderDetail();
+    toast(`已选中当前筛选结果的 ${vis.length} 台`);
+  };
+  document.getElementById('btnApply').onclick = applyBatch;
+  // 阶段/里程碑下拉用当前阶段定义填充,保证与数据一致
+  (function fillBatchSelects() {
+    const bStage = document.getElementById('bStage'), bKey = document.getElementById('bKey');
+    META.stages.forEach(st => {
+      bStage.insertAdjacentHTML('beforeend', `<option value="${st.code}">${st.name}</option>`);
+      if (st.key) bKey.insertAdjacentHTML('beforeend', `<option value="${st.key}">${st.name}</option>`);
+    });
+  })();
+
+  document.getElementById('btnRebuild').onclick = async () => {
+    if (!EDIT.api) { toast('重建需要本地服务（./serve.sh）', true); return; }
+    const btn = document.getElementById('btnRebuild');
+    btn.disabled = true; btn.textContent = '重建中…';
+    try {
+      const r = await fetch('/api/rebuild', { method: 'POST' });
+      const d = await r.json();
+      toast(d.ok ? '已重建：风险 / 时间轴 / 周报已刷新' : '重建失败，见终端日志', !d.ok);
+    } catch (e) { toast('重建失败：' + e.message, true); }
+    btn.disabled = false; btn.textContent = '重建派生数据';
+  };
+
+  // 清单搜索
+  let lt = null;
+  document.getElementById('listSearch').oninput = e => {
+    clearTimeout(lt);
+    lt = setTimeout(() => {
+      state.listQ = e.target.value.trim().toLowerCase();
+      renderCommunityList();
+    }, 140);
+  };
+  document.getElementById('listSearchClear').onclick = () => {
+    document.getElementById('listSearch').value = '';
+    state.listQ = ''; renderCommunityList();
+  };
+
   // 导出周报
   document.getElementById('btnReport').onclick = () => {
     window.open('reports/weekly.html', '_blank');   // 单文件简报,可直接另存/打印
@@ -889,6 +1378,8 @@
         pn.classList.toggle('on', pn.id === 'pane' + tb[0].toUpperCase() + tb.slice(1)));
     }
     if (h.get('tl') === '1') state.tlOpen = true;
+    if (h.get('edit') === '1') state._editWanted = true;
+    if (h.get('multi') === '1') state._multiWanted = true;
     const tlm = h.get('tlm');
     if (tlm && ['month', 'cum', 'matrix'].includes(tlm)) {
       state.tlMode = tlm;
@@ -913,11 +1404,25 @@
   let booted = false;
   // 各步骤独立 try:任一渲染失败不应中断后续(上一版就是小区清单抛错导致地图没定位)
   function step(name, fn) { try { fn(); } catch (e) { console.error('[看台] ' + name + ' 渲染失败:', e); } }
+  // 先异步取回"界面编辑"的覆盖数据并套到内存,再走正常渲染流程
+  async function bootAsync() {
+    try { if (window.AUTH_READY) await window.AUTH_READY; } catch (e) {}
+    try { EDIT.ov = await loadOverrides(); } catch (e) { console.error('[看台] 载入编辑数据失败:', e); }
+    const np = Object.keys(EDIT.ov.points || {}).length;
+    const nc = Object.keys(EDIT.ov.communities || {}).length;
+    if (np || nc) {
+      step('applyOverrides', applyOverridesToMemory);
+      step('editNote', () => toast(`已载入编辑数据：${np} 个点位${nc ? ' / ' + nc + ' 个小区坐标' : ''}`));
+    }
+    boot();
+  }
   function boot() {
     if (booted) return; booted = true;
     step('invalidateSize', () => map.invalidateSize());
     let linked = false;
     step('deepLink', () => { linked = loadDeepLink(); });
+    if (state._editWanted) step('edit', () => document.getElementById('btnEdit').click());
+    if (state._multiWanted) step('multi', () => { if (state.edit) setMulti(true); });
     step('topStats', renderTopStats);
     step('legend', renderLegend);
     step('chips', renderChips);
@@ -933,9 +1438,9 @@
     if (!linked) step('fitAll', () => fitAll(true));
   }
   // 不用 requestAnimationFrame:部分无头/后台环境不产帧,rAF 回调可能永不执行
-  if (document.readyState === 'complete') setTimeout(boot, 0);
-  else window.addEventListener('load', () => setTimeout(boot, 0));
-  setTimeout(boot, 1200);   // 兜底:load 事件缺失时也要初始化
+  if (document.readyState === 'complete') setTimeout(bootAsync, 0);
+  else window.addEventListener('load', () => setTimeout(bootAsync, 0));
+  setTimeout(() => { if (!booted) bootAsync(); }, 1200);   // 兜底:load 事件缺失时也要初始化
 
   let zt = null;
   map.on('zoomend', () => { if (state.view === 'heat') return; clearTimeout(zt); zt = setTimeout(redraw, 140); });
@@ -946,5 +1451,6 @@
   document.getElementById('subtitle').textContent =
     `${META.project} · 台账 ${META.counts.elevators} 台 / ${META.counts.communities} 小区 / ${META.counts.streets} 街道`;
 
-  window.__DASH__ = { map, state, data: DATA, redraw, fitAll, COM, ALL };
+  window.__DASH__ = { map, state, data: DATA, redraw, fitAll, COM, ALL, EDIT,
+                      setMulti, togglePick, applyBatch, updateSelCount, setEdit };
 })();
