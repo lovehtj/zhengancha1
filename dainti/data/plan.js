@@ -59,10 +59,10 @@ window.__PLAN_DATA__ = {
   "byStage": {
    "S1": 64,
    "S4": 61,
-   "S8": 15,
+   "S8": 24,
    "S7": 5,
    "S2": 48,
-   "S6": 25,
+   "S6": 16,
    "S3": 5,
    "S0": 8,
    "S9": 3,
@@ -239,13 +239,13 @@ window.__PLAN_DATA__ = {
    "S4": 117,
    "S5": 56,
    "S6": 56,
-   "S7": 31,
-   "S8": 26,
+   "S7": 40,
+   "S8": 35,
    "S9": 11,
    "S10": 8,
    "S11": 2
   },
-  "editedPoints": 17,
+  "editedPoints": 26,
   "geoByCommunity": {
    "航天花园": {
     "confidence": "verified",
@@ -459,12 +459,12 @@ window.__PLAN_DATA__ = {
   },
   "progress": {
    "started": 11,
-   "delivered": 26,
-   "signed": 31,
+   "delivered": 35,
+   "signed": 40,
    "voted": 56,
    "notStarted": 8
   },
-  "generatedWeb": "2026-10-15 21:11",
+  "generatedWeb": "2026-10-16 11:35",
   "coordSystem": "WGS-84(展示时转 GCJ-02 对齐高德底图)",
   "risk": {
    "high": 2,
@@ -1499,10 +1499,11 @@ window.__PLAN_DATA__ = {
    "elevators": 9,
    "households": 198,
    "maxFloors": 11,
-   "avgStage": 6.0,
-   "maxStage": "S6",
+   "avgStage": 7.33,
+   "maxStage": "S8",
    "stageCounts": {
-    "S6": 9
+    "S8": 6,
+    "S6": 3
    },
    "brands": [
     "日立"
@@ -1544,10 +1545,11 @@ window.__PLAN_DATA__ = {
    "elevators": 7,
    "households": 196,
    "maxFloors": 15,
-   "avgStage": 6.0,
-   "maxStage": "S6",
+   "avgStage": 6.86,
+   "maxStage": "S8",
    "stageCounts": {
-    "S6": 7
+    "S6": 4,
+    "S8": 3
    },
    "brands": [
     "日立"
@@ -7533,7 +7535,7 @@ window.__PLAN_DATA__ = {
    "households": 22,
    "deviceCode": "30104201032004050001",
    "brand": "日立",
-   "stage": "S6",
+   "stage": "S8",
    "dates": {
     "品牌确定时间": "2026-07-28",
     "方案组价完成": "2026-08-05",
@@ -7544,6 +7546,7 @@ window.__PLAN_DATA__ = {
    },
    "auditor": "吴灿15107180436",
    "brandFrom": "ledger",
+   "edited": true,
    "lat": 30.6161,
    "lng": 114.269442,
    "geoConfidence": "verified",
@@ -7601,7 +7604,7 @@ window.__PLAN_DATA__ = {
    "households": 22,
    "deviceCode": "30104201032004050003",
    "brand": "日立",
-   "stage": "S6",
+   "stage": "S8",
    "dates": {
     "品牌确定时间": "2026-07-28",
     "方案组价完成": "2026-08-05",
@@ -7612,6 +7615,7 @@ window.__PLAN_DATA__ = {
    },
    "auditor": null,
    "brandFrom": "ledger",
+   "edited": true,
    "lat": 30.6161,
    "lng": 114.269442,
    "geoConfidence": "verified",
@@ -7635,7 +7639,7 @@ window.__PLAN_DATA__ = {
    "households": 22,
    "deviceCode": "30104201032004050004",
    "brand": "日立",
-   "stage": "S6",
+   "stage": "S8",
    "dates": {
     "品牌确定时间": "2026-07-28",
     "方案组价完成": "2026-08-05",
@@ -7646,6 +7650,7 @@ window.__PLAN_DATA__ = {
    },
    "auditor": null,
    "brandFrom": "ledger",
+   "edited": true,
    "lat": 30.6161,
    "lng": 114.269442,
    "geoConfidence": "verified",
@@ -7703,7 +7708,7 @@ window.__PLAN_DATA__ = {
    "households": 22,
    "deviceCode": "30104201032004050006",
    "brand": "日立",
-   "stage": "S6",
+   "stage": "S8",
    "dates": {
     "品牌确定时间": "2026-07-28",
     "方案组价完成": "2026-08-05",
@@ -7714,6 +7719,7 @@ window.__PLAN_DATA__ = {
    },
    "auditor": null,
    "brandFrom": "ledger",
+   "edited": true,
    "lat": 30.6161,
    "lng": 114.269442,
    "geoConfidence": "verified",
@@ -7771,7 +7777,7 @@ window.__PLAN_DATA__ = {
    "households": 22,
    "deviceCode": "30104201032004050008",
    "brand": "日立",
-   "stage": "S6",
+   "stage": "S8",
    "dates": {
     "品牌确定时间": "2026-07-28",
     "方案组价完成": "2026-08-05",
@@ -7782,6 +7788,7 @@ window.__PLAN_DATA__ = {
    },
    "auditor": null,
    "brandFrom": "ledger",
+   "edited": true,
    "lat": 30.6161,
    "lng": 114.269442,
    "geoConfidence": "verified",
@@ -7805,7 +7812,7 @@ window.__PLAN_DATA__ = {
    "households": 22,
    "deviceCode": "30104201032004050009",
    "brand": "日立",
-   "stage": "S6",
+   "stage": "S8",
    "dates": {
     "品牌确定时间": "2026-07-28",
     "方案组价完成": "2026-08-05",
@@ -7816,6 +7823,7 @@ window.__PLAN_DATA__ = {
    },
    "auditor": null,
    "brandFrom": "ledger",
+   "edited": true,
    "lat": 30.6161,
    "lng": 114.269442,
    "geoConfidence": "verified",
@@ -7975,7 +7983,7 @@ window.__PLAN_DATA__ = {
    "households": 22,
    "deviceCode": "30104201032005080011",
    "brand": "日立",
-   "stage": "S6",
+   "stage": "S8",
    "dates": {
     "品牌确定时间": "2026-07-17",
     "方案组价完成": "2026-07-31",
@@ -7986,6 +7994,7 @@ window.__PLAN_DATA__ = {
    },
    "auditor": null,
    "brandFrom": "ledger",
+   "edited": true,
    "lat": 30.619481,
    "lng": 114.269089,
    "geoConfidence": "verified",
@@ -8009,7 +8018,7 @@ window.__PLAN_DATA__ = {
    "households": 62,
    "deviceCode": "30104201032005080013",
    "brand": "日立",
-   "stage": "S6",
+   "stage": "S8",
    "dates": {
     "品牌确定时间": "2026-07-17",
     "方案组价完成": "2026-07-31",
@@ -8020,6 +8029,7 @@ window.__PLAN_DATA__ = {
    },
    "auditor": null,
    "brandFrom": "ledger",
+   "edited": true,
    "lat": 30.619481,
    "lng": 114.269089,
    "geoConfidence": "verified",
@@ -8043,7 +8053,7 @@ window.__PLAN_DATA__ = {
    "households": 0,
    "deviceCode": "30104201032005080012",
    "brand": "日立",
-   "stage": "S6",
+   "stage": "S8",
    "dates": {
     "品牌确定时间": "2026-07-17",
     "方案组价完成": "2026-07-31",
@@ -8054,6 +8064,7 @@ window.__PLAN_DATA__ = {
    },
    "auditor": null,
    "brandFrom": "ledger",
+   "edited": true,
    "lat": 30.619481,
    "lng": 114.269089,
    "geoConfidence": "verified",
