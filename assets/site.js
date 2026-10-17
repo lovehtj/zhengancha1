@@ -176,13 +176,13 @@
     document.querySelectorAll('[data-as-build]').forEach(function (el) {
       el.textContent = C.appStoreBuild || '';
     });
-    // iOS 上架包已提交、尚未过审时，页面上如实标注「审核中」。
-    // 过审后把 config.js 的 appStoreInReview 改成 false，这些标注自动隐藏。
+    // iOS 上架包已提交、尚未上架时，页面上如实标注「审核中」。
+    // 上架后把 config.js 的 appStoreInReview 改成 false，这些标注自动隐藏。
     var inReview = C.appStoreInReview === true;
     document.querySelectorAll('[data-as-review]').forEach(function (el) {
       el.hidden = !inReview;
     });
-    // 与「审核中」互斥的正面标注：已通过 App Store 审核时显示，再次送审时自动隐藏。
+    // 与「审核中」互斥的正面标注：已上架 App Store 时显示，再次送审时自动隐藏。
     document.querySelectorAll('[data-as-approved]').forEach(function (el) {
       el.hidden = inReview;
     });

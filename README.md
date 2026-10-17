@@ -82,7 +82,7 @@ $ node 工具/发布前自检.js
 ────────────────────────────────────────────────────────
   ℹ️  下载要素齐全：iOS=https://apps.apple.com/cn/app/id6810502885
   ℹ️                 安卓=https://uz5.pps3.com/5zukgw
-  ℹ️                 版本=2.0.7（build 47）· 安卓 159 MB · iOS 140 MB
+  ℹ️                 版本=2.0.9（build 67）· 安卓 135 MB · iOS 140 MB
   ✅ 通过：没有冲突标记、脚本可编译、config.js 可加载且键唯一、资源齐全
 ```
 
@@ -179,11 +179,11 @@ python3 -m http.server 8899
    ```js
    siteUrl: 'https://你的域名/',                        // 建议填，二维码与链接都以它为准
    iosUrl: 'https://apps.apple.com/cn/app/id6810502885',  // 已填：证安查（纯 ASCII 短链，等价于带中文 slug 的链接）
-   appStoreVersion: '2.0.7', appStoreBuild: '47',        // iOS 上架包版本（只指 iOS）
-   appStoreInReview: true,                              // 已提交未过审 → 页面标注「审核中」；过审后改 false
+   appStoreVersion: '2.0.9', appStoreBuild: '67',        // iOS 上架包版本（只指 iOS）
+   appStoreInReview: false,                             // 已上架 App Store → 页面标注「已上架」；下次送审改回 true
    androidPath: 'https://uz5.pps3.com/5zukgw',   // 虾分发落地页（非 .apk 结尾 → 按落地页处理）
-   version: '2.0.7', build: '47',                       // 安卓包版本（本次上架；包传完后把 androidPendingUpload 改 false）
-   androidPendingUpload: true,                          // 安卓新包上传中 → 页面提示"下载页可能仍是旧版"
+   version: '2.0.9', build: '67',                       // 安卓包版本（本次上架；包传完后把 androidPendingUpload 改 false）
+   androidPendingUpload: false,                         // 安卓新包上传中 → 页面提示"下载页可能仍是旧版"
    contactEmail: 'qinshunhuan@vip.qq.com'
    ```
 
@@ -285,9 +285,9 @@ iOS 走 App Store 审核，**线上公开的版本往往落后于安卓包**。�
 
 | 字段 | 含义 | 当前值 |
 |---|---|---|
-| `version` / `build` | `androidPath` 那个下载页当前提供的包版本 | 2.0.7 / 47 |
-| `appStoreVersion` / `appStoreBuild` | iOS 上架包版本（与安卓同版） | 2.0.7 / 47 |
-| `appStoreInReview` | 上架包是否仍在审核中（true → 页面显示「审核中」） | `true` |
+| `version` / `build` | `androidPath` 那个下载页当前提供的包版本 | 2.0.9 / 67 |
+| `appStoreVersion` / `appStoreBuild` | iOS 上架包版本（与安卓同版） | 2.0.9 / 67 |
+| `appStoreInReview` | 上架包是否仍在审核中（true → 页面显示「审核中」） | `false`（2.0.9 已上架 App Store；下次送审改回 `true`） |
 
 页面上的 iOS 卡片显示前者语义的"App Store 当前 X"，安卓卡片显示安装包版本，页脚与
 `policy.html`（"适用版本"）两端分开写。**发新版后先更新这里**，别让官网写的版本比线上还新。
@@ -302,7 +302,7 @@ iOS 走 App Store 审核，**线上公开的版本往往落后于安卓包**。�
 - [ ] `node 工具/渲染自检.js` 与 `node 工具/打印排版自检.js` 全绿
 - [ ] 改过应用内隐私政策正文 → `node 工具/生成隐私政策页.js` 重新生成 policy.html
 - [ ] 填好 `siteUrl` 后重新生成三份 PDF，让纸质材料上也有二维码
-- [ ] App Store 新版本过审发布后：更新 `appStoreVersion` / `appStoreBuild`（iOS 与实际线上保持一致）
+- [ ] App Store 新版本上架后：更新 `appStoreVersion` / `appStoreBuild`（iOS 与实际线上保持一致）
 - [ ] 若换了下载渠道：更新 `androidPath`（直链 .apk 结尾按直链处理，否则按落地页处理）
 
 > 纸质材料的二维码有个兜底：`siteUrl` 未配置时，二维码指向 **App Store**（而不是留空），
