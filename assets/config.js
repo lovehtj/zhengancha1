@@ -40,11 +40,11 @@ window.ZAC_CONFIG = {
   /* 安卓新包上传中：true 时页面提示"下载页可能仍是旧版"。包传完后改 false。 */
   androidPendingUpload: false,
 
-  /* App Store 的版本 = 本次提交的构建（2.0.9 / build 67）。
+  /* App Store 的版本 = 已通过 App Store 审核的线上版本（2.0.9 / build 67）。
      ⚠️ appStoreInReview：上架包**已提交但还没过审**时为 true ——
-     此时 App Store 商店页上能下到的仍是上一版（线上已过审的是 2.0.8 / build 50），官网会如实标注「审核中」，
-     免得用户以为"更新没生效"。（2.0.9 本轮即将送审，故先置 true。）
-     **苹果过审、商店页真的显示 2.0.9 之后，把这里改成 false**，标注自动消失。 */
+     此时 App Store 商店页上能下到的仍是上一版，官网会如实标注「审核中」，
+     免得用户以为"更新没生效"。（2.0.9 已通过 App Store 审核，故现为 false。）
+     **下次提交新版本送审时把这里改回 true**，标注会自动出现；过审后再改回 false。 */
   appStoreVersion: '2.0.9',
   appStoreBuild: '67',
   appStoreInReview: false,
