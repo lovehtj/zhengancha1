@@ -47,7 +47,7 @@ window.ZAC_CONFIG = {
      **苹果过审、商店页真的显示 2.0.9 之后，把这里改成 false**，标注自动消失。 */
   appStoreVersion: '2.0.9',
   appStoreBuild: '67',
-  appStoreInReview: true,
+  appStoreInReview: false,
   apkSize: '135 MB',   // 2.0.9 安卓包实际大小（141,799,678 字节，仅 arm64）
   iosSize: '140 MB',   // 2.0.9 iOS 包实际大小（146,645,594 字节）
   minAndroid: 'Android 8.0+（64 位）',
