@@ -59,8 +59,8 @@ window.__PLAN_DATA__ = {
   "byStage": {
    "S1": 64,
    "S4": 58,
-   "S9": 17,
-   "S8": 14,
+   "S9": 20,
+   "S8": 11,
    "S7": 4,
    "S2": 48,
    "S6": 16,
@@ -241,7 +241,7 @@ window.__PLAN_DATA__ = {
    "S6": 59,
    "S7": 43,
    "S8": 39,
-   "S9": 25,
+   "S9": 28,
    "S10": 8,
    "S11": 2
   },
@@ -458,13 +458,13 @@ window.__PLAN_DATA__ = {
    "S11": "特检/登记/移交"
   },
   "progress": {
-   "started": 25,
+   "started": 28,
    "delivered": 39,
    "signed": 43,
    "voted": 59,
    "notStarted": 8
   },
-  "generatedWeb": "2026-10-19 18:29",
+  "generatedWeb": "2026-10-19 18:36",
   "coordSystem": "WGS-84(展示时转 GCJ-02 对齐高德底图)",
   "risk": {
    "high": 2,
@@ -1545,11 +1545,11 @@ window.__PLAN_DATA__ = {
    "elevators": 7,
    "households": 196,
    "maxFloors": 15,
-   "avgStage": 6.86,
-   "maxStage": "S8",
+   "avgStage": 7.29,
+   "maxStage": "S9",
    "stageCounts": {
     "S6": 4,
-    "S8": 3
+    "S9": 3
    },
    "brands": [
     "日立"
@@ -8021,7 +8021,7 @@ window.__PLAN_DATA__ = {
    "households": 22,
    "deviceCode": "30104201032005080011",
    "brand": "日立",
-   "stage": "S8",
+   "stage": "S9",
    "dates": {
     "品牌确定时间": "2026-07-17",
     "方案组价完成": "2026-07-31",
@@ -8057,7 +8057,7 @@ window.__PLAN_DATA__ = {
    "households": 62,
    "deviceCode": "30104201032005080013",
    "brand": "日立",
-   "stage": "S8",
+   "stage": "S9",
    "dates": {
     "品牌确定时间": "2026-07-17",
     "方案组价完成": "2026-07-31",
@@ -8068,7 +8068,7 @@ window.__PLAN_DATA__ = {
    },
    "auditor": null,
    "brandFrom": "ledger",
-   "note": "10月16日到货3台，10月19日开箱",
+   "note": "10月16日到货3台，10月19日开箱，",
    "edited": true,
    "lat": 30.619481,
    "lng": 114.269089,
@@ -8093,7 +8093,7 @@ window.__PLAN_DATA__ = {
    "households": 0,
    "deviceCode": "30104201032005080012",
    "brand": "日立",
-   "stage": "S8",
+   "stage": "S9",
    "dates": {
     "品牌确定时间": "2026-07-17",
     "方案组价完成": "2026-07-31",
