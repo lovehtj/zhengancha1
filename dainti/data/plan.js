@@ -59,8 +59,8 @@ window.__PLAN_DATA__ = {
   "byStage": {
    "S1": 64,
    "S4": 58,
-   "S9": 20,
-   "S8": 11,
+   "S9": 24,
+   "S8": 7,
    "S7": 4,
    "S2": 48,
    "S6": 16,
@@ -241,7 +241,7 @@ window.__PLAN_DATA__ = {
    "S6": 59,
    "S7": 43,
    "S8": 39,
-   "S9": 28,
+   "S9": 32,
    "S10": 8,
    "S11": 2
   },
@@ -458,13 +458,13 @@ window.__PLAN_DATA__ = {
    "S11": "特检/登记/移交"
   },
   "progress": {
-   "started": 28,
+   "started": 32,
    "delivered": 39,
    "signed": 43,
    "voted": 59,
    "notStarted": 8
   },
-  "generatedWeb": "2026-10-19 18:36",
+  "generatedWeb": "2026-10-20 12:19",
   "coordSystem": "WGS-84(展示时转 GCJ-02 对齐高德底图)",
   "risk": {
    "high": 2,
@@ -1632,10 +1632,10 @@ window.__PLAN_DATA__ = {
    "elevators": 7,
    "households": 94,
    "maxFloors": 16,
-   "avgStage": 6.29,
-   "maxStage": "S8",
+   "avgStage": 6.86,
+   "maxStage": "S9",
    "stageCounts": {
-    "S8": 4,
+    "S9": 4,
     "S4": 3
    },
    "brands": [
@@ -6723,7 +6723,7 @@ window.__PLAN_DATA__ = {
    "households": 10,
    "deviceCode": "30104201032007010003",
    "brand": "康力",
-   "stage": "S8",
+   "stage": "S9",
    "dates": {
     "品牌确定时间": "2026-07-20",
     "方案组价完成": "2026-08-07",
@@ -6758,7 +6758,7 @@ window.__PLAN_DATA__ = {
    "households": 10,
    "deviceCode": "30104201032007010004",
    "brand": "康力",
-   "stage": "S8",
+   "stage": "S9",
    "dates": {
     "品牌确定时间": "2026-07-20",
     "方案组价完成": "2026-08-07",
@@ -6793,7 +6793,7 @@ window.__PLAN_DATA__ = {
    "households": 16,
    "deviceCode": "30104201032007010006",
    "brand": "康力",
-   "stage": "S8",
+   "stage": "S9",
    "dates": {
     "品牌确定时间": "2026-07-20",
     "方案组价完成": "2026-08-07",
@@ -6828,7 +6828,7 @@ window.__PLAN_DATA__ = {
    "households": 16,
    "deviceCode": "30104201032007010009",
    "brand": "康力",
-   "stage": "S8",
+   "stage": "S9",
    "dates": {
     "品牌确定时间": "2026-07-20",
     "方案组价完成": "2026-08-07",
