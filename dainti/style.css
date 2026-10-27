@@ -574,8 +574,8 @@ body.editing .edit-bar{display:flex}
   display:none;position:absolute;z-index:900;left:50%;transform:translateX(-50%);bottom:12px;
   align-items:center;gap:7px;padding:7px 11px;border-radius:11px;
   background:rgba(255,176,32,.13);border:1px solid rgba(255,176,32,.5);
-  backdrop-filter:blur(12px);box-shadow:var(--shadow);flex-wrap:nowrap;width:max-content;
-  max-width:calc(100% - 20px);overflow:hidden}
+  backdrop-filter:blur(12px);box-shadow:var(--shadow);width:max-content;
+  max-width:calc(100% - 20px);overflow:visible}
 .eb-title{font-size:11.5px;font-weight:700;color:var(--warn);white-space:nowrap}
 .eb-hint{font-size:10px;color:var(--txt-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:300px}
 @media (max-width:2100px){.eb-hint{display:none}}
@@ -748,7 +748,7 @@ body.has-mode-banner .footbar{display:none}
 
 /* ================= 自动保存 / 批量编辑 ================= */
 .edit-bar{flex-direction:column;align-items:stretch;gap:6px;overflow:visible}
-.eb-row{display:flex;align-items:center;gap:7px;flex-wrap:nowrap;overflow:hidden}
+.eb-row{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;overflow:visible}
 .eb-row .mini-btn{background:rgba(11,18,32,.75)}
 .eb-auto{display:flex;align-items:center;gap:5px;font-size:10.5px;color:var(--txt-2);
   cursor:pointer;white-space:nowrap;user-select:none;padding:0 3px}
@@ -775,3 +775,46 @@ body.multi #map{cursor:crosshair}
 .cc .cc-chk{margin-right:6px;accent-color:var(--warn);cursor:pointer;flex:0 0 auto}
 .dt-sib .sib-chk{margin-right:6px;accent-color:var(--warn);cursor:pointer}
 .dt-sib.picked{background:rgba(255,176,32,.14);border-color:rgba(255,176,32,.4)}
+
+/* ================= 周报环节面板 ================= */
+.fn-delta{font-style:normal;font-size:10px;font-weight:600;margin-left:5px;padding:1px 5px;
+  border-radius:5px;font-variant-numeric:tabular-nums}
+.fn-delta.up{color:#86efac;background:rgba(34,197,94,.16);border:1px solid rgba(34,197,94,.32)}
+.fn-delta.down{color:#ff9aa3;background:rgba(255,95,109,.16);border:1px solid rgba(255,95,109,.32)}
+.fn-delta.flat{color:var(--txt-3);background:rgba(147,164,196,.12);border:1px solid var(--line-2)}
+.fn-warn{margin:8px 0 2px;padding:7px 9px;border-radius:8px;font-size:10.5px;line-height:1.7;
+  background:rgba(255,176,32,.10);border:1px solid rgba(255,176,32,.32);color:#ffd88a}
+.fn-warn b{color:var(--warn)}
+.fn-note b{color:var(--accent)}
+
+/* ================= 本周风险提示 ================= */
+.alert-panel{padding:2px 2px 10px}
+.al-block{border-radius:10px;padding:9px 10px;margin-bottom:8px;
+  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+  border:1px solid var(--line);border-left:3px solid var(--ac,#8b95a8)}
+.al-hd{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;margin-bottom:6px}
+.al-cat{font-size:9.5px;font-weight:700;letter-spacing:.5px;color:var(--ac,#8b95a8);
+  white-space:nowrap;padding:1px 6px;border-radius:5px;
+  background:color-mix(in srgb,var(--ac) 16%,transparent);
+  border:1px solid color-mix(in srgb,var(--ac) 38%,transparent)}
+.al-title{font-size:11px;color:var(--txt);line-height:1.5;flex:1;min-width:0}
+.al-item{padding:5px 0;border-top:1px dashed rgba(120,160,220,.14)}
+.al-item:first-of-type{border-top:0;padding-top:2px}
+.al-txt{font-size:10.5px;line-height:1.75;color:var(--txt-2)}
+.al-no{font-style:normal;font-weight:700;color:var(--ac,#8b95a8);margin-right:4px}
+.al-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.al-chip{display:inline-flex;align-items:baseline;gap:5px;padding:3px 7px;border-radius:7px;
+  font-size:10px;cursor:pointer;transition:.14s;white-space:nowrap;
+  background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.al-chip:hover{background:rgba(255,255,255,.1);border-color:var(--line-2)}
+.al-chip b{color:var(--txt);font-weight:600}
+.al-chip em{font-style:normal;color:var(--txt-3);font-size:9.5px}
+.al-chip i{font-style:normal;color:var(--txt-3);font-size:9.5px;font-variant-numeric:tabular-nums}
+.al-chip.warn{border-color:rgba(255,95,109,.42);background:rgba(255,95,109,.12)}
+.al-chip.warn b{color:#ff9aa3}
+.al-chip.ok{border-color:rgba(34,197,94,.3)}
+.al-next{margin-top:10px;padding-top:9px;border-top:1px solid var(--line)}
+.al-next-hd{font-size:10px;font-weight:600;color:var(--txt-3);letter-spacing:.5px;margin-bottom:6px}
+.al-next-row{display:flex;gap:7px;padding:4px 0;font-size:10.5px;line-height:1.6}
+.al-next-row b{color:var(--accent);font-weight:600;white-space:nowrap;flex:0 0 auto}
+.al-next-row span{color:var(--txt-2);min-width:0}

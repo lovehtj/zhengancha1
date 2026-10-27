@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>江汉区老旧电梯更新项目 · 进度看台</title>
 <link rel="stylesheet" href="vendor/leaflet.css">
-<link rel="stylesheet" href="style.css?v=202610201219">
+<link rel="stylesheet" href="style.css?v=202610272130">
 </head>
 <body>
 
@@ -53,12 +53,14 @@
 
     <section class="card grow">
       <div class="tabs" id="leftTabs">
-        <button data-tab="funnel" class="on">阶段推进</button>
+        <button data-tab="funnel" class="on">周报环节</button>
+        <button data-tab="alert">本周提示 <b id="alertBadge">0</b></button>
         <button data-tab="risk">风险 <b id="riskBadge">0</b></button>
         <button data-tab="people">联系人</button>
       </div>
       <div class="tab-body">
         <div class="tab-pane on" id="paneFunnel"><div id="funnel" class="funnel"></div></div>
+        <div class="tab-pane" id="paneAlert"><div id="alertPanel" class="alert-panel"></div></div>
         <div class="tab-pane" id="paneRisk"><div id="riskPanel" class="risk-panel"></div></div>
         <div class="tab-pane" id="panePeople"><div id="peoplePanel" class="people-panel"></div></div>
       </div>
@@ -150,7 +152,6 @@
 <footer class="footbar">
   <span id="footLeft"></span>
   <span class="sep">|</span>
-  <span id="footAsOf"></span>
   <span class="sep">|</span>
   <span>坐标 WGS-84 → GCJ-02 对齐高德底图</span>
 </footer>
@@ -171,9 +172,9 @@
 </div>
 
 <script src="vendor/leaflet.js"></script>
-<script src="local-users.js?v=202610201219" onerror="window.__NO_LOCAL_USERS__=1"></script>
-<script src="auth.js?v=202610201219"></script>
-<script src="data/plan.js?v=202610201219"></script>
-<script src="app.js?v=202610201219"></script>
+<script src="local-users.js?v=202610272130" onerror="window.__NO_LOCAL_USERS__=1"></script>
+<script src="auth.js?v=202610272130"></script>
+<script src="data/plan.js?v=202610272130"></script>
+<script src="app.js?v=202610272130"></script>
 </body>
 </html>

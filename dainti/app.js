@@ -24,15 +24,20 @@
   /* ---- 进度阶段分组(地图着色用 6 档,比 12 档易读) ---- */
   const GROUPS = [
     { id: 'G0', name: '未启动', from: 0, to: 0, color: '#64748b', desc: '品牌未定' },
-    { id: 'G1', name: '品牌与方案', from: 1, to: 3, color: '#6366f1', desc: '品牌/组价/跟审' },
-    { id: 'G2', name: '公示与投票', from: 4, to: 6, color: '#a855f7', desc: '公示/征询/结果' },
-    { id: 'G3', name: '签约与到货', from: 7, to: 8, color: '#f59e0b', desc: '协议/到货' },
-    { id: 'G4', name: '施工中', from: 9, to: 9, color: '#22c55e', desc: '已开工' },
-    { id: 'G5', name: '完工验收', from: 10, to: 11, color: '#14b8a6', desc: '完工/特检移交' },
+    { id: 'G1', name: '品牌与方案', from: 1, to: 3, color: '#6366f1', desc: '品牌/组价/审计' },
+    { id: 'G2', name: '公示与意见', from: 4, to: 5, color: '#a855f7', desc: '公示/意见征询' },
+    { id: 'G3', name: '签约与到货', from: 6, to: 7, color: '#f59e0b', desc: '协议/设备进场' },
+    { id: 'G4', name: '施工中', from: 8, to: 8, color: '#22c55e', desc: '已开工' },
+    { id: 'G5', name: '完工验收', from: 9, to: 10, color: '#14b8a6', desc: '完工/特检登记' },
   ];
   const GROUP_OF = {};
   STAGES.forEach((s, i) => { GROUP_OF[s.code] = GROUPS.find(g => i >= g.from && i <= g.to).id; });
   const GROUP_BY_ID = {}; GROUPS.forEach(g => GROUP_BY_ID[g.id] = g);
+  // "已开工"及以后不再按停滞判风险;阶段码由数据给出,避免写死序号
+  const STARTED_RANK = (() => {
+    const c = (META.stageRoles || {}).started;
+    return c && RANK[c] != null ? RANK[c] : 8;
+  })();
 
   const ZONE_COLOR = { '南片区': '#ffb020', '中片区': '#4b9dff', '北片区': '#33d0c0', '其他': '#8b95a8' };
   const BRAND_PALETTE = { '日立': '#33d0c0', '通力': '#4b9dff', '奥的斯': '#a78bfa', '三菱': '#ffb020', '蒂升': '#f472b6', '康力': '#22d3a7', '未确定': '#64748b' };
@@ -206,7 +211,7 @@
       const ds = Object.values(p.dates).sort();
       p.firstDate = ds[0] || null; p.lastDate = ds[ds.length - 1] || null;
       p.stalledDays = p.lastDate ? Math.round((new Date(META.asOf) - new Date(p.lastDate)) / 864e5) : null;
-      p.risk = !ds.length ? 'notstarted' : (p._rank >= 9 ? 'ok'
+      p.risk = !ds.length ? 'notstarted' : (p._rank >= STARTED_RANK ? 'ok'
         : p.stalledDays > 60 ? 'high' : p.stalledDays > 30 ? 'watch' : 'ok');
     });
     // 小区坐标纠偏
@@ -300,7 +305,7 @@
   /* ---- 风险:阈值可调,默认 60/30 天(与构建侧一致) ---- */
   function riskOf(p) {
     if (p.risk === 'notstarted') return 'notstarted';
-    if (p._rank >= 9) return 'ok';
+    if (p._rank >= STARTED_RANK) return 'ok';
     const d = p.stalledDays;
     if (d == null) return 'notstarted';
     const hi = state.riskThreshold;
@@ -524,9 +529,9 @@
     const c = META.counts, pr = META.progress;
     const items = [
       [c.elevators, '电梯总台数', '台', '项目台账总台数'],
-      [pr.started, '已开工', '台', '按逐台里程碑反推(台账口径)；官方口径见左侧「阶段推进」'],
-      [pr.delivered, '到货', '台', '按逐台里程碑反推(台账口径)；官方口径见左侧「阶段推进」'],
-      [pr.signed, '已签协议', '台', '按逐台里程碑反推(台账口径)；官方口径见左侧「阶段推进」'],
+      [pr.started, '已开工', '台', '按逐台里程碑日期统计,与总包周报一致；明细见左侧「周报环节」'],
+      [pr.delivered, '到货', '台', '按逐台里程碑日期统计,与总包周报一致；明细见左侧「周报环节」'],
+      [pr.signed, '已签协议', '台', '按逐台里程碑日期统计,与总包周报一致；明细见左侧「周报环节」'],
       [c.households, '涉及居民', '户', '按各单元户数合计'],
     ];
     document.getElementById('topStats').innerHTML = items
@@ -545,68 +550,81 @@
       `<div class="kpi"><b>${v}<small>${u}</small></b><span>${l}</span>
         <span style="color:var(--txt-3);font-size:9.5px">${s}</span></div>`).join('');
 
-    const pct = n => vis.length ? (vis.filter(p => p._rank >= n).length / vis.length * 100) : 0;
-    const cnt = n => vis.filter(p => p._rank >= n).length;
+    // 覆盖率按"该里程碑日期是否有值"统计(与官方周报一致),不再用阶段序号累加
+    const R = META.stageRoles || {};
+    const KEY = c => (META.stages.find(s => s.code === (R[c] || '')) || {}).key;
+    const has = (p, k) => !!(k && (p.dates || {})[k]);
+    const cntK = k => vis.filter(p => has(p, k)).length;
+    const pctK = k => vis.length ? cntK(k) / vis.length * 100 : 0;
+    const kStart = KEY('started'), kDeliv = KEY('delivered'), kVote = KEY('voted');
     document.getElementById('coverage').innerHTML = `
       <div class="cov-row"><span class="lbl">已开工</span><span class="cov-bar">
-        <i style="width:${pct(9)}%;background:linear-gradient(90deg,#22c55e,#14b8a6)"></i></span>
-        <span class="val">${cnt(9)}/${vis.length}</span></div>
+        <i style="width:${pctK(kStart)}%;background:linear-gradient(90deg,#22c55e,#14b8a6)"></i></span>
+        <span class="val">${cntK(kStart)}/${vis.length}</span></div>
       <div class="cov-row"><span class="lbl">已到货</span><span class="cov-bar">
-        <i style="width:${pct(8)}%;background:linear-gradient(90deg,#f59e0b,#fbbf24)"></i></span>
-        <span class="val">${cnt(8)}/${vis.length}</span></div>
-      <div class="cov-row"><span class="lbl">过公示投票</span><span class="cov-bar">
-        <i style="width:${pct(5)}%;background:linear-gradient(90deg,#a855f7,#d946ef)"></i></span>
-        <span class="val">${cnt(5)}/${vis.length}</span></div>`;
+        <i style="width:${pctK(kDeliv)}%;background:linear-gradient(90deg,#f59e0b,#fbbf24)"></i></span>
+        <span class="val">${cntK(kDeliv)}/${vis.length}</span></div>
+      <div class="cov-row"><span class="lbl">过意见公示</span><span class="cov-bar">
+        <i style="width:${pctK(kVote)}%;background:linear-gradient(90deg,#a855f7,#d946ef)"></i></span>
+        <span class="val">${cntK(kVote)}/${vis.length}</span></div>`;
     document.getElementById('sourceHint').textContent = `台账 ${c.elevators} 台 · 计划 ${c.planned} 台`;
   }
 
   /* ---------------- 阶段推进漏斗 ---------------- */
   // 官方漏斗阶段 -> 台账阶段码(两口径对账用)
-  const FUNNEL_MAP = {
-    '已确定品牌': null, '分包厂家方案组价完成': 'S2', '总包汇总提供方案组价审计审核': null,
-    '跟审出具意见': 'S3', '方案公告公示完成': 'S4', '意见征询投票': 'S5',
-    '意见结果公示': 'S6', '协议书签订': 'S7', '电梯到货': 'S8', '电梯开工': 'S9', '特将验收': 'S11',
+  // 官方周报里的 12 个环节 -> 对应的看板阶段(用于点击筛选地图)
+  const WEEKLY_MAP = {
+    '已确定品牌': 'S1', '累计完成现场勘探': 'S1', '完成方案组价': 'S2',
+    '完成价格审计': 'S3', '跟审出具意见': 'S3', '完成方案公告公示': 'S4',
+    '完成意见征询投票': 'S5', '完成意见结果公示': 'S5', '签订协议书': 'S6',
+    '电梯到货': 'S7', '开工数量': 'S8', '完工数量': 'S9',
   };
-  const FUNNEL_TO_STAGE = {
-    '已确定品牌': '品牌确定时间', '分包厂家方案组价完成': '方案组价完成', '总包汇总提供方案组价审计审核': '价格审计审核',
-    '跟审出具意见': '跟审出具意见', '方案公告公示完成': '方案公告公示完成时间', '意见征询投票': '意见征询投票',
-    '意见结果公示': '意见公示', '协议书签订': '协议书签订', '电梯到货': '到货时间', '电梯开工': '开工日期',
-    '特将验收': '特检报告日期',
-  };
-  const BRAND_STAGES = new Set(['已确定品牌', '有意向品牌', '无意向品牌']);
   function renderFunnel() {
-    // 前 3 行是"品牌确认状态"(互斥分类,不是推进阶段),收成一行摘要,把纵向空间让给真正的漏斗
-    const brandRows = META.funnel.filter(f => BRAND_STAGES.has(f.stage));
-    const pipeRows = META.funnel.filter(f => !BRAND_STAGES.has(f.stage));
-    const brandSummary = `<div class="fn-brand">${brandRows.map(f => {
-      const tot = brandRows.reduce((a, b) => a + b.count, 0) || 1;
-      const col = f.stage[0] === '已' && f.stage.includes('确定') ? '#6366f1' : f.count === 0 ? '#475569' : '#f59e0b';
-      return `<span class="fn-brand-item"><i style="background:${col}"></i>${f.stage.replace('品牌', '')}
-        <b>${f.count}</b><em>${(f.count / tot * 100).toFixed(0)}%</em></span>`;
+    const W = META.weekly || {};
+    const rows = META.funnel || [];
+    const brandStatus = META.brandStatus || W.brandStatus || [];
+    const max = Math.max(...rows.map(r => r.count || 0), 1);
+
+    const brandTot = META.counts.elevators || 1;
+    const brandSummary = `<div class="fn-brand">${brandStatus.map(b => {
+      const col = b.status.includes('已确定') ? '#6366f1'
+        : b.status.includes('有意向') ? '#f59e0b' : '#ef4444';
+      const tip = b.list && b.list.length ? `${b.status}：${b.list.join('、')}` : b.status;
+      return `<span class="fn-brand-item" title="${tip}">
+        <i style="background:${col}"></i>${b.status.replace('品牌', '')}
+        <b>${b.elevators}</b><em>${((b.elevators / brandTot) * 100).toFixed(1)}%</em></span>`;
     }).join('')}</div>`;
-    const max = Math.max(...pipeRows.map(f => f.count), 1);
-    const rows = pipeRows.map(f => {
-      const code = FUNNEL_MAP[f.stage];
-      const ledger = code ? META.reached[code] : null;
+
+    const body = rows.map(r => {
+      const code = WEEKLY_MAP[r.stage];
       const gid = code ? GROUP_OF[code] : null;
       const col = gid ? GROUP_BY_ID[gid].color : '#64748b';
       const dim = gid && !state.groupOn.has(gid);
-      const warn = (ledger != null && Math.abs(ledger - f.count) > Math.max(3, f.count * 0.12));
+      const d = r.delta;
+      const dTxt = d == null ? '' : (d > 0 ? `+${d}` : d === 0 ? '±0' : String(d));
+      const dCls = d > 0 ? 'up' : d < 0 ? 'down' : 'flat';
       return `<div class="fn-row${gid ? ' clickable' : ''}${dim ? ' dim' : ''}" ${gid ? `data-g="${gid}"` : ''}>
         <div class="fn-top">
-          <span class="fn-name"><i class="dot" style="background:${col}"></i>${f.stage}</span>
-          <span class="fn-val">${f.count}<small> 台</small></span>
+          <span class="fn-name"><i class="dot" style="background:${col}"></i>${r.stage}</span>
+          <span class="fn-val">${r.count}<small> 台</small>
+            <em class="fn-delta ${dCls}" title="较上周">${dTxt}</em></span>
         </div>
-        <div class="fn-track"><div class="fn-fill" style="width:${f.count / max * 100}%;
+        <div class="fn-track"><div class="fn-fill" style="width:${(r.count || 0) / max * 100}%;
           background:linear-gradient(90deg,${col},${shade(col, -30)})"></div></div>
-        <div class="fn-sub"><span>${f.communities || '—'}</span>
-          ${ledger != null ? `<span class="${warn ? 'warn' : ''}">台账 ${ledger}${warn ? ' ⚠' : ''}</span>` : ''}</div>
+        <div class="fn-sub"><span>上周 ${r.prev == null ? '—' : r.prev}</span>
+          <span>本周 ${r.count}</span></div>
       </div>`;
     }).join('');
+
+    const skip = META.skipSigned || 0;
     document.getElementById('funnel').innerHTML =
-      `<div class="fn-note">官方口径 = 计划表底部汇总；台账 = 逐台里程碑日期反推，不符处标 ⚠</div>`
-      + brandSummary + rows
-      + `<div class="fn-foot">当前筛选 <b>${visible().length}</b> 台 · ${new Set(visible().map(p => p.community)).size} 个小区</div>`;
+      `<div class="fn-note">口径:总包周报(官方)。基准日 <b>${META.asOf}</b>
+        · ${W.weekRange ? '本周 ' + W.weekRange : ''}</div>`
+      + brandSummary + body
+      + (skip ? `<div class="fn-warn">⚠ 有 <b>${skip}</b> 台已设备进场但还没有签约日期,
+          所以「电梯到货」会大于「签订协议书」。这是官方表原始口径,未做修正。</div>` : '')
+      + `<div class="fn-foot">当前筛选 <b>${visible().length}</b> 台 ·
+         ${new Set(visible().map(p => p.community)).size} 个小区</div>`;
     document.querySelectorAll('.fn-row.clickable').forEach(n =>
       n.onclick = () => {
         const g = n.dataset.g;
@@ -656,6 +674,84 @@
       n.onclick = () => selectPoint(ALL.find(x => x.seq === +n.dataset.p), true));
     document.getElementById('riskBadge').textContent = counts.high;
     document.getElementById('riskBadge').className = counts.high ? '' : 'zero';
+  }
+
+  /* ---------------- 本周风险提示(来自总包周报文字) ---------------- */
+  const ALERT_STYLE = {
+    '补贴争议':  { c: '#ff5f6d', icon: '¥' },
+    '组价滞后':  { c: '#ffb020', icon: '⏳' },
+    '品牌未确定': { c: '#a855f7', icon: '?' },
+    '跟审待出':  { c: '#4b9dff', icon: '⌛' },
+    '施工/到货': { c: '#22c55e', icon: '▤' },
+    '其他':      { c: '#8b95a8', icon: '·' },
+  };
+  // 小区实时状态(把周报文字和台账数据对上)
+  function communityBrief(name) {
+    const c = COMMUNITIES.find(x => x.community === name);
+    if (!c) return null;
+    const ps = c.points || [];
+    const stalled = ps.length ? Math.max(...ps.map(p => p.stalledDays || 0)) : 0;
+    const started = ps.filter(p => p._rank >= STARTED_RANK).length;
+    const risky = ps.filter(p => p.risk === 'high').length;
+    return {
+      stage: c.maxStage,
+      stageName: (META.stages.find(x => x.code === c.maxStage) || {}).name || '—',
+      elevators: ps.length, stalled, started, risky,
+    };
+  }
+  function renderAlert() {
+    const W = META.weekly || {};
+    const alerts = W.riskAlerts || [];
+    const next = W.nextWeek || [];
+    document.getElementById('alertBadge').textContent = alerts.length;
+
+    const chip = (name) => {
+      const b = communityBrief(name);
+      if (!b) return `<span class="al-chip">${name}</span>`;
+      const lvl = b.risky ? 'warn' : (b.stalled > 60 ? 'warn' : 'ok');
+      return `<span class="al-chip ${lvl}" data-c="${name}"
+        title="${b.stageName} · 停滞 ${b.stalled} 天 · ${b.elevators} 台">
+        <b>${name}</b><em>${b.stageName}</em>
+        <i>${b.elevators}台${b.stalled ? ` · ${b.stalled}天` : ''}</i></span>`;
+    };
+
+    const blocks = alerts.map((a, ai) => {
+      const st = ALERT_STYLE[a.cat] || ALERT_STYLE['其他'];
+      const items = (a.items || []).map((it, ii) => `
+        <div class="al-item">
+          <div class="al-txt">${it.label ? `<em class="al-no">${it.label}</em>` : ''}${escHtml(it.text)}</div>
+          ${(it.communities || []).length ? `<div class="al-chips">${it.communities.map(chip).join('')}</div>` : ''}
+        </div>`).join('');
+      return `<div class="al-block" style="--ac:${st.c}">
+        <div class="al-hd">
+          <span class="al-cat">${st.icon} ${a.cat}</span>
+          <span class="al-title">${escHtml(a.title)}</span>
+        </div>
+        ${items}
+      </div>`;
+    }).join('');
+
+    const nextHtml = next.length ? `
+      <div class="al-next">
+        <div class="al-next-hd">下周计划 · ${W.weekRange || ''}</div>
+        ${next.map(n => `<div class="al-next-row"><b>${escHtml(n.title)}</b>
+          <span>${escHtml(n.text).slice(0, 110)}${n.text.length > 110 ? '…' : ''}</span></div>`).join('')}
+      </div>` : '';
+
+    document.getElementById('alertPanel').innerHTML =
+      `<div class="fn-note">来源:总包周报《未完成原因分析》,右侧小区为台账实时状态</div>`
+      + (blocks || '<div class="mut" style="padding:14px;font-size:11px">本周周报未提供风险提示</div>')
+      + nextHtml;
+
+    document.querySelectorAll('#alertPanel .al-chip[data-c]').forEach(n =>
+      n.onclick = () => {
+        const c = COMMUNITIES.find(x => x.community === n.dataset.c);
+        if (c) selectCommunity(c, true);
+      });
+  }
+  function escHtml(t) {
+    return String(t == null ? '' : t).replace(/[&<>"]/g,
+      c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   }
 
   /* ---------------- 联系人面板 ---------------- */
@@ -888,7 +984,7 @@
       const sel = state.selectedCommunity === c.community;
       const cnt = c.points.filter(hit).length;
       const g = GROUP_BY_ID[GROUP_OF[c.maxStage]];
-      const done = c.points.filter(p => p._rank >= 9).length;
+      const done = c.points.filter(p => p._rank >= STARTED_RANK).length;
       const pickedN = state.multi ? c.points.filter(p => state.sel.has(p.seq)).length : 0;
       return `<div class="cc${sel ? ' sel' : ''}" data-c="${c.community}">
         <div class="cc-hd">
@@ -1226,6 +1322,12 @@
     window.__refreshEditBtn = refresh;
   })();
 
+  // 退出编辑(这个绑定之前在重写编辑权限闸门时被误删过一次,现在放到明确的独立位置)
+  document.getElementById('btnEditExit').onclick = () => {
+    setEdit(false);
+    toast('已退出编辑模式');
+  };
+
   document.getElementById('btnSave').onclick = async () => {
     clearTimeout(autoSaveTimer);
     try {
@@ -1290,6 +1392,9 @@
     f.click();
   };
   /* ---- 多选 / 批量 ---- */
+  if (typeof document.getElementById('btnEditExit').onclick !== 'function') {
+    console.error('[看台] btnEditExit 未绑定');
+  }
   document.getElementById('btnMulti').onclick = () => setMulti(!state.multi);
   document.getElementById('btnSelClear').onclick = () => {
     state.sel.clear(); updateSelCount(); redraw(); renderCommunityList(); if (state.selected) renderDetail();
@@ -1351,7 +1456,7 @@
     const b = L.latLngBounds(vis.map(p => [p._lat, p._lng])).pad(.18);
     if (immediate) map.fitBounds(b, { animate: false }); else map.flyToBounds(b, { duration: .6 });
   }
-  function apply() { renderKpi(); renderFunnel(); renderRisk(); renderPeople(); renderStreetChart(); renderCommunityList(); redraw(); }
+  function apply() { renderKpi(); renderFunnel(); renderAlert(); renderRisk(); renderPeople(); renderStreetChart(); renderCommunityList(); redraw(); }
 
   /* ---------------- 深度链接 ---------------- */
   function loadDeepLink() {
@@ -1371,7 +1476,7 @@
     }
     if (h.get('hull') === '0') state.showHull = false;
     const tb = h.get('tab');
-    if (tb && ['funnel', 'risk', 'people'].includes(tb)) {
+    if (tb && ['funnel', 'alert', 'risk', 'people'].includes(tb)) {
       state.tab = tb; linked = true;
       document.querySelectorAll('#leftTabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === tb));
       document.querySelectorAll('.tab-pane').forEach(pn =>
@@ -1428,6 +1533,7 @@
     step('chips', renderChips);
     step('kpi', renderKpi);
     step('funnel', renderFunnel);
+    step('alert', renderAlert);
     step('risk', renderRisk);
     step('people', renderPeople);
     step('streetChart', renderStreetChart);
