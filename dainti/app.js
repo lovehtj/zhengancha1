@@ -1259,6 +1259,59 @@
   };
   document.getElementById('btnFit').onclick = () => fitAll(false);
 
+  /* ---------------- 地图全屏 ---------------- */
+  // 优先用浏览器原生全屏(连地址栏一起隐藏,适合汇报投影);
+  // 若被拒绝(如 file:// 或 iframe 未授权),自动降级为 CSS 全屏,效果一致。
+  (function fullscreen() {
+    const stage = document.querySelector('.map-stage');
+    const tray = document.getElementById('fsTray');
+    const btn = document.getElementById('btnFull');
+    const actions = document.querySelector('.topbar-actions');
+    let home = null;          // 顶栏控件原来的位置,退出时搬回去
+
+    function apply(on) {
+      document.body.classList.toggle('fs', on);
+      btn.textContent = on ? '⤡' : '⛶';
+      btn.title = on ? '退出全屏（Esc 或 F）' : '地图全屏（快捷键 F）';
+      if (on) {
+        if (!home) home = { parent: actions.parentNode, next: actions.nextSibling };
+        tray.appendChild(actions);
+        tray.classList.add('has-actions');
+      } else {
+        if (home) { home.parent.insertBefore(actions, home.next); home = null; }
+        tray.classList.remove('has-actions');
+      }
+      // 尺寸变化后 Leaflet 必须重新量尺寸,过渡动画结束再量一次
+      setTimeout(() => map.invalidateSize(), 60);
+      setTimeout(() => map.invalidateSize(), 340);
+    }
+
+    async function toggle() {
+      if (!document.body.classList.contains('fs')) {
+        apply(true);
+        try { if (stage.requestFullscreen) await stage.requestFullscreen({ navigationUI: 'hide' }); }
+        catch (e) { /* 降级:CSS 全屏已经生效 */ }
+      } else {
+        if (document.fullscreenElement) { try { await document.exitFullscreen(); } catch (e) {} }
+        apply(false);
+      }
+    }
+
+    btn.onclick = toggle;
+    // 用户按 Esc / 系统手势退出原生全屏时,同步回 CSS 状态
+    document.addEventListener('fullscreenchange', () => {
+      const on = !!document.fullscreenElement;
+      if (on !== document.body.classList.contains('fs')) apply(on);
+    });
+    window.addEventListener('keydown', e => {
+      const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable;
+      if (typing) return;
+      if (e.key === 'Escape' && document.body.classList.contains('fs') && !document.fullscreenElement) apply(false);
+      if ((e.key === 'f' || e.key === 'F') && !e.metaKey && !e.ctrlKey && !e.altKey) { e.preventDefault(); toggle(); }
+    });
+    window.__FS__ = { on: () => document.body.classList.contains('fs'), set: apply, toggle };
+  })();
+
   // 左栏标签页
   document.getElementById('leftTabs').onclick = e => {
     const b = e.target.closest('button'); if (!b) return;
@@ -1485,6 +1538,7 @@
     if (h.get('tl') === '1') state.tlOpen = true;
     if (h.get('edit') === '1') state._editWanted = true;
     if (h.get('multi') === '1') state._multiWanted = true;
+    if (h.get('fs') === '1') state._fsWanted = true;
     const tlm = h.get('tlm');
     if (tlm && ['month', 'cum', 'matrix'].includes(tlm)) {
       state.tlMode = tlm;
@@ -1528,6 +1582,7 @@
     step('deepLink', () => { linked = loadDeepLink(); });
     if (state._editWanted) step('edit', () => document.getElementById('btnEdit').click());
     if (state._multiWanted) step('multi', () => { if (state.edit) setMulti(true); });
+    if (state._fsWanted && window.__FS__) step('fs', () => window.__FS__.set(true));
     step('topStats', renderTopStats);
     step('legend', renderLegend);
     step('chips', renderChips);

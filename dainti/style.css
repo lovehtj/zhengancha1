@@ -818,3 +818,34 @@ body.multi #map{cursor:crosshair}
 .al-next-row{display:flex;gap:7px;padding:4px 0;font-size:10.5px;line-height:1.6}
 .al-next-row b{color:var(--accent);font-weight:600;white-space:nowrap;flex:0 0 auto}
 .al-next-row span{color:var(--txt-2);min-width:0}
+
+/* ================= 地图全屏 ================= */
+.map-fs{right:12px;top:12px;display:flex;align-items:center;gap:8px;
+  flex-wrap:wrap;justify-content:flex-end;max-width:calc(100% - 680px);
+  padding:4px;border-radius:11px;background:rgba(11,18,32,.78);
+  border:1px solid var(--line);backdrop-filter:blur(10px);
+  box-shadow:0 3px 14px rgba(0,0,0,.3)}
+.map-fs .icon-btn{flex:0 0 auto}
+body.fs .map-fs{max-width:none;padding:5px 8px;
+  background:rgba(11,18,32,.88);box-shadow:0 6px 22px rgba(0,0,0,.45)}
+.map-fs.has-actions .topbar-actions{padding-left:0;margin-left:0;border-left:0}
+
+/* 全屏时:地图铺满视口,顶栏/左右栏/底栏让位 */
+body.fs .map-stage{position:fixed;inset:0;z-index:3000;border-radius:0}
+body.fs .topbar,
+body.fs .col-left,
+body.fs .col-right,
+body.fs .footbar{display:none}
+body.fs .layout{grid-template-columns:0 1fr 0;gap:0}
+/* 时间轴抽屉在全屏下也要能用,提到地图之上 */
+body.fs .timeline-drawer{position:fixed;left:0;right:0;bottom:0;z-index:3040;
+  flex-basis:auto;height:0;box-shadow:0 -8px 28px rgba(0,0,0,.5)}
+body.fs .timeline-drawer.open{height:min(46vh,420px)}
+/* 全屏下编辑条不贴底(给时间轴留位置) */
+body.fs .edit-bar{bottom:16px}
+/* 全屏时图例/状态条更宽松 */
+body.fs .map-legend{bottom:16px}
+body.fs .map-note{bottom:16px}
+/* 全屏里给退出按钮一点强调 */
+body.fs #btnFull{background:linear-gradient(135deg,rgba(255,176,32,.9),rgba(255,140,0,.8));
+  color:#04121a;border-color:transparent;font-weight:700}
