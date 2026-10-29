@@ -28,28 +28,34 @@ window.ZAC_CONFIG = {
      否则继续用虾分发（当前）。 */
   androidPath: 'https://uz5.pps3.com/5zukgw',
 
-  /* 安卓 APK 的版本信息 = 本次上架 / 下载页提供的构建（2.0.9 / build 67，与 iOS 同版本）。
-     本站按"下载页实际提供的包"填写：2.0.9 / build 67 的 APK **已于 2026-10-12 上传虾分发**
-     （下载页实测 141,799,678 字节，与本地包一致），故 androidPendingUpload 为 false，
-     页面不再提示"新包上传中"。
-     ⚠️ 下次换包：APK 传到虾分发后把 androidPendingUpload 改回 false，并同步 version / build；
-     若下载页提供的不是 2.0.9/67，请改成实际值，
-     否则官网写的版本会比能下到的包新（用户会以为"下载坏了"或"更新没生效"）。 */
-  version: '2.0.9',
-  build: '67',
-  /* 安卓新包上传中：true 时页面提示"下载页可能仍是旧版"。包传完后改 false。 */
-  androidPendingUpload: false,
+  /* 安卓 APK 的版本信息 = 本机已构建出来的最新安卓包（2.1.0 / build 69）。
+     ⚠️ 现状：2.1.0 / build 69 的 APK **已构建、尚未上传虾分发**——
+        证安查_v2.1.0_build69_过期横幅版_安卓版.apk = 141,976,407 字节；
+        下载页（androidPath）当前提供的仍是 2.0.9 / build 67（141,799,678 字节）。
+     所以这里如实写 2.1.0/69，并把 androidPendingUpload 置 true：页面会同时显示
+     「安装包 2.1.0（build 69）」和「新包已构建 · 待上传」，不会让人以为已经能下到 2.1.0。
+     ⚠️ APK 传到虾分发并核对大小后，把 androidPendingUpload 改回 false（提示自动消失）；
+     若上传的不是 2.1.0/69，请同步改成下载页实际提供的值，
+     否则官网写的版本会和能下到的包对不上（用户会以为"下载坏了"或"更新没生效"）。 */
+  version: '2.1.0',
+  build: '69',
+  /* 安卓新包上传中：true 时页面提示"新包已构建 · 待上传 / 下载页可能仍是旧版"。包传完后改 false。 */
+  androidPendingUpload: true,
 
-  /* App Store 的版本 = 已上架 App Store 的线上版本（2.0.9 / build 67）。
+  /* App Store 的版本 = **已上架 App Store 的线上版本**（仍是 2.0.9 / build 67）。
+     ⚠️ 2.1.0 / build 69 的 iOS 包（146,684,639 字节）**已构建、尚未提交送审**，
+        所以这两行不跟着改：商店里能下到的确实是 2.0.9，下载卡上的「已上架 App Store」
+        指的也是它（2.1.0 的状态写在更新日志里，不在这里冒充）。
      ⚠️ appStoreInReview：上架包**已提交但还没过审**时为 true ——
      此时 App Store 商店页上能下到的仍是上一版，官网会如实标注「审核中」，
-     免得用户以为"更新没生效"。（2.0.9 已上架 App Store，故现为 false；下次送审/下架时再调整。）
-     **下次提交新版本送审时把这里改回 true**，标注会自动出现；过审后再改回 false。 */
+     免得用户以为"更新没生效"。（2.0.9 已上架 App Store，故现为 false。）
+     **2.1.0 提交送审后把这里改成 true**，标注会自动出现；过审后改回 false，
+     并把 appStoreVersion / appStoreBuild 同步成 2.1.0 / 69。 */
   appStoreVersion: '2.0.9',
   appStoreBuild: '67',
   appStoreInReview: false,
-  apkSize: '135 MB',   // 2.0.9 安卓包实际大小（141,799,678 字节，仅 arm64）
-  iosSize: '140 MB',   // 2.0.9 iOS 包实际大小（146,645,594 字节）
+  apkSize: '135 MB',   // 2.1.0 安卓包实际大小（141,976,407 字节 ≈ 135.4 MiB，仅 arm64；2.0.9 为 141,799,678）
+  iosSize: '140 MB',   // 2.1.0 iOS 包实际大小（146,684,639 字节 ≈ 139.9 MiB；2.0.9 为 146,645,594）
   minAndroid: 'Android 8.0+（64 位）',
   minIOS: '16.0+',
 

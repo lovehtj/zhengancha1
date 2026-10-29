@@ -179,11 +179,11 @@ python3 -m http.server 8899
    ```js
    siteUrl: 'https://你的域名/',                        // 建议填，二维码与链接都以它为准
    iosUrl: 'https://apps.apple.com/cn/app/id6810502885',  // 已填：证安查（纯 ASCII 短链，等价于带中文 slug 的链接）
-   appStoreVersion: '2.0.9', appStoreBuild: '67',        // iOS 上架包版本（只指 iOS）
-   appStoreInReview: false,                             // 已上架 App Store → 页面标注「已上架」；下次送审改回 true
+   appStoreVersion: '2.0.9', appStoreBuild: '67',        // iOS 上架包版本（商店里能下到的；2.1.0 已构建、待提审）
+   appStoreInReview: false,                             // 已上架 App Store → 页面标注「已上架」；2.1.0 送审后改回 true
    androidPath: 'https://uz5.pps3.com/5zukgw',   // 虾分发落地页（非 .apk 结尾 → 按落地页处理）
-   version: '2.0.9', build: '67',                       // 安卓包版本（本次上架；包传完后把 androidPendingUpload 改 false）
-   androidPendingUpload: false,                         // 安卓新包上传中 → 页面提示"下载页可能仍是旧版"
+   version: '2.1.0', build: '69',                       // 安卓最新构建（已构建、待上传下载页）
+   androidPendingUpload: true,                          // 安卓新包上传中 → 页面提示"新包已构建 · 待上传"；包传完后改 false
    contactEmail: 'qinshunhuan@vip.qq.com'
    ```
 
@@ -285,9 +285,9 @@ iOS 走 App Store 审核，**线上公开的版本往往落后于安卓包**。�
 
 | 字段 | 含义 | 当前值 |
 |---|---|---|
-| `version` / `build` | `androidPath` 那个下载页当前提供的包版本 | 2.0.9 / 67 |
-| `appStoreVersion` / `appStoreBuild` | iOS 上架包版本（与安卓同版） | 2.0.9 / 67 |
-| `appStoreInReview` | 上架包是否仍在审核中（true → 页面显示「审核中」） | `false`（2.0.9 已上架 App Store；下次送审改回 `true`） |
+| `version` / `build` | `androidPath` 那个下载页提供的包版本（新包未传完时先写已构建的新版 + `androidPendingUpload: true`） | 2.1.0 / 69（已构建、待上传虾分发；下载页当前仍是 2.0.9 / 67） |
+| `appStoreVersion` / `appStoreBuild` | iOS **上架包**版本（商店里能下到的） | 2.0.9 / 67（2.1.0 / 69 已构建、待提审） |
+| `appStoreInReview` | 上架包是否仍在审核中（true → 页面显示「审核中」） | `false`（2.0.9 已上架 App Store；2.1.0 送审后改 `true`） |
 
 页面上的 iOS 卡片显示前者语义的"App Store 当前 X"，安卓卡片显示安装包版本，页脚与
 `policy.html`（"适用版本"）两端分开写。**发新版后先更新这里**，别让官网写的版本比线上还新。
