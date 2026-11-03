@@ -710,9 +710,9 @@
       if (!b) return `<span class="al-chip">${name}</span>`;
       const lvl = b.risky ? 'warn' : (b.stalled > 60 ? 'warn' : 'ok');
       return `<span class="al-chip ${lvl}" data-c="${name}"
-        title="${b.stageName} · 停滞 ${b.stalled} 天 · ${b.elevators} 台">
+        title="${b.stageName} · ${b.elevators} 台 · 该小区最久 ${b.stalled} 天无新进展">
         <b>${name}</b><em>${b.stageName}</em>
-        <i>${b.elevators}台${b.stalled ? ` · ${b.stalled}天` : ''}</i></span>`;
+        <i>${b.elevators}台${b.stalled ? ` · 停滞${b.stalled}天` : ''}</i></span>`;
     };
 
     const blocks = alerts.map((a, ai) => {
