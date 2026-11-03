@@ -1056,12 +1056,11 @@
   }
 
   function milestoneRows(p) {
+    // 直接用阶段自带的日期列(s.key),不再依赖旧的两张查表
     return STAGES.filter(s => s.code !== 'S0').map(s => {
-      const idx = RANK[s.code];
-      const done = p._rank >= idx;
-      const key = Object.keys(FUNNEL_TO_STAGE).find(k => FUNNEL_MAP[k] === s.code) || null;
-      const d = key ? (p.dates || {})[FUNNEL_TO_STAGE[key]] : null;
-      const cur = p._rank === idx;
+      const d = s.key ? (p.dates || {})[s.key] : null;
+      const done = !!d;                      // "完成"以日期是否填写为准
+      const cur = p.stage === s.code;        // 当前所处阶段
       return `<div class="ms-row${done ? '' : ' pending'}${cur ? ' cur' : ''}">
         <i class="ms-dot"></i><span class="ms-name">${s.name}</span>
         <span class="ms-date">${d || (done ? '已完成' : '—')}</span></div>`;
@@ -1102,7 +1101,18 @@
         改完点上方「保存」。坐标纠偏：切到「小区」视图拖拽气泡。</div>`;
   }
 
+  // 兜底:明细渲染若抛错,直接在面板里显示原因,而不是"点了没反应"
   function renderDetail() {
+    try { renderDetailInner(); }
+    catch (e) {
+      console.error('[看台] 明细渲染失败', e);
+      const el = document.getElementById('detailPanel');
+      if (el) el.innerHTML = `<div class="dt-err">明细渲染失败：${e && e.message}<br>
+        <small>${String((e && e.stack) || '').split('\n')[1] || ''}</small></div>`;
+    }
+  }
+
+  function renderDetailInner() {
     const el = document.getElementById('detailPanel');
     const hint = document.getElementById('detailHint');
 
