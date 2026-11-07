@@ -28,29 +28,22 @@ window.ZAC_CONFIG = {
      否则继续用虾分发（当前）。 */
   androidPath: 'https://uz5.pps3.com/5zukgw',
 
-  /* 安卓 APK 的版本信息 = 本机已构建出来的最新安卓包（2.1.0 / build 71）。
-     ⚠️ 现状：2.1.0 / build 71 的 APK **已构建、尚未上传虾分发**——
-        证安查_v2.1.0_build71_面板间距与点击修复_安卓版.apk = 141,981,281 字节（≈135.4 MiB）；
-        下载页（androidPath）当前提供的仍是 2.0.9 / build 67（141,799,678 字节）。
-     所以这里如实写 2.1.0/71，并把 androidPendingUpload 置 true：页面会同时显示
-     「安装包 2.1.0（build 71）」和「新包已构建 · 待上传」，不会让人以为已经能下到 2.1.0。
-     ⚠️ APK 传到虾分发并核对大小后，把 androidPendingUpload 改回 false（提示自动消失）；
-     若上传的不是 2.1.0/71，请同步改成下载页实际提供的值，
-     否则官网写的版本会和能下到的包对不上（用户会以为"下载坏了"或"更新没生效"）。 */
+  /* 安卓 APK 的版本信息 = 虾分发下载页当前提供的包（2.1.0 / build 71）。
+     ✅ 现状（2026-11-07）：2.1.0 / build 71 的 APK **已上传虾分发**——
+        证安查_v2.1.0_build71_面板间距与点击修复_安卓版.apk = 141,981,281 字节（≈135.4 MiB），
+        androidPendingUpload 已置 false，页面不再显示「待上传」提示。
+     ⚠️ 日后换包时，先核对下载页实际提供的版本与大小，再同步这里与 androidPendingUpload。 */
   version: '2.1.0',
   build: '71',
-  /* 安卓新包上传中：true 时页面提示"新包已构建 · 待上传 / 下载页可能仍是旧版"。包传完后改 false。 */
-  androidPendingUpload: true,
+  /* 安卓新包上传中：true 时提示"新包已构建 · 待上传"。2.1.0 已上传虾分发，故为 false。 */
+  androidPendingUpload: false,
 
-  /* App Store 的版本 = **已上架 App Store 的线上版本**（仍是 2.0.9 / build 67）。
-     ⚠️ 2.1.0 / build 71 的 iOS 包（146,689,780 字节 ≈139.9 MiB）**已构建、尚未提交送审**，
-        所以这两行不跟着改：商店里能下到的确实是 2.0.9，下载卡上的「已上架 App Store」
-        指的也是它（2.1.0 的状态写在更新日志里，不在这里冒充）。
-     ⚠️ appStoreInReview：上架包**已提交但还没过审**时为 true ——
-     此时 App Store 商店页上能下到的仍是上一版，官网会如实标注「审核中」，
-     免得用户以为"更新没生效"。（2.0.9 已上架 App Store，故现为 false。）
-     **2.1.0 提交送审后把这里改成 true**，标注会自动出现；过审后改回 false，
-     并把 appStoreVersion / appStoreBuild 同步成 2.1.0 / 71。 */
+  /* App Store 的版本 = **商店页当前实际提供的版本**（截至 2026-11-07 仍显示 2.0.9 / build 67）。
+     ⚠️ 2.1.0 / build 71 的 iOS 包（146,689,780 字节 ≈139.9 MiB）**已通过审核**，但公网商店页
+        仍显示 2.0.9（审核通过后商店页生效有延迟，或需在 ASC 点"发布此版本"）。
+        因此这两行暂不跟着改，避免官网写的版本比用户能下到的还新；
+        待商店页确实显示 2.1.0 后，把 appStoreVersion / appStoreBuild 同步为 2.1.0 / 71。
+     ⚠️ appStoreInReview：仍在审核中时为 true（页面显示「审核中」）。本次已过审，故为 false。 */
   appStoreVersion: '2.0.9',
   appStoreBuild: '67',
   appStoreInReview: false,

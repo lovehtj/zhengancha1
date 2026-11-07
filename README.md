@@ -179,11 +179,11 @@ python3 -m http.server 8899
    ```js
    siteUrl: 'https://你的域名/',                        // 建议填，二维码与链接都以它为准
    iosUrl: 'https://apps.apple.com/cn/app/id6810502885',  // 已填：证安查（纯 ASCII 短链，等价于带中文 slug 的链接）
-   appStoreVersion: '2.0.9', appStoreBuild: '67',        // iOS 上架包版本（商店里能下到的；2.1.0 已构建、待提审）
+   appStoreVersion: '2.0.9', appStoreBuild: '67',        // iOS 商店页当前显示版本；2.1.0 已过审，待商店页生效后改 2.1.0/71
    appStoreInReview: false,                             // 已上架 App Store → 页面标注「已上架」；2.1.0 送审后改回 true
    androidPath: 'https://uz5.pps3.com/5zukgw',   // 虾分发落地页（非 .apk 结尾 → 按落地页处理）
-   version: '2.1.0', build: '71',                       // 安卓最新构建（141,981,281 字节 ≈ 135.4 MiB；已构建、待上传下载页）
-   androidPendingUpload: true,                          // 安卓新包上传中 → 页面提示"新包已构建 · 待上传"；包传完后改 false
+   version: '2.1.0', build: '71',                       // 安卓下载页当前包（141,981,281 字节 ≈ 135.4 MiB；已上传虾分发）
+   androidPendingUpload: false,                         // 安卓新包上传中提示；2.1.0 已上传，故为 false
    contactEmail: 'qinshunhuan@vip.qq.com'
    ```
 
@@ -285,15 +285,15 @@ iOS 走 App Store 审核，**线上公开的版本往往落后于安卓包**。�
 
 | 字段 | 含义 | 当前值 |
 |---|---|---|
-| `version` / `build` | `androidPath` 那个下载页提供的包版本（新包未传完时先写已构建的新版 + `androidPendingUpload: true`） | 2.1.0 / 71（已构建、待上传虾分发；下载页当前仍是 2.0.9 / 67） |
-| `appStoreVersion` / `appStoreBuild` | iOS **上架包**版本（商店里能下到的） | 2.0.9 / 67（2.1.0 / 71 已构建、待提审） |
+| `version` / `build` | `androidPath` 那个下载页提供的包版本（新包未传完时先写已构建的新版 + `androidPendingUpload: true`） | 2.1.0 / 71（已上传虾分发） |
+| `appStoreVersion` / `appStoreBuild` | iOS **上架包**版本（商店里能下到的） | 2.0.9 / 67（2.1.0 / 71 已过审，待商店页生效后同步） |
 | `appStoreInReview` | 上架包是否仍在审核中（true → 页面显示「审核中」） | `false`（2.0.9 已上架 App Store；2.1.0 送审后改 `true`） |
 
 页面上的 iOS 卡片显示前者语义的"App Store 当前 X"，安卓卡片显示安装包版本，页脚与
 `policy.html`（"适用版本"）两端分开写。**发新版后先更新这里**，别让官网写的版本比线上还新。
 
 本版包体（build 71）：安卓 **141,981,281 字节**（≈135.4 MiB，仅 arm64）、iOS **146,689,780 字节**（≈139.9 MiB）。
-两个包都已构建，分别待上传虾分发 / 待提交 App Store 审核；iOS 商店在架仍是 2.0.9 / 67。
+安卓包已上传虾分发；iOS 2.1.0 已通过审核，商店页当前仍显示 2.0.9 / 67，生效后同步版本号。
 
 ## 更新内容时的检查清单
 
