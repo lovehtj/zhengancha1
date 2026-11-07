@@ -38,14 +38,12 @@ window.ZAC_CONFIG = {
   /* 安卓新包上传中：true 时提示"新包已构建 · 待上传"。2.1.0 已上传虾分发，故为 false。 */
   androidPendingUpload: false,
 
-  /* App Store 的版本 = **商店页当前实际提供的版本**（截至 2026-11-07 仍显示 2.0.9 / build 67）。
-     ⚠️ 2.1.0 / build 71 的 iOS 包（146,689,780 字节 ≈139.9 MiB）**已通过审核**，但公网商店页
-        仍显示 2.0.9（审核通过后商店页生效有延迟，或需在 ASC 点"发布此版本"）。
-        因此这两行暂不跟着改，避免官网写的版本比用户能下到的还新；
-        待商店页确实显示 2.1.0 后，把 appStoreVersion / appStoreBuild 同步为 2.1.0 / 71。
-     ⚠️ appStoreInReview：仍在审核中时为 true（页面显示「审核中」）。本次已过审，故为 false。 */
-  appStoreVersion: '2.0.9',
-  appStoreBuild: '67',
+  /* App Store 的版本 = **商店页当前提供的版本**（2.1.0 / build 71，2026-11-07 发布）。
+     ✅ iOS 2.1.0（146,689,780 字节 ≈139.9 MiB）已通过审核并发布；App Store 网页端缓存
+        可能滞后数小时，若商店页暂时显示旧版本，以手机 App Store 的实际更新为准。
+     ⚠️ appStoreInReview：仍在审核中时为 true（页面显示「审核中」）；已发布故为 false。 */
+  appStoreVersion: '2.1.0',
+  appStoreBuild: '71',
   appStoreInReview: false,
   apkSize: '135 MB',   // build 71 安卓包实际大小（141,981,281 字节 ≈ 135.4 MiB，仅 arm64；2.0.9 为 141,799,678）
   iosSize: '140 MB',   // build 71 iOS 包实际大小（146,689,780 字节 ≈ 139.9 MiB；2.0.9 为 146,645,594）

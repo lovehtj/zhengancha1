@@ -41,8 +41,8 @@ const OUT = path.join(ROOT, 'policy.html');
 // ── 版本号：官网政策页显示的"适用版本" ──────────────────────────────
 // 只改这两行即可。数值要与「下载区显示的最新构建」和上架目录里的包一致，
 // 否则又会出现"政策页写的版本、下载页写的版本、商店里的版本"三个数不一样。
-const IOS_VERSION = '2.0.9';      // iOS：App Store 线上构建（2.0.9 / build 67；2.1.0 已构建、待提审）
-const ANDROID_VERSION = '2.1.0';  // 安卓：最新构建（2.1.0 / build 71，已构建、待上传下载页）
+const IOS_VERSION = '2.1.0';      // iOS：App Store 线上构建（2.1.0 / build 71，2026-11-07 发布）
+const ANDROID_VERSION = '2.1.0';  // 安卓：下载页当前包（2.1.0 / build 71，已上传虾分发）
 
 console.log('  政策正文源：' + SRC);
 const raw = fs.readFileSync(SRC, 'utf8').replace(/\r\n/g, '\n');
