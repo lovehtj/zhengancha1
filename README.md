@@ -82,7 +82,7 @@ $ node 工具/发布前自检.js
 ────────────────────────────────────────────────────────
   ℹ️  下载要素齐全：iOS=https://apps.apple.com/cn/app/id6810502885
   ℹ️                 安卓=https://uz5.pps3.com/5zukgw
-  ℹ️                 版本=2.0.9（build 67）· 安卓 135 MB · iOS 140 MB
+  ℹ️                 版本=2.1.0（build 71）· 安卓 135 MB · iOS 140 MB
   ✅ 通过：没有冲突标记、脚本可编译、config.js 可加载且键唯一、资源齐全
 ```
 
@@ -182,7 +182,7 @@ python3 -m http.server 8899
    appStoreVersion: '2.0.9', appStoreBuild: '67',        // iOS 上架包版本（商店里能下到的；2.1.0 已构建、待提审）
    appStoreInReview: false,                             // 已上架 App Store → 页面标注「已上架」；2.1.0 送审后改回 true
    androidPath: 'https://uz5.pps3.com/5zukgw',   // 虾分发落地页（非 .apk 结尾 → 按落地页处理）
-   version: '2.1.0', build: '69',                       // 安卓最新构建（已构建、待上传下载页）
+   version: '2.1.0', build: '71',                       // 安卓最新构建（141,981,281 字节 ≈ 135.4 MiB；已构建、待上传下载页）
    androidPendingUpload: true,                          // 安卓新包上传中 → 页面提示"新包已构建 · 待上传"；包传完后改 false
    contactEmail: 'qinshunhuan@vip.qq.com'
    ```
@@ -273,7 +273,7 @@ for f in 一页速查卡 推广卖点 App介绍与详细使用说明; do
 done
 ```
 
-当前结果：一页速查卡 **1 页**、推广卖点 **1 页**、使用说明 **8 页**。
+当前结果：一页速查卡 **1 页**、推广卖点 **1 页**、使用说明 **10 页**（打印实测内容 9.05 页，向上取整）。
 
 > 材料里的下载二维码需要先填 `assets/config.js` 的 `siteUrl` 才会出现
 > （`file://` 下无法推导网址）。没配置时那格会退化为「App Store 搜索『证安查』」的文字提示，
@@ -285,12 +285,15 @@ iOS 走 App Store 审核，**线上公开的版本往往落后于安卓包**。�
 
 | 字段 | 含义 | 当前值 |
 |---|---|---|
-| `version` / `build` | `androidPath` 那个下载页提供的包版本（新包未传完时先写已构建的新版 + `androidPendingUpload: true`） | 2.1.0 / 69（已构建、待上传虾分发；下载页当前仍是 2.0.9 / 67） |
-| `appStoreVersion` / `appStoreBuild` | iOS **上架包**版本（商店里能下到的） | 2.0.9 / 67（2.1.0 / 69 已构建、待提审） |
+| `version` / `build` | `androidPath` 那个下载页提供的包版本（新包未传完时先写已构建的新版 + `androidPendingUpload: true`） | 2.1.0 / 71（已构建、待上传虾分发；下载页当前仍是 2.0.9 / 67） |
+| `appStoreVersion` / `appStoreBuild` | iOS **上架包**版本（商店里能下到的） | 2.0.9 / 67（2.1.0 / 71 已构建、待提审） |
 | `appStoreInReview` | 上架包是否仍在审核中（true → 页面显示「审核中」） | `false`（2.0.9 已上架 App Store；2.1.0 送审后改 `true`） |
 
 页面上的 iOS 卡片显示前者语义的"App Store 当前 X"，安卓卡片显示安装包版本，页脚与
 `policy.html`（"适用版本"）两端分开写。**发新版后先更新这里**，别让官网写的版本比线上还新。
+
+本版包体（build 71）：安卓 **141,981,281 字节**（≈135.4 MiB，仅 arm64）、iOS **146,689,780 字节**（≈139.9 MiB）。
+两个包都已构建，分别待上传虾分发 / 待提交 App Store 审核；iOS 商店在架仍是 2.0.9 / 67。
 
 ## 更新内容时的检查清单
 

@@ -6,9 +6,9 @@
 <title>证安查 · 使用说明（从安装到上手，一篇看完）</title>
 <meta name="description" content="证安查 App 完整使用说明：安装、界面认识、多个工程项目怎么管、拍照识别登记、联网查询补全、搜索筛选、Excel 导出、证件照片归档、备份恢复、设置项说明与常见问题。">
 <meta name="theme-color" content="#07c160">
-<link rel="icon" href="assets/app-icon.png?v=fc2b90fa">
-<link rel="apple-touch-icon" href="assets/app-icon.png?v=fc2b90fa">
-<link rel="stylesheet" href="assets/site.css?v=fc2b90fa">
+<link rel="icon" href="assets/app-icon.png?v=acd17de2">
+<link rel="apple-touch-icon" href="assets/app-icon.png?v=acd17de2">
+<link rel="stylesheet" href="assets/site.css?v=acd17de2">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -16,7 +16,7 @@
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html">
-      <img src="assets/app-icon.png?v=fc2b90fa" alt="证安查图标" width="30" height="30">
+      <img src="assets/app-icon.png?v=acd17de2" alt="证安查图标" width="30" height="30">
       <span>证安查</span>
     </a>
     <nav class="nav-links" aria-label="主导航">
@@ -49,18 +49,19 @@
         <a href="#s1">一、这个 App 干什么</a>
         <a href="#s2">二、安装与权限</a>
         <a href="#s3">三、界面认识</a>
-        <a href="#s4">四、多个工程项目怎么管</a>
-        <a href="#s5">五、拍照识别登记</a>
-        <a href="#s6">六、手写登记</a>
-        <a href="#s7">七、联网查询补全</a>
-        <a href="#s8">八、查看 / 修改 / 删除</a>
-        <a href="#s9">九、搜索与筛选</a>
-        <a href="#s10">十、导出 Excel 台账</a>
-        <a href="#s11">十一、证件照片归档</a>
-        <a href="#s12">十二、备份与恢复</a>
-        <a href="#s13">十三、设置项说明</a>
-        <a href="#s14">十四、常见问题</a>
-        <a href="#s15">十五、给新用户的 5 条建议</a>
+        <a href="#s4">四、首页通知横幅与到期提醒面板</a>
+        <a href="#s5">五、多个工程项目怎么管</a>
+        <a href="#s6">六、拍照识别登记</a>
+        <a href="#s7">七、手写登记</a>
+        <a href="#s8">八、联网查询补全</a>
+        <a href="#s9">九、查看 / 修改 / 删除</a>
+        <a href="#s10">十、搜索与筛选</a>
+        <a href="#s11">十一、导出 Excel 台账</a>
+        <a href="#s12">十二、证件照片归档</a>
+        <a href="#s13">十三、备份与恢复</a>
+        <a href="#s14">十四、设置项说明</a>
+        <a href="#s15">十五、常见问题</a>
+        <a href="#s16">十六、给新用户的 5 条建议</a>
       </aside>
 
       <article class="prose">
@@ -112,7 +113,40 @@
           </tbody>
         </table>
 
-        <h2 id="s4">四、多个工程项目怎么管</h2>
+        <h2 id="s4">四、首页通知横幅与到期提醒面板</h2>
+        <p>打开 App 首页，<strong>标题栏和拍照识别区之间</strong>有一条「证件过期通知」横幅。不用进台账翻日期，它直接把当前项目的到期风险报给你。</p>
+
+        <h3>横幅什么时候出现，两种颜色什么意思</h3>
+        <ul>
+          <li><strong>有证已过期</strong>：浅红底、深红字，说明当前项目已经有证过期，属于要先处理的隐患；</li>
+          <li><strong>只有证即将到期</strong>（30 天内）：浅琥珀底、深琥珀字，提醒你提前安排换证 / 复审；</li>
+          <li><strong>既没有过期、也没有临期</strong>：整条横幅不显示，也不占位置，不会留一条空白挡着拍照入口。</li>
+        </ul>
+        <p>横幅按当前项目报数：「当前项目：X 个已过期、Y 个即将到期（30 天内）｜其它项目：…」；选「全部项目」时收成一段合计。文字超宽才会滚动（跑马灯）：一份文字滚到最后一字完全离场 → 空档 0.4 秒 → 再从右侧重新入场，头尾不会同屏。<strong>按住暂停，长按可看全文</strong>；系统开启「减弱动态效果」时自动退化为静态省略号，不晃眼。</p>
+
+        <h3>点 × 关掉后，什么时候再出现</h3>
+        <p>横幅右侧的 <strong>×</strong> 只关「<strong>本次会话 + 当前项目 + 当前计数</strong>」：同一次打开 App 期间、同一个项目、同样的过期 / 临期数量，关了就不再反复出现；一旦数量变化（比如新录了一张过期证，或处理掉一张），横幅会重新出现。换项目或重开 App 也会重新判断。</p>
+
+        <h3>短按横幅：打开「到期提醒」面板</h3>
+        <p>短按横幅（不是长按）会弹出「到期提醒」面板，三行台账的顺序和底部导航一致：</p>
+        <ul>
+          <li><strong>特种作业人员</strong>；</li>
+          <li><strong>安全生产许可证</strong>；</li>
+          <li><strong>安全生产管理人员</strong>。</li>
+        </ul>
+        <p>每行按严重度显示「<strong>已过期 N</strong>」「<strong>即将到期 N</strong>」徽标；这一类没有任何风险时，整行置灰显示「无」，并且不可点，避免点进空列表。</p>
+        <ul>
+          <li>点「<strong>已过期</strong>」徽标 → 直达该台账的<strong>过期筛选</strong>；</li>
+          <li>点「<strong>即将到期</strong>」徽标 → 直达该台账的<strong>临期筛选</strong>；</li>
+          <li>点行内其它区域 → 按<strong>过期优先</strong>进入该台账（有过期先看过期，没有再看即将到期）；</li>
+          <li>窄屏或系统大字号下，徽标会自动折到台账名下一行，不会把文字挤没。</li>
+        </ul>
+        <div class="callout">
+          <strong>口径是一致的：</strong>启动提醒、首页横幅、数据概览、台账筛选四处现在都<strong>不计入已退场、待补全和已归档项目</strong>，
+          数字对得上，不用再怀疑"为什么这里 3 个、那里 2 个"。
+        </div>
+
+        <h2 id="s5">五、多个工程项目怎么管</h2>
         <p>一个 App 可以同时管好几个工地，台账彼此分开、互不干扰。先分清两个词：</p>
         <ul>
           <li><strong>项目 = 工地</strong>。比如「滨江路项目」「中心医院项目」，是要分开管的；</li>
@@ -159,7 +193,7 @@
           这样切到哪个工地，看到的都是这个工地该管的人，而不会漏掉公司的许可证。
         </div>
 
-        <h2 id="s5">五、拍照识别，登记一张证件（最常用）</h2>
+        <h2 id="s6">六、拍照识别，登记一张证件（最常用）</h2>
         <ol class="steplist">
           <li>点底部标签，选对类型（例如登记一个电工，就点「特种作业人员」）。</li>
           <li>点「<strong>拍照识别</strong>」。</li>
@@ -186,12 +220,12 @@
           </ul>
         </div>
 
-        <h2 id="s6">六、手写登记（识别不准时用）</h2>
+        <h2 id="s7">七、手写登记（识别不准时用）</h2>
         <p>如果照片太模糊识别不出来，直接在登记区逐项填写：姓名、证件类型/工种、证号、所属单位、发证机关、初次领证日期、有效期至、备注，然后点「保存登记」。</p>
         <p>证件类型 / 工种支持 <strong>多选</strong>：展开「作业类别」后勾选多个「操作项目」，选中项会用 <code>/</code> 分隔，例如：</p>
         <p><code>建筑架子工（普通脚手架）/ 电工作业（低压电工作业）</code></p>
 
-        <h2 id="s7">七、联网查询补全（验真 + 自动补全）</h2>
+        <h2 id="s8">八、联网查询补全（验真 + 自动补全）</h2>
         <p>这是最省心、也最准的功能。在记录详情页（或新建登记后）点「<strong>联网查询补全</strong>」，App 会自动分流：</p>
         <table>
           <thead><tr><th>证件类型</th><th>App 的行为</th><th>你要做什么</th></tr></thead>
@@ -205,7 +239,7 @@
         想让它<strong>每次识别后自动查一遍</strong>，到设置里打开「识别后自动联网查询住建部证件信息」（默认关闭，需联网）。
         关着的时候，手动点「联网查询补全」按钮一样能用。</div>
 
-        <h2 id="s8">八、查看 / 修改 / 删除一条记录</h2>
+        <h2 id="s9">九、查看 / 修改 / 删除一条记录</h2>
         <ul>
           <li><strong>查看</strong>：在台账列表点一下某条记录，进入详情/编辑页；长按可直接预览全部字段。</li>
           <li><strong>修改</strong>：改完点「保存修改」。若记录已被删除会明确提示，不会假装保存成功。</li>
@@ -213,7 +247,7 @@
           <li><strong>退场</strong>：人员的「已退场」开关用于区分"离场但留档"。</li>
         </ul>
 
-        <h2 id="s9">九、搜索与状态筛选</h2>
+        <h2 id="s10">十、搜索与状态筛选</h2>
         <p><strong>先确认你在哪个项目下</strong>（看左上角小字）——搜索和筛选都只在<strong>当前项目</strong>范围内生效。
         找不到人时，先切到「全部项目」再看一眼。</p>
         <ul>
@@ -224,7 +258,7 @@
         <p>在「数据管理」页顶部的数据概览里，点「已过期 / 即将到期 / 已退场」的数字，可以直接跳到特种作业人员台账的对应分类。
         注意概览的数字是<strong>整个台账（全部项目）</strong>的口径，与当前项目无关。</p>
 
-        <h2 id="s10">十、导出 Excel 台账</h2>
+        <h2 id="s11">十一、导出 Excel 台账</h2>
         <ol class="steplist">
           <li>点右上角「<strong>数据管理</strong>」；</li>
           <li>在「Excel 台账导出」里点要导出的类型（特种作业人员 / 安全生产许可证 / 管理人员）；</li>
@@ -237,7 +271,7 @@
         </ul>
         <p>同一页还能「导出识别日志」：包含每次识别的耗时、行数、结果摘要，出问题时把这个文件发给技术人员即可定位。</p>
 
-        <h2 id="s11">十一、证件照片归档</h2>
+        <h2 id="s12">十二、证件照片归档</h2>
         <p>每登记成功一张证件，它的照片会自动按分类归档，与台账记录对应。</p>
         <ul>
           <li>查看 / 删除：设置 →「<strong>证件文件管理</strong>」，可浏览、预览、删除已归档照片；</li>
@@ -245,7 +279,7 @@
           <li>照片默认保存到系统相册的「证件归档」目录，检查时可直接从相册调取。</li>
         </ul>
 
-        <h2 id="s12">十二、备份 / 恢复数据（防丢失）</h2>
+        <h2 id="s13">十三、备份 / 恢复数据（防丢失）</h2>
         <ol class="steplist">
           <li>点右上角「<strong>数据管理</strong>」；</li>
           <li>「<strong>备份数据库</strong>」→ 生成一个 <code>.db</code> 备份文件，发到微信/网盘存好；</li>
@@ -261,7 +295,7 @@
           <li>如果备份来自另一台手机（项目完全不同），恢复后 App 会自动切到一个可用的项目，<strong>不会出现"恢复成功但台账是空的"</strong>——遇到空列表先检查左上角当前项目。</li>
         </ul>
 
-        <h2 id="s13">十三、设置项说明（不懂可以不动，默认就行）</h2>
+        <h2 id="s14">十四、设置项说明（不懂可以不动，默认就行）</h2>
         <p>下表按 App 里<strong>从上到下的实际顺序</strong>排列。<strong>改完记得点最下面的「保存设置」</strong>，否则不生效。</p>
         <table>
           <thead><tr><th>设置项</th><th>作用</th><th>默认 / 建议</th></tr></thead>
@@ -286,7 +320,7 @@
           这个开关是给"某台手机上 Paddle 跑不起来"的应急场景准备的，平时不用动。
         </div>
 
-        <h2 id="s14">十四、常见问题（FAQ）</h2>
+        <h2 id="s15">十五、常见问题（FAQ）</h2>
         <details class="qa" open><summary>Q1：拍照识别不准 / 识别不出来？</summary>
           <div class="ans">证件放平、光线充足、别反光、四角拍全；确认设置里「识别结果缓存」是开着的（提速用）；还不行就手改，或点「联网查询补全」用官方数据。</div></details>
         <details class="qa"><summary>Q2：证号 T 开头，联网补全跳到了网页？</summary>
@@ -306,9 +340,9 @@
             识别出的日期如果不合法（例如"5 月 38 日"），App 不会写进台账，改用证件年限规律推算，推不出来就留空等你手填。
             <strong>空着比填错安全</strong>：到期提醒靠这个日期，填错比留空更危险。手动补上即可。</div></details>
         <details class="qa"><summary>Q9：手上好几个工地，要装好几个 App 吗？</summary>
-          <div class="ans">不用。一个 App 就能管多个项目，台账互相独立：右上角项目切换器切换，或进「管理项目」新建。详见<a href="#s4">第四节</a>。</div></details>
+          <div class="ans">不用。一个 App 就能管多个项目，台账互相独立：右上角项目切换器切换，或进「管理项目」新建。详见<a href="#s5">第五节</a>。</div></details>
 
-        <h2 id="s15">十五、给首次使用者的 5 条建议</h2>
+        <h2 id="s16">十六、给首次使用者的 5 条建议</h2>
         <ol class="steplist">
           <li>先<strong>把工地建好</strong>：项目切换器 →「管理项目」→ 新建，并设好这个项目的默认单位；</li>
           <li>再<strong>拍 1 张证试试</strong>，熟悉识别与保存的流程；</li>
@@ -334,7 +368,7 @@
     <div class="foot-grid">
       <div>
         <a class="brand" href="index.html" style="margin-bottom:8px">
-          <img src="assets/app-icon.png?v=fc2b90fa" alt="" width="26" height="26">
+          <img src="assets/app-icon.png?v=acd17de2" alt="" width="26" height="26">
           <span>证安查</span>
         </a>
         <p style="font-size:13px">面向建筑施工企业的证件识别与台账管理工具。</p>
@@ -355,7 +389,7 @@
   </div>
 </footer>
 
-<script src="assets/config.js?v=fc2b90fa"></script>
-<script src="assets/site.js?v=fc2b90fa"></script>
+<script src="assets/config.js?v=acd17de2"></script>
+<script src="assets/site.js?v=acd17de2"></script>
 </body>
 </html>

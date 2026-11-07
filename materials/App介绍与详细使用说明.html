@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>证安查 · App 介绍与详细使用说明</title>
-<link rel="icon" href="../assets/app-icon.png?v=fc2b90fa">
-<link rel="apple-touch-icon" href="../assets/app-icon.png?v=fc2b90fa">
+<link rel="icon" href="../assets/app-icon.png?v=acd17de2">
+<link rel="apple-touch-icon" href="../assets/app-icon.png?v=acd17de2">
 <style>
   /* ============ 证安查 · 介绍与详细使用说明（可打印文档） ============
      面向第一次使用的用户；打印/转 PDF 后可直接发给项目部 */
@@ -111,7 +111,7 @@
       <div class="mark">证</div>
       <div>
         <h1>证安查 · App 介绍与详细使用说明</h1>
-        <div class="sub">面向第一次使用的用户 · 看完就能上手 · iOS 版 2.0.9（build 67）· 安卓版 2.1.0（build 69）</div>
+        <div class="sub">面向第一次使用的用户 · 看完就能上手 · iOS 版 2.0.9（build 67）· 安卓版 2.1.0（build 71）</div>
       </div>
     </div>
     <p class="lead">
@@ -208,6 +208,20 @@
       <tr><td>🟡 已退场</td><td>人员 / 企业已离场</td><td>保留记录备查</td></tr>
     </tbody>
   </table>
+
+  <p><b>首页通知横幅（2.1.0 新增）</b>：位于标题栏与拍照识别区之间，按当前项目报出「X 个已过期、Y 个即将到期（30 天内）」，并补一句其它项目的合计；选「全部项目」时为一段合计。
+  有证已过期＝浅红底深红字，只有临期＝浅琥珀底深琥珀字；都没有则整条不显示、不占位。
+  文字超宽才滚动：一份文字滚到最后一字完全离场 → 空档 0.4 秒 → 从右侧重新入场；按住暂停、长按看全文，系统开启「减弱动态效果」时退化为静态省略号。
+  右侧 × 只关「本次会话 + 当前项目 + 当前计数」，数量变化后会重新出现。</p>
+
+  <p><b>到期提醒面板</b>：短按横幅弹出，三行台账顺序与底部导航一致（特种作业人员 / 安全生产许可证 / 安全生产管理人员）。
+  每行按严重度显示「已过期 N」「即将到期 N」徽标，没有风险的台账整行置灰显示「无」且不可点。
+  点「已过期」徽标直达过期筛选，点「即将到期」徽标直达临期筛选，点行内其它区域按过期优先；窄屏或大字号时徽标自动折到台账名下一行。</p>
+
+  <div class="callout">
+    启动提醒、首页横幅、数据概览、台账筛选四处<strong>同口径</strong>：已退场、待补全、已归档项目均不计入。
+    2.1.0 起首页启动时不再弹底部过期 SnackBar，同样内容统一由横幅承载。
+  </div>
 
   <h2 id="s5"><span class="n">五</span>多个工程项目怎么管</h2>
   <p>一个 App 可以同时管好几个工地，台账彼此分开、互不干扰。先分清两个词：</p>
@@ -433,8 +447,8 @@
 
 </div>
 
-<script src="../assets/config.js?v=fc2b90fa" onerror="void 0"></script>
-<script src="../assets/qr.js?v=fc2b90fa" onerror="void 0"></script>
+<script src="../assets/config.js?v=acd17de2" onerror="void 0"></script>
+<script src="../assets/qr.js?v=acd17de2" onerror="void 0"></script>
 <script>
 (function(){
   var C = window.ZAC_CONFIG || {};
