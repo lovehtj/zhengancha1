@@ -24,11 +24,11 @@
   /* ---- 进度阶段分组(地图着色用 6 档,比 12 档易读) ---- */
   const GROUPS = [
     { id: 'G0', name: '未启动', from: 0, to: 0, color: '#64748b', desc: '品牌未定' },
-    { id: 'G1', name: '品牌与方案', from: 1, to: 3, color: '#6366f1', desc: '品牌/组价/审计' },
-    { id: 'G2', name: '公示与意见', from: 4, to: 5, color: '#a855f7', desc: '公示/意见征询' },
-    { id: 'G3', name: '签约与到货', from: 6, to: 7, color: '#f59e0b', desc: '协议/设备进场' },
-    { id: 'G4', name: '施工中', from: 8, to: 8, color: '#22c55e', desc: '已开工' },
-    { id: 'G5', name: '完工验收', from: 9, to: 10, color: '#14b8a6', desc: '完工/特检登记' },
+    { id: 'G1', name: '品牌与方案', from: 1, to: 4, color: '#6366f1', desc: '品牌/组价/报审/审计' },
+    { id: 'G2', name: '公示与意见', from: 5, to: 6, color: '#a855f7', desc: '公示/意见征询' },
+    { id: 'G3', name: '签约与到货', from: 7, to: 8, color: '#f59e0b', desc: '协议/设备进场' },
+    { id: 'G4', name: '施工中', from: 9, to: 9, color: '#22c55e', desc: '已开工' },
+    { id: 'G5', name: '完工验收', from: 10, to: 11, color: '#14b8a6', desc: '完工/特检登记' },
   ];
   const GROUP_OF = {};
   STAGES.forEach((s, i) => { GROUP_OF[s.code] = GROUPS.find(g => i >= g.from && i <= g.to).id; });
@@ -575,9 +575,9 @@
   // 官方周报里的 12 个环节 -> 对应的看板阶段(用于点击筛选地图)
   const WEEKLY_MAP = {
     '已确定品牌': 'S1', '累计完成现场勘探': 'S1', '完成方案组价': 'S2',
-    '完成价格审计': 'S3', '跟审出具意见': 'S3', '完成方案公告公示': 'S4',
-    '完成意见征询投票': 'S5', '完成意见结果公示': 'S5', '签订协议书': 'S6',
-    '电梯到货': 'S7', '开工数量': 'S8', '完工数量': 'S9',
+    '完成价格审计': 'S4', '跟审出具意见': 'S4', '完成方案公告公示': 'S5',
+    '完成意见征询投票': 'S6', '完成意见结果公示': 'S6', '签订协议书': 'S7',
+    '电梯到货': 'S8', '开工数量': 'S9', '完工数量': 'S10',
   };
   function renderFunnel() {
     const W = META.weekly || {};
