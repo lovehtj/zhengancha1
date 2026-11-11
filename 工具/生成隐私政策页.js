@@ -199,6 +199,7 @@ ${body}
         <a data-contact href="mailto:qinshunhuan@vip.qq.com">qinshunhuan@vip.qq.com</a>
       </div>
     </div>
+    <p class="foot-note" style="margin-top:6px"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">鄂ICP备2026065722号-1</a></p>
     <p class="foot-note">© <span data-year>2026</span> 证安查 · ZhengAnCha</p>
   </div>
 </footer>
