@@ -2,13 +2,13 @@
 window.__PLAN_DATA__ = {
  "meta": {
   "project": "2026年武汉市江汉区住宅老旧电梯更新项目(提前批·EPC)",
-  "source": "2026年江汉区电梯更新进度表11.09.xlsx",
+  "source": "2026年江汉区电梯更新进度表11.17(1).xlsx",
   "sheets": [
    "汇总表",
    "点位清单"
   ],
-  "generatedAt": "2026-11-11 11:55",
-  "asOf": "2026-11-09",
+  "generatedAt": "2026-11-17 19:24",
+  "asOf": "2026-11-17",
   "stages": [
    {
     "code": "S0",
@@ -169,42 +169,42 @@ window.__PLAN_DATA__ = {
    "S2": {
     "name": "方案组价",
     "key": "方案组价",
-    "count": 221
+    "count": 223
    },
    "S3": {
     "name": "方案报审",
     "key": "方案报审",
-    "count": 198
+    "count": 203
    },
    "S4": {
     "name": "审计审核",
     "key": "审计审核",
-    "count": 164
+    "count": 198
    },
    "S5": {
     "name": "方案公告公示",
     "key": "方案公告公示开始时间",
-    "count": 146
+    "count": 148
    },
    "S6": {
     "name": "意见公示",
     "key": "意见公示",
-    "count": 114
+    "count": 117
    },
    "S7": {
     "name": "协议书签订",
     "key": "协议书签订日期",
-    "count": 64
+    "count": 78
    },
    "S8": {
     "name": "设备进场",
     "key": "设备进场日期",
-    "count": 70
+    "count": 77
    },
    "S9": {
     "name": "已开工",
     "key": "开工日期",
-    "count": 53
+    "count": 60
    },
    "S10": {
     "name": "已完工",
@@ -217,7 +217,7 @@ window.__PLAN_DATA__ = {
     "count": 0
    }
   },
-  "skipSigned": 24,
+  "skipSigned": 25,
   "brandStatus": [
    {
     "status": "已确定品牌",
@@ -273,56 +273,56 @@ window.__PLAN_DATA__ = {
     {
      "item": "完成方案组价",
      "prev": 221,
-     "now": 221,
-     "delta": 0
+     "now": 223,
+     "delta": 2
     },
     {
      "item": "完成价格审计",
      "prev": 164,
-     "now": 164,
-     "delta": 0
+     "now": 198,
+     "delta": 34
     },
     {
      "item": "跟审出具意见",
      "prev": 164,
-     "now": 164,
-     "delta": 0
+     "now": 198,
+     "delta": 34
     },
     {
      "item": "完成方案公告公示",
      "prev": 146,
-     "now": 146,
-     "delta": 0
-    },
-    {
-     "item": "完成意见征询投票",
-     "prev": 100,
-     "now": 114,
-     "delta": 14
-    },
-    {
-     "item": "完成意见结果公示",
-     "prev": 100,
-     "now": 114,
-     "delta": 14
-    },
-    {
-     "item": "签订协议书",
-     "prev": 56,
-     "now": 64,
-     "delta": 8
-    },
-    {
-     "item": "电梯到货",
-     "prev": 68,
-     "now": 70,
+     "now": 148,
      "delta": 2
     },
     {
+     "item": "完成意见征询投票",
+     "prev": 114,
+     "now": 117,
+     "delta": 3
+    },
+    {
+     "item": "完成意见结果公示",
+     "prev": 114,
+     "now": 117,
+     "delta": 3
+    },
+    {
+     "item": "签订协议书",
+     "prev": 64,
+     "now": 78,
+     "delta": 14
+    },
+    {
+     "item": "电梯到货",
+     "prev": 70,
+     "now": 77,
+     "delta": 7
+    },
+    {
      "item": "开工数量",
-     "prev": 42,
-     "now": 53,
-     "delta": 11
+     "prev": 53,
+     "now": 60,
+     "delta": 7
     },
     {
      "item": "完工数量",
@@ -331,8 +331,8 @@ window.__PLAN_DATA__ = {
      "delta": 0
     }
    ],
-   "weekRange": "11 月 05日 —11月 11日",
-   "prevRange": "10月 29日 —11月 04日",
+   "weekRange": "11 月 12日 —11月 18日",
+   "prevRange": "11月 05日 —11月 11日",
    "brands": [
     {
      "brand": "日立",
@@ -361,13 +361,13 @@ window.__PLAN_DATA__ = {
    ],
    "deliveryText": [
     "电梯到货：",
-    "东一时区（2 台）于 9 月 9 日到货，电业新村（12台） 9 月 10 日到货，运管处小区9月17日到货4台、白金领域2台10月9日",
+    "东一时区（2 台）到货，电业新村12台，运管处小区4台、白金领域2台、香缇美景5台、香江家园3台、菱角湖万达1台、香江花园6台、万科圆方3台、双龙小区3台、红玫苑1台、城市星座3台、出版社小区2台、双龙小区2台、聚福苑2台、润雅苑8台、绿色家园4台、华立新华时代4台、福星城市花园2台、运管处3台、红旗公寓3台、富豪花园2台、合计 77台。",
     "（四）现场施工及到货计划"
    ],
    "startText": [
-    "香缇美景5台10月10日、香江家园3台10月10日、菱角湖万达1台10月10日、香江花园6台10月17日、万科圆方3台10月18日、双龙小区3台10月18日、红玫苑1台10月19日、城市星座2台、出版社小区2台、双龙小区2台10月28日、聚福苑2台10月27日、润雅苑7台10月28日、绿色家园4台10月28日、华立新华时代4台10月29日、福星城市花园2台、运管处3台11月2日。合计 70台。",
+    "东一时区（2 台）到货，电业新村12台，运管处小区4台、白金领域2台、香缇美景5台、香江家园3台、菱角湖万达1台、香江花园6台、万科圆方3台、双龙小区3台、红玫苑1台、城市星座3台、出版社小区2台、双龙小区2台、聚福苑2台、润雅苑8台、绿色家园4台、华立新华时代4台、福星城市花园2台、运管处3台、红旗公寓3台、富豪花园2台、合计 77台。",
     "开工点位：",
-    "合计53台。"
+    "合计60台。"
    ],
    "riskAlerts": [
     {
@@ -376,21 +376,21 @@ window.__PLAN_DATA__ = {
      "items": [
       {
        "label": "1",
-       "text": "新华路100号美林公馆（1台）：社区及物业已初步选定上海三菱品牌，为最大程度尊重居民意见，正在开展品牌选择投票工作。",
+       "text": "新华路100号美林公馆（1台）：社区及物业已初步选定上海三菱品牌，与正式批一同投票选定品牌。",
        "communities": [
         "美林公馆"
        ]
       },
       {
        "label": "2",
-       "text": "大唐新都（1台）：大唐新都初步意向为奥的斯，社区及物业正在与居民讨论升级配置选择，尚未达成统一意见。",
+       "text": "大唐新都（1台）：大唐新都初步意向为奥的斯，升级配置已确定，待社区出函。",
        "communities": [
         "大唐新都"
        ]
       },
       {
        "label": "3",
-       "text": "菱湖上品（5台）：由于部分业委会成员因其他问题与社区物业存在矛盾，导致业委会拒绝配合电梯更新品牌确认工作。",
+       "text": "菱湖上品（5台）：社区与物业正在组织居民业委会进行品牌选择投票。",
        "communities": [
         "菱湖上品"
        ]
@@ -400,22 +400,6 @@ window.__PLAN_DATA__ = {
       "美林公馆",
       "大唐新都",
       "菱湖上品"
-     ]
-    },
-    {
-     "cat": "补贴争议",
-     "title": "补贴标准争议明确",
-     "items": [
-      {
-       "label": "1",
-       "text": "金利明珠花园（三菱，5 台）涉及 2 栋 1、2 单元实际层站为 18 站 / 19 层，而招标清单按 18 层编制，涉及补贴金额差距。按住更局及街道意见拟按 15 万元 / 台补贴口径推进，已多次上门沟通，目前社区街道还未有正式明确回馈，导致方案一直无法公示。",
-       "communities": [
-        "金利明珠花园"
-       ]
-      }
-     ],
-     "communities": [
-      "金利明珠花园"
      ]
     }
    ],
@@ -429,38 +413,39 @@ window.__PLAN_DATA__ = {
     },
     {
      "title": "方案组价及审计推进",
-     "text": "督促厂家尽快完成方案组价：学林华府（12台）、菱角湖万达（2台）。",
+     "text": "督促厂家尽快完成方案组价：学林华府（12台）。",
      "communities": [
-      "菱角湖万达小区",
       "学林华府"
      ]
     },
     {
      "title": "公示投票及协议签订",
-     "text": "推进协议书签订红旗公寓、泽皓雅居、菱角湖万达、福星城市花园、双龙小区、富豪花园、华立新华时代等小区，以及迎宾花园、万科圆方、鑫城国际润雅苑、出版社小区、宝利金组织意见征询投票；推进已完成跟审环节小区的方案公告公示。",
+     "text": "推进协议书签订泽皓雅居、华立新华时代、运管处、润雅苑、菱角湖万达、顶琇晶城、宝利金等小区，以及金色雅园四期、迎宾花园、金利明珠花园、万科圆方、出版社小区、金泰公寓协助意见征询投票。",
      "communities": [
-      "鑫诚国际润雅苑",
+      "金色雅园四期",
+      "金利明珠花园",
       "华立新华时代",
-      "福星城市花园",
       "菱角湖万达小区",
       "新育社区出版社小区",
-      "红旗公寓",
       "泽皓雅居",
       "迎宾花园",
-      "富豪花园小区富锦阁",
       "万科圆方",
-      "双龙小区",
+      "顶琇晶城",
+      "金泰公寓",
+      "青年路399号运管处小区",
       "宝利金"
      ]
     },
     {
      "title": "现场施工及到货计划",
-     "text": "下列小区进行施工任务香缇美景、运管处、电业新村、白金领域、城市星座、菱角湖万达、香江家园、绿色家园、红玫苑、双龙小区、润雅苑。预计开工：出版社小区、聚福苑。到货计划：红旗公寓11月12日到货3台、红旗公寓11月17日到货3台、金色雅园四期4台11月10日、祥和家园3台11月20日、富豪花园2台11月16日、金利明珠花园3台11月80日、金泰公寓4台11月15日、香江家园4台11月22日、顶琇晶城5台10月25日、菱角湖万达2台11月30日。",
+     "text": "下列小区进行施工任务香缇美景、红玫苑、绿色家园、聚福苑、华立新华时代、运管处、白金领域、电业新村、城市星座、香江花园、香江家园、润雅苑、菱角湖万达、福星城市花园、双龙小区、电业新村、红旗公寓。预计开工：金利明珠花园、富豪花园。到货计划：金色雅园四期4台11月10日、红旗公寓3台11月17日、金利明珠花园3台11月20日、祥和家园3台11月19日、香江家园4台11月22日、浅水湾3台11月22日、金泰公寓4台11月25日、顶琇晶城5台11月25日（物业要求1台）、香江家园4台11月28日、香江花园四期3台11月30日、菱角湖万达2台11月30日。",
      "communities": [
       "金色雅园四期",
       "金利明珠花园",
+      "华立新华时代",
+      "香港路390号香江花园四期",
+      "福星城市花园",
       "菱角湖万达小区",
-      "新育社区出版社小区",
       "红旗公寓",
       "香缇美景",
       "绿色家园",
@@ -496,56 +481,56 @@ window.__PLAN_DATA__ = {
    {
     "stage": "完成方案组价",
     "prev": 221,
-    "count": 221,
-    "delta": 0
+    "count": 223,
+    "delta": 2
    },
    {
     "stage": "完成价格审计",
     "prev": 164,
-    "count": 164,
-    "delta": 0
+    "count": 198,
+    "delta": 34
    },
    {
     "stage": "跟审出具意见",
     "prev": 164,
-    "count": 164,
-    "delta": 0
+    "count": 198,
+    "delta": 34
    },
    {
     "stage": "完成方案公告公示",
     "prev": 146,
-    "count": 146,
-    "delta": 0
-   },
-   {
-    "stage": "完成意见征询投票",
-    "prev": 100,
-    "count": 114,
-    "delta": 14
-   },
-   {
-    "stage": "完成意见结果公示",
-    "prev": 100,
-    "count": 114,
-    "delta": 14
-   },
-   {
-    "stage": "签订协议书",
-    "prev": 56,
-    "count": 64,
-    "delta": 8
-   },
-   {
-    "stage": "电梯到货",
-    "prev": 68,
-    "count": 70,
+    "count": 148,
     "delta": 2
    },
    {
+    "stage": "完成意见征询投票",
+    "prev": 114,
+    "count": 117,
+    "delta": 3
+   },
+   {
+    "stage": "完成意见结果公示",
+    "prev": 114,
+    "count": 117,
+    "delta": 3
+   },
+   {
+    "stage": "签订协议书",
+    "prev": 64,
+    "count": 78,
+    "delta": 14
+   },
+   {
+    "stage": "电梯到货",
+    "prev": 70,
+    "count": 77,
+    "delta": 7
+   },
+   {
     "stage": "开工数量",
-    "prev": 42,
-    "count": 53,
-    "delta": 11
+    "prev": 53,
+    "count": 60,
+    "delta": 7
    },
    {
     "stage": "完工数量",
@@ -557,28 +542,28 @@ window.__PLAN_DATA__ = {
   "reached": {
    "S0": 242,
    "S1": 235,
-   "S2": 221,
-   "S3": 198,
-   "S4": 164,
-   "S5": 146,
-   "S6": 120,
-   "S7": 88,
-   "S8": 70,
-   "S9": 53,
+   "S2": 223,
+   "S3": 203,
+   "S4": 198,
+   "S5": 148,
+   "S6": 123,
+   "S7": 103,
+   "S8": 77,
+   "S9": 60,
    "S10": 8,
    "S11": 0
   },
   "byStage": {
-   "S2": 23,
-   "S6": 32,
-   "S9": 45,
-   "S1": 14,
+   "S2": 20,
+   "S9": 52,
+   "S7": 26,
+   "S1": 12,
    "S8": 17,
-   "S4": 18,
-   "S5": 26,
-   "S3": 34,
-   "S7": 18,
+   "S4": 50,
+   "S5": 25,
+   "S6": 20,
    "S0": 7,
+   "S3": 5,
    "S10": 8
   },
   "editedPoints": 0,
@@ -789,19 +774,19 @@ window.__PLAN_DATA__ = {
    "S11": "特检/登记/图纸"
   },
   "progress": {
-   "started": 53,
-   "delivered": 70,
-   "signed": 64,
-   "voted": 114,
+   "started": 60,
+   "delivered": 77,
+   "signed": 78,
+   "voted": 117,
    "done": 8,
    "notStarted": 7
   },
-  "generatedWeb": "2026-11-11 11:55",
+  "generatedWeb": "2026-11-17 19:24",
   "coordSystem": "WGS-84(展示时转 GCJ-02 对齐高德底图)",
   "risk": {
-   "high": 2,
-   "watch": 30,
-   "ok": 203,
+   "high": 12,
+   "watch": 28,
+   "ok": 195,
    "notstarted": 7
   },
   "riskRules": {
@@ -838,13 +823,13 @@ window.__PLAN_DATA__ = {
      "name": "方案组价",
      "key": "方案组价",
      "byMonth": {
-      "2026-11": 19,
+      "2026-11": 21,
       "2026-09": 75,
       "2026-08": 28,
       "2026-07": 68,
       "2026-10": 31
      },
-     "total": 221
+     "total": 223
     },
     {
      "code": "S3",
@@ -855,9 +840,9 @@ window.__PLAN_DATA__ = {
       "2026-08": 83,
       "2026-10": 37,
       "2026-07": 13,
-      "2026-11": 34
+      "2026-11": 39
      },
-     "total": 198
+     "total": 203
     },
     {
      "code": "S4",
@@ -867,9 +852,10 @@ window.__PLAN_DATA__ = {
       "2026-09": 37,
       "2026-08": 81,
       "2026-10": 37,
-      "2026-07": 9
+      "2026-07": 9,
+      "2026-11": 34
      },
-     "total": 164
+     "total": 198
     },
     {
      "code": "S5",
@@ -878,9 +864,10 @@ window.__PLAN_DATA__ = {
      "byMonth": {
       "2026-09": 60,
       "2026-10": 29,
-      "2026-08": 57
+      "2026-08": 57,
+      "2026-11": 2
      },
-     "total": 146
+     "total": 148
     },
     {
      "code": "S6",
@@ -889,44 +876,44 @@ window.__PLAN_DATA__ = {
      "byMonth": {
       "2026-10": 60,
       "2026-09": 45,
-      "2026-11": 7,
+      "2026-11": 10,
       "2026-08": 2
      },
-     "total": 114
+     "total": 117
     },
     {
      "code": "S7",
      "name": "协议书签订",
      "key": "协议书签订日期",
      "byMonth": {
+      "2026-11": 31,
       "2026-10": 42,
-      "2026-11": 17,
       "2026-09": 3,
       "2026-08": 2
      },
-     "total": 64
+     "total": 78
     },
     {
      "code": "S8",
      "name": "设备进场",
      "key": "设备进场日期",
      "byMonth": {
+      "2026-11": 12,
       "2026-10": 47,
-      "2026-09": 18,
-      "2026-11": 5
+      "2026-09": 18
      },
-     "total": 70
+     "total": 77
     },
     {
      "code": "S9",
      "name": "已开工",
      "key": "开工日期",
      "byMonth": {
+      "2026-11": 19,
       "2026-10": 33,
-      "2026-11": 12,
       "2026-09": 8
      },
-     "total": 53
+     "total": 60
     },
     {
      "code": "S10",
@@ -953,7 +940,7 @@ window.__PLAN_DATA__ = {
    "2026-08": 305,
    "2026-09": 372,
    "2026-10": 324,
-   "2026-11": 94
+   "2026-11": 168
   },
   "people": [
    {
@@ -1191,7 +1178,7 @@ window.__PLAN_DATA__ = {
     "总包安全对接人": "江铎 15926382024"
    },
    "stageCounts": {
-    "S3": 34
+    "S4": 34
    },
    "zone": "北片区",
    "actual": 34,
@@ -1201,8 +1188,8 @@ window.__PLAN_DATA__ = {
    "elevators": 34,
    "households": 556,
    "maxFloors": 18,
-   "avgStage": 3.0,
-   "maxStage": "S3",
+   "avgStage": 4.0,
+   "maxStage": "S4",
    "brands": [
     "三菱",
     "奥的斯"
@@ -1304,9 +1291,8 @@ window.__PLAN_DATA__ = {
     "总包安全对接人": "张维 18507154395"
    },
    "stageCounts": {
-    "S9": 4,
-    "S6": 7,
-    "S8": 3
+    "S9": 8,
+    "S6": 6
    },
    "zone": "北片区",
    "actual": 14,
@@ -1316,7 +1302,7 @@ window.__PLAN_DATA__ = {
    "elevators": 14,
    "households": 692,
    "maxFloors": 29,
-   "avgStage": 7.29,
+   "avgStage": 7.71,
    "maxStage": "S9",
    "brands": [
     "日立"
@@ -1480,7 +1466,8 @@ window.__PLAN_DATA__ = {
     "总包安全对接人": "桂长琦 13667141175"
    },
    "stageCounts": {
-    "S6": 12
+    "S9": 3,
+    "S7": 9
    },
    "zone": "北片区",
    "actual": 12,
@@ -1490,8 +1477,8 @@ window.__PLAN_DATA__ = {
    "elevators": 12,
    "households": 626,
    "maxFloors": 12,
-   "avgStage": 6.0,
-   "maxStage": "S6",
+   "avgStage": 7.5,
+   "maxStage": "S9",
    "brands": [
     "日立"
    ],
@@ -1568,8 +1555,8 @@ window.__PLAN_DATA__ = {
    "stageCounts": {
     "S6": 2,
     "S9": 1,
-    "S1": 2,
-    "S2": 5
+    "S2": 2,
+    "S3": 5
    },
    "zone": "北片区",
    "actual": 10,
@@ -1579,7 +1566,7 @@ window.__PLAN_DATA__ = {
    "elevators": 10,
    "households": 1200,
    "maxFloors": 35,
-   "avgStage": 3.3,
+   "avgStage": 4.0,
    "maxStage": "S9",
    "brands": [
     "三菱",
@@ -1843,7 +1830,8 @@ window.__PLAN_DATA__ = {
     "总包安全对接人": "桂长琦 13667141175"
    },
    "stageCounts": {
-    "S5": 6
+    "S5": 3,
+    "S6": 3
    },
    "zone": "北片区",
    "actual": 6,
@@ -1853,8 +1841,8 @@ window.__PLAN_DATA__ = {
    "elevators": 6,
    "households": 144,
    "maxFloors": 13,
-   "avgStage": 5.0,
-   "maxStage": "S5",
+   "avgStage": 5.5,
+   "maxStage": "S6",
    "brands": [
     "日立"
    ],
@@ -1950,8 +1938,7 @@ window.__PLAN_DATA__ = {
     "总包安全对接人": "江铎 15926382024"
    },
    "stageCounts": {
-    "S5": 3,
-    "S4": 2
+    "S5": 5
    },
    "zone": "北片区",
    "actual": 5,
@@ -1961,7 +1948,7 @@ window.__PLAN_DATA__ = {
    "elevators": 5,
    "households": 438,
    "maxFloors": 19,
-   "avgStage": 4.6,
+   "avgStage": 5.0,
    "maxStage": "S5",
    "brands": [
     "三菱"
@@ -2163,8 +2150,7 @@ window.__PLAN_DATA__ = {
    },
    "stageCounts": {
     "S9": 1,
-    "S8": 1,
-    "S7": 1
+    "S8": 2
    },
    "zone": "北片区",
    "actual": 3,
@@ -2174,7 +2160,7 @@ window.__PLAN_DATA__ = {
    "elevators": 3,
    "households": 1134,
    "maxFloors": 27,
-   "avgStage": 8.0,
+   "avgStage": 8.33,
    "maxStage": "S9",
    "brands": [
     "通力"
@@ -2298,7 +2284,7 @@ window.__PLAN_DATA__ = {
     "总包安全对接人": "江铎 15926382024"
    },
    "stageCounts": {
-    "S6": 2
+    "S8": 2
    },
    "zone": "北片区",
    "actual": 2,
@@ -2308,8 +2294,8 @@ window.__PLAN_DATA__ = {
    "elevators": 2,
    "households": 82,
    "maxFloors": 12,
-   "avgStage": 6.0,
-   "maxStage": "S6",
+   "avgStage": 8.0,
+   "maxStage": "S8",
    "brands": [
     "三菱"
    ],
@@ -2626,7 +2612,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-03",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -2654,7 +2640,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-03",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -2682,7 +2668,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-03",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -2710,7 +2696,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-03",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -2738,7 +2724,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-03",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -2766,7 +2752,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-03",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -2794,7 +2780,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-03",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -2822,7 +2808,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-03",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -2850,7 +2836,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-03",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -2878,7 +2864,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-03",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -2906,7 +2892,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-03",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -2934,7 +2920,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-03",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -2954,9 +2940,12 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
     "方案公告公示开始时间": "2026-09-22",
-    "意见公示": "2026-10-21"
+    "意见公示": "2026-10-21",
+    "协议书签订日期": "2026-11-17",
+    "设备进场日期": "2026-11-12",
+    "开工日期": "2026-11-13"
    },
-   "stage": "S6",
+   "stage": "S9",
    "lat": 30.625537,
    "lng": 114.250466,
    "geoConfidence": "verified",
@@ -2964,9 +2953,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.62564687214694,
    "_clng": 114.250466,
    "spread": true,
-   "lastDate": "2026-10-21",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-01",
-   "stalledDays": 19,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -2986,9 +2975,10 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
     "方案公告公示开始时间": "2026-09-22",
-    "意见公示": "2026-10-21"
+    "意见公示": "2026-10-21",
+    "协议书签订日期": "2026-11-17"
    },
-   "stage": "S6",
+   "stage": "S7",
    "lat": 30.625537,
    "lng": 114.250466,
    "geoConfidence": "verified",
@@ -2996,9 +2986,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.625410745212555,
    "_clng": 114.25060040755774,
    "spread": true,
-   "lastDate": "2026-10-21",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-01",
-   "stalledDays": 19,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -3018,9 +3008,10 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
     "方案公告公示开始时间": "2026-09-22",
-    "意见公示": "2026-10-21"
+    "意见公示": "2026-10-21",
+    "协议书签订日期": "2026-11-17"
    },
-   "stage": "S6",
+   "stage": "S7",
    "lat": 30.625537,
    "lng": 114.250466,
    "geoConfidence": "verified",
@@ -3028,9 +3019,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.625555865126163,
    "_clng": 114.25021619800047,
    "spread": true,
-   "lastDate": "2026-10-21",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-01",
-   "stalledDays": 19,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -3050,9 +3041,12 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
     "方案公告公示开始时间": "2026-09-22",
-    "意见公示": "2026-10-21"
+    "意见公示": "2026-10-21",
+    "协议书签订日期": "2026-11-17",
+    "设备进场日期": "2026-11-12",
+    "开工日期": "2026-11-15"
    },
-   "stage": "S6",
+   "stage": "S9",
    "lat": 30.625537,
    "lng": 114.250466,
    "geoConfidence": "verified",
@@ -3060,9 +3054,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.62569069381738,
    "_clng": 114.2506989609068,
    "spread": true,
-   "lastDate": "2026-10-21",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-01",
-   "stalledDays": 19,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -3082,9 +3076,10 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
     "方案公告公示开始时间": "2026-09-22",
-    "意见公示": "2026-10-21"
+    "意见公示": "2026-10-21",
+    "协议书签订日期": "2026-11-17"
    },
-   "stage": "S6",
+   "stage": "S7",
    "lat": 30.625537,
    "lng": 114.250466,
    "geoConfidence": "verified",
@@ -3092,9 +3087,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.625256652036718,
    "_clng": 114.2504083721796,
    "spread": true,
-   "lastDate": "2026-10-21",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-01",
-   "stalledDays": 19,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -3114,9 +3109,10 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
     "方案公告公示开始时间": "2026-09-22",
-    "意见公示": "2026-10-21"
+    "意见公示": "2026-10-21",
+    "协议书签订日期": "2026-11-17"
    },
-   "stage": "S6",
+   "stage": "S7",
    "lat": 30.625537,
    "lng": 114.250466,
    "geoConfidence": "verified",
@@ -3124,9 +3120,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.625801540719173,
    "_clng": 114.25027044368798,
    "spread": true,
-   "lastDate": "2026-10-21",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-01",
-   "stalledDays": 19,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -3146,9 +3142,10 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
     "方案公告公示开始时间": "2026-09-22",
-    "意见公示": "2026-10-21"
+    "意见公示": "2026-10-21",
+    "协议书签订日期": "2026-11-17"
    },
-   "stage": "S6",
+   "stage": "S7",
    "lat": 30.625537,
    "lng": 114.250466,
    "geoConfidence": "verified",
@@ -3156,9 +3153,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.625448755452165,
    "_clng": 114.25084747539182,
    "spread": true,
-   "lastDate": "2026-10-21",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-01",
-   "stalledDays": 19,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -3178,9 +3175,12 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
     "方案公告公示开始时间": "2026-09-22",
-    "意见公示": "2026-10-21"
+    "意见公示": "2026-10-21",
+    "协议书签订日期": "2026-11-17",
+    "设备进场日期": "2026-11-12",
+    "开工日期": "2026-11-16"
    },
-   "stage": "S6",
+   "stage": "S9",
    "lat": 30.625537,
    "lng": 114.250466,
    "geoConfidence": "verified",
@@ -3188,9 +3188,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.625369043320234,
    "_clng": 114.25009018976523,
    "spread": true,
-   "lastDate": "2026-10-21",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-01",
-   "stalledDays": 19,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -3210,9 +3210,10 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
     "方案公告公示开始时间": "2026-09-22",
-    "意见公示": "2026-10-21"
+    "意见公示": "2026-10-21",
+    "协议书签订日期": "2026-11-17"
    },
-   "stage": "S6",
+   "stage": "S7",
    "lat": 30.625537,
    "lng": 114.250466,
    "geoConfidence": "verified",
@@ -3220,9 +3221,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.625900841627757,
    "_clng": 114.25062041261307,
    "spread": true,
-   "lastDate": "2026-10-21",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-01",
-   "stalledDays": 19,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -3242,9 +3243,10 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
     "方案公告公示开始时间": "2026-09-22",
-    "意见公示": "2026-10-21"
+    "意见公示": "2026-10-21",
+    "协议书签订日期": "2026-11-17"
    },
-   "stage": "S6",
+   "stage": "S7",
    "lat": 30.625537,
    "lng": 114.250466,
    "geoConfidence": "verified",
@@ -3252,9 +3254,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.625158941666456,
    "_clng": 114.25064735299621,
    "spread": true,
-   "lastDate": "2026-10-21",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-01",
-   "stalledDays": 19,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -3274,9 +3276,10 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
     "方案公告公示开始时间": "2026-09-22",
-    "意见公示": "2026-10-21"
+    "意见公示": "2026-10-21",
+    "协议书签订日期": "2026-11-17"
    },
-   "stage": "S6",
+   "stage": "S7",
    "lat": 30.625537,
    "lng": 114.250466,
    "geoConfidence": "verified",
@@ -3284,9 +3287,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.625719070071824,
    "_clng": 114.25001386012886,
    "spread": true,
-   "lastDate": "2026-10-21",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-01",
-   "stalledDays": 19,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -3306,9 +3309,10 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
     "方案公告公示开始时间": "2026-09-22",
-    "意见公示": "2026-10-21"
+    "意见公示": "2026-10-21",
+    "协议书签订日期": "2026-11-17"
    },
-   "stage": "S6",
+   "stage": "S7",
    "lat": 30.625537,
    "lng": 114.250466,
    "geoConfidence": "verified",
@@ -3316,9 +3320,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.62567143576557,
    "_clng": 114.25096407658806,
    "spread": true,
-   "lastDate": "2026-10-21",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-01",
-   "stalledDays": 19,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -3353,7 +3357,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-24",
    "firstDate": "2026-06-11",
-   "stalledDays": 16,
+   "stalledDays": 24,
    "risk": "ok"
   },
   {
@@ -3388,7 +3392,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-24",
    "firstDate": "2026-06-11",
-   "stalledDays": 16,
+   "stalledDays": 24,
    "risk": "ok"
   },
   {
@@ -3423,7 +3427,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-24",
    "firstDate": "2026-06-11",
-   "stalledDays": 16,
+   "stalledDays": 24,
    "risk": "ok"
   },
   {
@@ -3458,7 +3462,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-24",
    "firstDate": "2026-06-11",
-   "stalledDays": 16,
+   "stalledDays": 24,
    "risk": "ok"
   },
   {
@@ -3493,7 +3497,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-24",
    "firstDate": "2026-06-11",
-   "stalledDays": 16,
+   "stalledDays": 24,
    "risk": "ok"
   },
   {
@@ -3520,8 +3524,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-10",
    "firstDate": "2026-09-10",
-   "stalledDays": 60,
-   "risk": "watch"
+   "stalledDays": 68,
+   "risk": "high"
   },
   {
    "seq": 31,
@@ -3547,8 +3551,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-10",
    "firstDate": "2026-09-10",
-   "stalledDays": 60,
-   "risk": "watch"
+   "stalledDays": 68,
+   "risk": "high"
   },
   {
    "seq": 32,
@@ -3574,8 +3578,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-10",
    "firstDate": "2026-09-10",
-   "stalledDays": 60,
-   "risk": "watch"
+   "stalledDays": 68,
+   "risk": "high"
   },
   {
    "seq": 33,
@@ -3601,8 +3605,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-10",
    "firstDate": "2026-09-10",
-   "stalledDays": 60,
-   "risk": "watch"
+   "stalledDays": 68,
+   "risk": "high"
   },
   {
    "seq": 34,
@@ -3628,8 +3632,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-10",
    "firstDate": "2026-09-10",
-   "stalledDays": 60,
-   "risk": "watch"
+   "stalledDays": 68,
+   "risk": "high"
   },
   {
    "seq": 35,
@@ -3655,8 +3659,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-10",
    "firstDate": "2026-09-10",
-   "stalledDays": 60,
-   "risk": "watch"
+   "stalledDays": 68,
+   "risk": "high"
   },
   {
    "seq": 36,
@@ -3682,8 +3686,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-10",
    "firstDate": "2026-09-10",
-   "stalledDays": 60,
-   "risk": "watch"
+   "stalledDays": 68,
+   "risk": "high"
   },
   {
    "seq": 37,
@@ -3709,8 +3713,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-10",
    "firstDate": "2026-09-10",
-   "stalledDays": 60,
-   "risk": "watch"
+   "stalledDays": 68,
+   "risk": "high"
   },
   {
    "seq": 38,
@@ -3736,8 +3740,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-10",
    "firstDate": "2026-09-10",
-   "stalledDays": 60,
-   "risk": "watch"
+   "stalledDays": 68,
+   "risk": "high"
   },
   {
    "seq": 39,
@@ -3763,8 +3767,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-10",
    "firstDate": "2026-09-10",
-   "stalledDays": 60,
-   "risk": "watch"
+   "stalledDays": 68,
+   "risk": "high"
   },
   {
    "seq": 40,
@@ -3790,8 +3794,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-10",
    "firstDate": "2026-09-10",
-   "stalledDays": 60,
-   "risk": "watch"
+   "stalledDays": 68,
+   "risk": "high"
   },
   {
    "seq": 41,
@@ -3817,8 +3821,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-10",
    "firstDate": "2026-09-10",
-   "stalledDays": 60,
-   "risk": "watch"
+   "stalledDays": 68,
+   "risk": "high"
   },
   {
    "seq": 42,
@@ -3852,7 +3856,7 @@ window.__PLAN_DATA__ = {
    "spread": false,
    "lastDate": "2026-10-31",
    "firstDate": "2026-07-10",
-   "stalledDays": 9,
+   "stalledDays": 17,
    "risk": "ok"
   },
   {
@@ -3887,7 +3891,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-30",
    "firstDate": "2026-07-22",
-   "stalledDays": 10,
+   "stalledDays": 18,
    "risk": "ok"
   },
   {
@@ -3921,7 +3925,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-28",
    "firstDate": "2026-07-22",
-   "stalledDays": 12,
+   "stalledDays": 20,
    "risk": "ok"
   },
   {
@@ -3955,7 +3959,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-28",
    "firstDate": "2026-07-22",
-   "stalledDays": 12,
+   "stalledDays": 20,
    "risk": "ok"
   },
   {
@@ -3990,7 +3994,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-30",
    "firstDate": "2026-07-22",
-   "stalledDays": 10,
+   "stalledDays": 18,
    "risk": "ok"
   },
   {
@@ -4020,8 +4024,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 48,
@@ -4050,8 +4054,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 49,
@@ -4080,8 +4084,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 50,
@@ -4110,8 +4114,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 51,
@@ -4140,8 +4144,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 52,
@@ -4170,8 +4174,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 53,
@@ -4200,8 +4204,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 54,
@@ -4230,8 +4234,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 55,
@@ -4260,8 +4264,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 56,
@@ -4290,8 +4294,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 57,
@@ -4320,8 +4324,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 58,
@@ -4350,8 +4354,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 59,
@@ -4380,8 +4384,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 60,
@@ -4410,8 +4414,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 61,
@@ -4440,8 +4444,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 62,
@@ -4470,8 +4474,8 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-09-10",
-   "stalledDays": 24,
-   "risk": "ok"
+   "stalledDays": 32,
+   "risk": "watch"
   },
   {
    "seq": 63,
@@ -4501,7 +4505,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-21",
    "firstDate": "2026-07-23",
-   "stalledDays": 19,
+   "stalledDays": 27,
    "risk": "ok"
   },
   {
@@ -4532,7 +4536,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-21",
    "firstDate": "2026-07-23",
-   "stalledDays": 19,
+   "stalledDays": 27,
    "risk": "ok"
   },
   {
@@ -4563,7 +4567,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-21",
    "firstDate": "2026-07-23",
-   "stalledDays": 19,
+   "stalledDays": 27,
    "risk": "ok"
   },
   {
@@ -4594,7 +4598,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-21",
    "firstDate": "2026-07-23",
-   "stalledDays": 19,
+   "stalledDays": 27,
    "risk": "ok"
   },
   {
@@ -4626,7 +4630,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-19",
    "firstDate": "2026-07-24",
-   "stalledDays": 21,
+   "stalledDays": 29,
    "risk": "ok"
   },
   {
@@ -4658,7 +4662,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-19",
    "firstDate": "2026-07-24",
-   "stalledDays": 21,
+   "stalledDays": 29,
    "risk": "ok"
   },
   {
@@ -4689,7 +4693,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-24",
    "firstDate": "2026-08-18",
-   "stalledDays": 46,
+   "stalledDays": 54,
    "risk": "watch"
   },
   {
@@ -4720,7 +4724,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-24",
    "firstDate": "2026-08-18",
-   "stalledDays": 46,
+   "stalledDays": 54,
    "risk": "watch"
   },
   {
@@ -4739,9 +4743,10 @@ window.__PLAN_DATA__ = {
     "方案组价": "2026-09-07",
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
-    "方案公告公示开始时间": "2026-09-24"
+    "方案公告公示开始时间": "2026-09-24",
+    "意见公示": "2026-11-16"
    },
-   "stage": "S5",
+   "stage": "S6",
    "lat": 30.62791,
    "lng": 114.231344,
    "geoConfidence": "verified",
@@ -4749,10 +4754,10 @@ window.__PLAN_DATA__ = {
    "_clat": 30.627931334015365,
    "_clng": 114.23106149935177,
    "spread": true,
-   "lastDate": "2026-09-24",
+   "lastDate": "2026-11-16",
    "firstDate": "2026-08-18",
-   "stalledDays": 46,
-   "risk": "watch"
+   "stalledDays": 1,
+   "risk": "ok"
   },
   {
    "seq": 72,
@@ -4770,9 +4775,10 @@ window.__PLAN_DATA__ = {
     "方案组价": "2026-09-07",
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
-    "方案公告公示开始时间": "2026-09-24"
+    "方案公告公示开始时间": "2026-09-24",
+    "意见公示": "2026-11-16"
    },
-   "stage": "S5",
+   "stage": "S6",
    "lat": 30.62791,
    "lng": 114.231344,
    "geoConfidence": "verified",
@@ -4780,10 +4786,10 @@ window.__PLAN_DATA__ = {
    "_clat": 30.628083807809855,
    "_clng": 114.23160745508565,
    "spread": true,
-   "lastDate": "2026-09-24",
+   "lastDate": "2026-11-16",
    "firstDate": "2026-08-18",
-   "stalledDays": 46,
-   "risk": "watch"
+   "stalledDays": 1,
+   "risk": "ok"
   },
   {
    "seq": 73,
@@ -4801,9 +4807,10 @@ window.__PLAN_DATA__ = {
     "方案组价": "2026-09-07",
     "方案报审": "2026-09-10",
     "审计审核": "2026-09-18",
-    "方案公告公示开始时间": "2026-09-24"
+    "方案公告公示开始时间": "2026-09-24",
+    "意见公示": "2026-11-16"
    },
-   "stage": "S5",
+   "stage": "S6",
    "lat": 30.62791,
    "lng": 114.231344,
    "geoConfidence": "verified",
@@ -4811,10 +4818,10 @@ window.__PLAN_DATA__ = {
    "_clat": 30.627592962748107,
    "_clng": 114.2312788287978,
    "spread": true,
-   "lastDate": "2026-09-24",
+   "lastDate": "2026-11-16",
    "firstDate": "2026-08-18",
-   "stalledDays": 46,
-   "risk": "watch"
+   "stalledDays": 1,
+   "risk": "ok"
   },
   {
    "seq": 74,
@@ -4844,7 +4851,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-24",
    "firstDate": "2026-08-18",
-   "stalledDays": 46,
+   "stalledDays": 54,
    "risk": "watch"
   },
   {
@@ -4872,7 +4879,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-21",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -4900,7 +4907,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-21",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -4928,7 +4935,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-21",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -4956,7 +4963,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-21",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -4984,7 +4991,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-21",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -5012,7 +5019,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-09-21",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -5047,7 +5054,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-10",
    "firstDate": "2026-07-03",
-   "stalledDays": -1,
+   "stalledDays": 7,
    "risk": "ok"
   },
   {
@@ -5082,7 +5089,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-10",
    "firstDate": "2026-07-03",
-   "stalledDays": -1,
+   "stalledDays": 7,
    "risk": "ok"
   },
   {
@@ -5099,9 +5106,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-10-23",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5109,9 +5117,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608781781319067,
    "_clng": 114.244714,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5128,9 +5136,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5138,9 +5147,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608575937073084,
    "_clng": 114.2448311497329,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5157,9 +5166,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-10-23",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5167,9 +5177,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60870244572095,
    "_clng": 114.244496272381,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5186,9 +5196,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5196,9 +5207,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608819982969937,
    "_clng": 114.24491704890936,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5215,9 +5226,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-10-23",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5225,9 +5237,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608441605961414,
    "_clng": 114.24466377154648,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5244,9 +5256,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5254,9 +5267,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608916614033983,
    "_clng": 114.24454355296483,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5273,9 +5286,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5283,9 +5297,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60860907259459,
    "_clng": 114.24504649425116,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5302,9 +5316,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5312,9 +5327,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60853958334409,
    "_clng": 114.24438644350417,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5331,9 +5346,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5341,9 +5357,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60900317984955,
    "_clng": 114.24484858615484,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5360,9 +5376,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5370,9 +5387,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60835642670161,
    "_clng": 114.24487206741395,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5389,9 +5406,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-10-23",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5399,9 +5417,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608844720040764,
    "_clng": 114.24431991453315,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5418,9 +5436,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5428,9 +5447,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60880319471508,
    "_clng": 114.24514812394538,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5447,9 +5466,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5457,9 +5477,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60833301537294,
    "_clng": 114.2444763211785,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5476,9 +5496,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5486,9 +5507,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.609099849554916,
    "_clng": 114.24460828676673,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5505,9 +5526,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5515,9 +5537,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608433561232058,
    "_clng": 114.2451311986017,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5534,9 +5556,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5544,9 +5567,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608627706400267,
    "_clng": 114.24419132536359,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5563,9 +5586,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-10-23",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5573,9 +5597,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.609043727355125,
    "_clng": 114.2450643024374,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5592,9 +5616,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5602,9 +5627,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608204775860738,
    "_clng": 114.2447371218099,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5621,9 +5646,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5631,9 +5657,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.609036908855465,
    "_clng": 114.24430826578046,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5650,9 +5676,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-10-23",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5660,9 +5687,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608662529277215,
    "_clng": 114.24530374875229,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5679,9 +5706,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5689,9 +5717,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608352283339308,
    "_clng": 114.24424935444961,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5708,9 +5736,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-10-23",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5718,9 +5747,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.609214525241537,
    "_clng": 114.24479662487308,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5737,9 +5766,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5747,9 +5777,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608238273360257,
    "_clng": 114.24507594871378,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5766,9 +5796,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-10-23",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5776,9 +5807,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608808321733633,
    "_clng": 114.24408224145665,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5795,9 +5826,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-10-23",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5805,9 +5837,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60896887507663,
    "_clng": 114.24528757370703,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5824,9 +5856,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5834,9 +5867,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60813309409528,
    "_clng": 114.24450905139008,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5853,9 +5886,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5863,9 +5897,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.609222998856648,
    "_clng": 114.24442572623914,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5882,9 +5916,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5892,9 +5927,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608453390363856,
    "_clng": 114.24535979009597,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5911,9 +5946,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5921,9 +5957,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608478427323416,
    "_clng": 114.24404346614261,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5940,9 +5976,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5950,9 +5987,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60923826337338,
    "_clng": 114.24505124411112,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5969,9 +6006,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -5979,9 +6017,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60807264207056,
    "_clng": 114.24490185382298,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -5998,9 +6036,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -6008,9 +6047,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.609034600826785,
    "_clng": 114.2440840749104,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -6027,9 +6066,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-10-23",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -6037,9 +6077,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.608796881217167,
    "_clng": 114.24546363683412,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -6056,9 +6096,10 @@ window.__PLAN_DATA__ = {
    "dates": {
     "品牌确定日期": "2026-09-01",
     "方案组价": "2026-09-21",
-    "方案报审": "2026-11-09"
+    "方案报审": "2026-11-09",
+    "审计审核": "2026-11-12"
    },
-   "stage": "S3",
+   "stage": "S4",
    "lat": 30.608686,
    "lng": 114.244714,
    "geoConfidence": "verified",
@@ -6066,9 +6107,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.6081605682835,
    "_clng": 114.24424119823982,
    "spread": true,
-   "lastDate": "2026-11-09",
+   "lastDate": "2026-11-12",
    "firstDate": "2026-09-01",
-   "stalledDays": 0,
+   "stalledDays": 5,
    "risk": "ok"
   },
   {
@@ -6101,7 +6142,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-02",
    "firstDate": "2026-08-25",
-   "stalledDays": 7,
+   "stalledDays": 15,
    "risk": "ok"
   },
   {
@@ -6134,7 +6175,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-02",
    "firstDate": "2026-08-25",
-   "stalledDays": 7,
+   "stalledDays": 15,
    "risk": "ok"
   },
   {
@@ -6167,7 +6208,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-02",
    "firstDate": "2026-08-25",
-   "stalledDays": 7,
+   "stalledDays": 15,
    "risk": "ok"
   },
   {
@@ -6187,9 +6228,11 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-07-30",
     "审计审核": "2026-07-31",
     "方案公告公示开始时间": "2026-08-05",
-    "意见公示": "2026-10-29"
+    "意见公示": "2026-10-29",
+    "协议书签订日期": "2026-11-12",
+    "设备进场日期": "2026-11-17"
    },
-   "stage": "S6",
+   "stage": "S8",
    "lat": 30.608077,
    "lng": 114.259534,
    "geoConfidence": "verified",
@@ -6197,9 +6240,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60823718979445,
    "_clng": 114.259534,
    "spread": true,
-   "lastDate": "2026-10-29",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-07-14",
-   "stalledDays": 11,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -6219,9 +6262,11 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-07-30",
     "审计审核": "2026-07-31",
     "方案公告公示开始时间": "2026-08-05",
-    "意见公示": "2026-10-29"
+    "意见公示": "2026-10-29",
+    "协议书签订日期": "2026-11-12",
+    "设备进场日期": "2026-11-17"
    },
-   "stage": "S6",
+   "stage": "S8",
    "lat": 30.608077,
    "lng": 114.259534,
    "geoConfidence": "verified",
@@ -6229,9 +6274,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60789292488168,
    "_clng": 114.2597299262392,
    "spread": true,
-   "lastDate": "2026-10-29",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-07-14",
-   "stalledDays": 11,
+   "stalledDays": 0,
    "risk": "ok"
   },
   {
@@ -6262,7 +6307,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-29",
    "firstDate": "2026-07-14",
-   "stalledDays": 11,
+   "stalledDays": 19,
    "risk": "ok"
   },
   {
@@ -6293,7 +6338,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-29",
    "firstDate": "2026-07-14",
-   "stalledDays": 11,
+   "stalledDays": 19,
    "risk": "ok"
   },
   {
@@ -6311,9 +6356,10 @@ window.__PLAN_DATA__ = {
     "品牌确定日期": "2026-07-14",
     "方案组价": "2026-07-28",
     "方案报审": "2026-07-30",
-    "审计审核": "2026-07-31"
+    "审计审核": "2026-07-31",
+    "方案公告公示开始时间": "2026-11-16"
    },
-   "stage": "S4",
+   "stage": "S5",
    "lat": 30.609871,
    "lng": 114.259374,
    "geoConfidence": "verified",
@@ -6321,10 +6367,10 @@ window.__PLAN_DATA__ = {
    "_clat": 30.6098931385523,
    "_clng": 114.25908090045901,
    "spread": true,
-   "lastDate": "2026-07-31",
+   "lastDate": "2026-11-16",
    "firstDate": "2026-07-14",
-   "stalledDays": 101,
-   "risk": "high"
+   "stalledDays": 1,
+   "risk": "ok"
   },
   {
    "seq": 125,
@@ -6341,9 +6387,10 @@ window.__PLAN_DATA__ = {
     "品牌确定日期": "2026-07-14",
     "方案组价": "2026-07-28",
     "方案报审": "2026-07-30",
-    "审计审核": "2026-07-31"
+    "审计审核": "2026-07-31",
+    "方案公告公示开始时间": "2026-11-16"
    },
-   "stage": "S4",
+   "stage": "S5",
    "lat": 30.609871,
    "lng": 114.259374,
    "geoConfidence": "verified",
@@ -6351,10 +6398,10 @@ window.__PLAN_DATA__ = {
    "_clat": 30.610051362356703,
    "_clng": 114.25964733942477,
    "spread": true,
-   "lastDate": "2026-07-31",
+   "lastDate": "2026-11-16",
    "firstDate": "2026-07-14",
-   "stalledDays": 101,
-   "risk": "high"
+   "stalledDays": 1,
+   "risk": "ok"
   },
   {
    "seq": 126,
@@ -6384,7 +6431,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-29",
    "firstDate": "2026-07-14",
-   "stalledDays": 11,
+   "stalledDays": 19,
    "risk": "ok"
   },
   {
@@ -6419,7 +6466,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-11",
    "firstDate": "2026-07-14",
-   "stalledDays": -2,
+   "stalledDays": 6,
    "risk": "ok"
   },
   {
@@ -6454,7 +6501,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-11",
    "firstDate": "2026-07-14",
-   "stalledDays": -2,
+   "stalledDays": 6,
    "risk": "ok"
   },
   {
@@ -6489,7 +6536,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-11",
    "firstDate": "2026-07-14",
-   "stalledDays": -2,
+   "stalledDays": 6,
    "risk": "ok"
   },
   {
@@ -6524,7 +6571,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-11",
    "firstDate": "2026-07-14",
-   "stalledDays": -2,
+   "stalledDays": 6,
    "risk": "ok"
   },
   {
@@ -6559,7 +6606,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-22",
    "firstDate": "2026-07-20",
-   "stalledDays": 18,
+   "stalledDays": 26,
    "risk": "ok"
   },
   {
@@ -6594,7 +6641,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-22",
    "firstDate": "2026-07-20",
-   "stalledDays": 18,
+   "stalledDays": 26,
    "risk": "ok"
   },
   {
@@ -6629,7 +6676,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-22",
    "firstDate": "2026-07-20",
-   "stalledDays": 18,
+   "stalledDays": 26,
    "risk": "ok"
   },
   {
@@ -6664,7 +6711,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-22",
    "firstDate": "2026-07-20",
-   "stalledDays": 18,
+   "stalledDays": 26,
    "risk": "ok"
   },
   {
@@ -6697,7 +6744,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-02",
    "firstDate": "2026-08-28",
-   "stalledDays": 7,
+   "stalledDays": 15,
    "risk": "ok"
   },
   {
@@ -6731,7 +6778,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-02",
    "firstDate": "2026-08-28",
-   "stalledDays": 7,
+   "stalledDays": 15,
    "risk": "ok"
   },
   {
@@ -6765,7 +6812,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-02",
    "firstDate": "2026-08-28",
-   "stalledDays": 7,
+   "stalledDays": 15,
    "risk": "ok"
   },
   {
@@ -6825,7 +6872,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-18",
    "firstDate": "2026-08-05",
-   "stalledDays": 22,
+   "stalledDays": 30,
    "risk": "ok"
   },
   {
@@ -6860,7 +6907,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-18",
    "firstDate": "2026-08-05",
-   "stalledDays": 22,
+   "stalledDays": 30,
    "risk": "ok"
   },
   {
@@ -6893,7 +6940,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-18",
    "firstDate": "2026-07-20",
-   "stalledDays": 22,
+   "stalledDays": 30,
    "risk": "ok"
   },
   {
@@ -6924,7 +6971,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-20",
    "firstDate": "2026-07-20",
-   "stalledDays": 50,
+   "stalledDays": 58,
    "risk": "watch"
   },
   {
@@ -6957,7 +7004,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-18",
    "firstDate": "2026-07-20",
-   "stalledDays": 22,
+   "stalledDays": 30,
    "risk": "ok"
   },
   {
@@ -6988,7 +7035,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-20",
    "firstDate": "2026-07-20",
-   "stalledDays": 50,
+   "stalledDays": 58,
    "risk": "watch"
   },
   {
@@ -7021,7 +7068,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-18",
    "firstDate": "2026-07-20",
-   "stalledDays": 22,
+   "stalledDays": 30,
    "risk": "ok"
   },
   {
@@ -7052,7 +7099,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-20",
    "firstDate": "2026-07-20",
-   "stalledDays": 50,
+   "stalledDays": 58,
    "risk": "watch"
   },
   {
@@ -7087,7 +7134,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-07-29",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -7121,7 +7168,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-30",
    "firstDate": "2026-07-29",
-   "stalledDays": 10,
+   "stalledDays": 18,
    "risk": "ok"
   },
   {
@@ -7142,9 +7189,10 @@ window.__PLAN_DATA__ = {
     "审计审核": "2026-08-07",
     "方案公告公示开始时间": "2026-08-27",
     "意见公示": "2026-09-04",
-    "协议书签订日期": "2026-09-29"
+    "协议书签订日期": "2026-09-29",
+    "设备进场日期": "2026-11-11"
    },
-   "stage": "S7",
+   "stage": "S8",
    "lat": 30.607126,
    "lng": 114.268577,
    "geoConfidence": "verified",
@@ -7152,10 +7200,10 @@ window.__PLAN_DATA__ = {
    "_clat": 30.60715082555196,
    "_clng": 114.26824833570652,
    "spread": true,
-   "lastDate": "2026-09-29",
+   "lastDate": "2026-11-11",
    "firstDate": "2026-07-29",
-   "stalledDays": 41,
-   "risk": "watch"
+   "stalledDays": 6,
+   "risk": "ok"
   },
   {
    "seq": 150,
@@ -7187,7 +7235,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-03",
    "firstDate": "2026-08-18",
-   "stalledDays": 6,
+   "stalledDays": 14,
    "risk": "ok"
   },
   {
@@ -7220,7 +7268,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-03",
    "firstDate": "2026-08-18",
-   "stalledDays": 6,
+   "stalledDays": 14,
    "risk": "ok"
   },
   {
@@ -7253,7 +7301,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-03",
    "firstDate": "2026-08-18",
-   "stalledDays": 6,
+   "stalledDays": 14,
    "risk": "ok"
   },
   {
@@ -7286,7 +7334,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-03",
    "firstDate": "2026-08-18",
-   "stalledDays": 6,
+   "stalledDays": 14,
    "risk": "ok"
   },
   {
@@ -7319,7 +7367,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-03",
    "firstDate": "2026-08-18",
-   "stalledDays": 6,
+   "stalledDays": 14,
    "risk": "ok"
   },
   {
@@ -7352,7 +7400,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-03",
    "firstDate": "2026-08-18",
-   "stalledDays": 6,
+   "stalledDays": 14,
    "risk": "ok"
   },
   {
@@ -7387,7 +7435,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-27",
    "firstDate": "2026-07-28",
-   "stalledDays": 13,
+   "stalledDays": 21,
    "risk": "ok"
   },
   {
@@ -7420,7 +7468,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-07-28",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -7455,7 +7503,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-28",
    "firstDate": "2026-07-28",
-   "stalledDays": 12,
+   "stalledDays": 20,
    "risk": "ok"
   },
   {
@@ -7490,7 +7538,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-27",
    "firstDate": "2026-07-28",
-   "stalledDays": 13,
+   "stalledDays": 21,
    "risk": "ok"
   },
   {
@@ -7523,7 +7571,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-07-28",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -7558,7 +7606,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-29",
    "firstDate": "2026-07-28",
-   "stalledDays": 11,
+   "stalledDays": 19,
    "risk": "ok"
   },
   {
@@ -7593,7 +7641,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-29",
    "firstDate": "2026-07-28",
-   "stalledDays": 11,
+   "stalledDays": 19,
    "risk": "ok"
   },
   {
@@ -7626,7 +7674,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-07-28",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -7661,7 +7709,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-30",
    "firstDate": "2026-07-28",
-   "stalledDays": 10,
+   "stalledDays": 18,
    "risk": "ok"
   },
   {
@@ -7694,7 +7742,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-07-15",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -7729,7 +7777,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-07-15",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -7764,7 +7812,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-24",
    "firstDate": "2026-07-15",
-   "stalledDays": 16,
+   "stalledDays": 24,
    "risk": "ok"
   },
   {
@@ -7797,7 +7845,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-07-15",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -7830,7 +7878,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-07-15",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -7865,7 +7913,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-25",
    "firstDate": "2026-07-15",
-   "stalledDays": 15,
+   "stalledDays": 23,
    "risk": "ok"
   },
   {
@@ -7898,7 +7946,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-07-15",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -7956,7 +8004,7 @@ window.__PLAN_DATA__ = {
    "spread": false,
    "lastDate": "2026-11-05",
    "firstDate": "2026-09-02",
-   "stalledDays": 4,
+   "stalledDays": 12,
    "risk": "ok"
   },
   {
@@ -8116,7 +8164,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-07",
    "firstDate": "2026-08-03",
-   "stalledDays": 2,
+   "stalledDays": 10,
    "risk": "ok"
   },
   {
@@ -8148,7 +8196,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-30",
    "firstDate": "2026-08-03",
-   "stalledDays": 10,
+   "stalledDays": 18,
    "risk": "ok"
   },
   {
@@ -8183,7 +8231,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-05",
    "firstDate": "2026-08-03",
-   "stalledDays": 4,
+   "stalledDays": 12,
    "risk": "ok"
   },
   {
@@ -8215,7 +8263,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-30",
    "firstDate": "2026-08-03",
-   "stalledDays": 10,
+   "stalledDays": 18,
    "risk": "ok"
   },
   {
@@ -8236,9 +8284,10 @@ window.__PLAN_DATA__ = {
     "审计审核": "2026-08-15",
     "方案公告公示开始时间": "2026-08-21",
     "意见公示": "2026-10-30",
-    "设备进场日期": "2026-10-28"
+    "设备进场日期": "2026-10-28",
+    "开工日期": "2026-11-10"
    },
-   "stage": "S8",
+   "stage": "S9",
    "skipSigned": true,
    "lat": 30.61541,
    "lng": 114.25971,
@@ -8247,9 +8296,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.615136222579107,
    "_clng": 114.25965372869553,
    "spread": true,
-   "lastDate": "2026-10-30",
+   "lastDate": "2026-11-10",
    "firstDate": "2026-08-03",
-   "stalledDays": 10,
+   "stalledDays": 7,
    "risk": "ok"
   },
   {
@@ -8281,7 +8330,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-30",
    "firstDate": "2026-08-03",
-   "stalledDays": 10,
+   "stalledDays": 18,
    "risk": "ok"
   },
   {
@@ -8316,7 +8365,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-03",
    "firstDate": "2026-08-03",
-   "stalledDays": 6,
+   "stalledDays": 14,
    "risk": "ok"
   },
   {
@@ -8348,7 +8397,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-30",
    "firstDate": "2026-08-03",
-   "stalledDays": 10,
+   "stalledDays": 18,
    "risk": "ok"
   },
   {
@@ -8369,9 +8418,10 @@ window.__PLAN_DATA__ = {
     "审计审核": "2026-08-15",
     "方案公告公示开始时间": "2026-08-21",
     "意见公示": "2026-10-30",
-    "设备进场日期": "2026-10-28"
+    "设备进场日期": "2026-10-28",
+    "开工日期": "2026-11-10"
    },
-   "stage": "S8",
+   "stage": "S9",
    "skipSigned": true,
    "lat": 30.61541,
    "lng": 114.25971,
@@ -8380,9 +8430,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.615765314236267,
    "_clng": 114.25986077785531,
    "spread": true,
-   "lastDate": "2026-10-30",
+   "lastDate": "2026-11-10",
    "firstDate": "2026-08-03",
-   "stalledDays": 10,
+   "stalledDays": 7,
    "risk": "ok"
   },
   {
@@ -8402,9 +8452,12 @@ window.__PLAN_DATA__ = {
     "方案报审": "2026-08-14",
     "审计审核": "2026-08-15",
     "方案公告公示开始时间": "2026-08-21",
-    "意见公示": "2026-10-30"
+    "意见公示": "2026-10-30",
+    "设备进场日期": "2026-11-13",
+    "开工日期": "2026-11-15"
    },
-   "stage": "S6",
+   "stage": "S9",
+   "skipSigned": true,
    "lat": 30.61541,
    "lng": 114.25971,
    "geoConfidence": "verified",
@@ -8412,9 +8465,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.615040802256264,
    "_clng": 114.25988708408191,
    "spread": true,
-   "lastDate": "2026-10-30",
+   "lastDate": "2026-11-15",
    "firstDate": "2026-08-03",
-   "stalledDays": 10,
+   "stalledDays": 2,
    "risk": "ok"
   },
   {
@@ -8435,9 +8488,10 @@ window.__PLAN_DATA__ = {
     "审计审核": "2026-08-15",
     "方案公告公示开始时间": "2026-08-21",
     "意见公示": "2026-10-30",
-    "设备进场日期": "2026-10-28"
+    "设备进场日期": "2026-10-28",
+    "开工日期": "2026-11-10"
    },
-   "stage": "S8",
+   "stage": "S9",
    "skipSigned": true,
    "lat": 30.61541,
    "lng": 114.25971,
@@ -8446,9 +8500,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.615587802877908,
    "_clng": 114.25926850316428,
    "spread": true,
-   "lastDate": "2026-10-30",
+   "lastDate": "2026-11-10",
    "firstDate": "2026-08-03",
-   "stalledDays": 10,
+   "stalledDays": 7,
    "risk": "ok"
   },
   {
@@ -8480,7 +8534,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-30",
    "firstDate": "2026-08-03",
-   "stalledDays": 10,
+   "stalledDays": 18,
    "risk": "ok"
   },
   {
@@ -8515,7 +8569,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-05",
    "firstDate": "2026-08-03",
-   "stalledDays": 4,
+   "stalledDays": 12,
    "risk": "ok"
   },
   {
@@ -8547,7 +8601,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-30",
    "firstDate": "2026-08-03",
-   "stalledDays": 10,
+   "stalledDays": 18,
    "risk": "ok"
   },
   {
@@ -8579,7 +8633,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-30",
    "firstDate": "2026-08-24",
-   "stalledDays": 40,
+   "stalledDays": 48,
    "risk": "watch"
   },
   {
@@ -8614,7 +8668,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-16",
    "firstDate": "2026-07-21",
-   "stalledDays": 24,
+   "stalledDays": 32,
    "risk": "ok"
   },
   {
@@ -8646,7 +8700,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-30",
    "firstDate": "2026-08-24",
-   "stalledDays": 40,
+   "stalledDays": 48,
    "risk": "watch"
   },
   {
@@ -8661,9 +8715,10 @@ window.__PLAN_DATA__ = {
    "brand": "三菱",
    "brandFrom": "ledger",
    "dates": {
-    "品牌确定日期": "2026-09-18"
+    "品牌确定日期": "2026-09-18",
+    "方案组价": "2026-11-17"
    },
-   "stage": "S1",
+   "stage": "S2",
    "lat": 30.612977,
    "lng": 114.26296,
    "geoConfidence": "verified",
@@ -8671,10 +8726,10 @@ window.__PLAN_DATA__ = {
    "_clat": 30.613135328581908,
    "_clng": 114.26319995490192,
    "spread": true,
-   "lastDate": "2026-09-18",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-18",
-   "stalledDays": 52,
-   "risk": "watch"
+   "stalledDays": 0,
+   "risk": "ok"
   },
   {
    "seq": 197,
@@ -8688,9 +8743,10 @@ window.__PLAN_DATA__ = {
    "brand": "三菱",
    "brandFrom": "ledger",
    "dates": {
-    "品牌确定日期": "2026-09-18"
+    "品牌确定日期": "2026-09-18",
+    "方案组价": "2026-11-17"
    },
-   "stage": "S1",
+   "stage": "S2",
    "lat": 30.612977,
    "lng": 114.26296,
    "geoConfidence": "verified",
@@ -8698,10 +8754,10 @@ window.__PLAN_DATA__ = {
    "_clat": 30.612688197911385,
    "_clng": 114.26290064206658,
    "spread": true,
-   "lastDate": "2026-09-18",
+   "lastDate": "2026-11-17",
    "firstDate": "2026-09-18",
-   "stalledDays": 52,
-   "risk": "watch"
+   "stalledDays": 0,
+   "risk": "ok"
   },
   {
    "seq": 198,
@@ -8716,9 +8772,10 @@ window.__PLAN_DATA__ = {
    "brandFrom": "ledger",
    "dates": {
     "品牌确定日期": "2026-08-18",
-    "方案组价": "2026-10-15"
+    "方案组价": "2026-10-15",
+    "方案报审": "2026-11-13"
    },
-   "stage": "S2",
+   "stage": "S3",
    "lat": 30.612977,
    "lng": 114.26296,
    "geoConfidence": "verified",
@@ -8726,9 +8783,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.613249518163954,
    "_clng": 114.26275857266045,
    "spread": true,
-   "lastDate": "2026-10-15",
+   "lastDate": "2026-11-13",
    "firstDate": "2026-08-18",
-   "stalledDays": 25,
+   "stalledDays": 4,
    "risk": "ok"
   },
   {
@@ -8744,9 +8801,10 @@ window.__PLAN_DATA__ = {
    "brandFrom": "ledger",
    "dates": {
     "品牌确定日期": "2026-08-18",
-    "方案组价": "2026-10-15"
+    "方案组价": "2026-10-15",
+    "方案报审": "2026-11-13"
    },
-   "stage": "S2",
+   "stage": "S3",
    "lat": 30.612977,
    "lng": 114.26296,
    "geoConfidence": "verified",
@@ -8754,9 +8812,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.612886094364644,
    "_clng": 114.26335292811608,
    "spread": true,
-   "lastDate": "2026-10-15",
+   "lastDate": "2026-11-13",
    "firstDate": "2026-08-18",
-   "stalledDays": 25,
+   "stalledDays": 4,
    "risk": "ok"
   },
   {
@@ -8772,9 +8830,10 @@ window.__PLAN_DATA__ = {
    "brandFrom": "ledger",
    "dates": {
     "品牌确定日期": "2026-08-18",
-    "方案组价": "2026-10-15"
+    "方案组价": "2026-10-15",
+    "方案报审": "2026-11-13"
    },
-   "stage": "S2",
+   "stage": "S3",
    "lat": 30.612977,
    "lng": 114.26296,
    "geoConfidence": "verified",
@@ -8782,9 +8841,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.612803978447268,
    "_clng": 114.26257290712132,
    "spread": true,
-   "lastDate": "2026-10-15",
+   "lastDate": "2026-11-13",
    "firstDate": "2026-08-18",
-   "stalledDays": 25,
+   "stalledDays": 4,
    "risk": "ok"
   },
   {
@@ -8800,9 +8859,10 @@ window.__PLAN_DATA__ = {
    "brandFrom": "ledger",
    "dates": {
     "品牌确定日期": "2026-08-18",
-    "方案组价": "2026-10-15"
+    "方案组价": "2026-10-15",
+    "方案报审": "2026-11-13"
    },
-   "stage": "S2",
+   "stage": "S3",
    "lat": 30.612977,
    "lng": 114.26296,
    "geoConfidence": "verified",
@@ -8810,9 +8870,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.61335181357379,
    "_clng": 114.2631190484169,
    "spread": true,
-   "lastDate": "2026-10-15",
+   "lastDate": "2026-11-13",
    "firstDate": "2026-08-18",
-   "stalledDays": 25,
+   "stalledDays": 4,
    "risk": "ok"
   },
   {
@@ -8828,9 +8888,10 @@ window.__PLAN_DATA__ = {
    "brandFrom": "ledger",
    "dates": {
     "品牌确定日期": "2026-08-18",
-    "方案组价": "2026-11-04"
+    "方案组价": "2026-11-04",
+    "方案报审": "2026-11-13"
    },
-   "stage": "S2",
+   "stage": "S3",
    "lat": 30.612977,
    "lng": 114.26296,
    "geoConfidence": "verified",
@@ -8838,9 +8899,9 @@ window.__PLAN_DATA__ = {
    "_clat": 30.612587541003876,
    "_clng": 114.26314679760917,
    "spread": true,
-   "lastDate": "2026-11-04",
+   "lastDate": "2026-11-13",
    "firstDate": "2026-08-18",
-   "stalledDays": 5,
+   "stalledDays": 4,
    "risk": "ok"
   },
   {
@@ -8872,7 +8933,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-06",
    "firstDate": "2026-08-20",
-   "stalledDays": 3,
+   "stalledDays": 11,
    "risk": "ok"
   },
   {
@@ -8904,7 +8965,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-06",
    "firstDate": "2026-08-20",
-   "stalledDays": 3,
+   "stalledDays": 11,
    "risk": "ok"
   },
   {
@@ -8936,7 +8997,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-06",
    "firstDate": "2026-08-20",
-   "stalledDays": 3,
+   "stalledDays": 11,
    "risk": "ok"
   },
   {
@@ -8968,7 +9029,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-06",
    "firstDate": "2026-08-20",
-   "stalledDays": 3,
+   "stalledDays": 11,
    "risk": "ok"
   },
   {
@@ -9000,7 +9061,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-06",
    "firstDate": "2026-08-20",
-   "stalledDays": 3,
+   "stalledDays": 11,
    "risk": "ok"
   },
   {
@@ -9031,7 +9092,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-24",
    "firstDate": "2026-08-20",
-   "stalledDays": 16,
+   "stalledDays": 24,
    "risk": "ok"
   },
   {
@@ -9062,7 +9123,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-24",
    "firstDate": "2026-08-20",
-   "stalledDays": 16,
+   "stalledDays": 24,
    "risk": "ok"
   },
   {
@@ -9093,7 +9154,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-24",
    "firstDate": "2026-08-20",
-   "stalledDays": 16,
+   "stalledDays": 24,
    "risk": "ok"
   },
   {
@@ -9124,7 +9185,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-24",
    "firstDate": "2026-08-20",
-   "stalledDays": 16,
+   "stalledDays": 24,
    "risk": "ok"
   },
   {
@@ -9155,7 +9216,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-24",
    "firstDate": "2026-08-20",
-   "stalledDays": 16,
+   "stalledDays": 24,
    "risk": "ok"
   },
   {
@@ -9186,7 +9247,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-24",
    "firstDate": "2026-08-20",
-   "stalledDays": 16,
+   "stalledDays": 24,
    "risk": "ok"
   },
   {
@@ -9222,7 +9283,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-10",
    "firstDate": "2026-07-13",
-   "stalledDays": 30,
+   "stalledDays": 38,
    "risk": "ok"
   },
   {
@@ -9258,7 +9319,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-10",
    "firstDate": "2026-07-13",
-   "stalledDays": 30,
+   "stalledDays": 38,
    "risk": "ok"
   },
   {
@@ -9291,7 +9352,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-05-28",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -9324,7 +9385,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-05-28",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -9359,7 +9420,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-09",
    "firstDate": "2026-06-08",
-   "stalledDays": 0,
+   "stalledDays": 8,
    "risk": "ok"
   },
   {
@@ -9393,7 +9454,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-05",
    "firstDate": "2026-06-08",
-   "stalledDays": 4,
+   "stalledDays": 12,
    "risk": "ok"
   },
   {
@@ -9428,7 +9489,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-08",
    "firstDate": "2026-07-17",
-   "stalledDays": 1,
+   "stalledDays": 9,
    "risk": "ok"
   },
   {
@@ -9463,7 +9524,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-07-17",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -9497,7 +9558,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-07-17",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -9532,7 +9593,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-07-17",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -9566,7 +9627,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-04",
    "firstDate": "2026-07-17",
-   "stalledDays": 5,
+   "stalledDays": 13,
    "risk": "ok"
   },
   {
@@ -9598,7 +9659,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-05",
    "firstDate": "2026-07-27",
-   "stalledDays": 4,
+   "stalledDays": 12,
    "risk": "ok"
   },
   {
@@ -9630,7 +9691,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-11-05",
    "firstDate": "2026-07-27",
-   "stalledDays": 4,
+   "stalledDays": 12,
    "risk": "ok"
   },
   {
@@ -9661,7 +9722,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-30",
    "firstDate": "2026-07-24",
-   "stalledDays": 40,
+   "stalledDays": 48,
    "risk": "watch"
   },
   {
@@ -9692,7 +9753,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-30",
    "firstDate": "2026-07-24",
-   "stalledDays": 40,
+   "stalledDays": 48,
    "risk": "watch"
   },
   {
@@ -9723,7 +9784,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-30",
    "firstDate": "2026-07-24",
-   "stalledDays": 40,
+   "stalledDays": 48,
    "risk": "watch"
   },
   {
@@ -9754,7 +9815,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-09-30",
    "firstDate": "2026-07-24",
-   "stalledDays": 40,
+   "stalledDays": 48,
    "risk": "watch"
   },
   {
@@ -9789,7 +9850,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-27",
    "firstDate": "2026-06-22",
-   "stalledDays": 13,
+   "stalledDays": 21,
    "risk": "ok"
   },
   {
@@ -9825,7 +9886,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-06-22",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -9861,7 +9922,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-06-22",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -9896,7 +9957,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-28",
    "firstDate": "2026-06-22",
-   "stalledDays": 12,
+   "stalledDays": 20,
    "risk": "ok"
   },
   {
@@ -9931,7 +9992,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-25",
    "firstDate": "2026-06-22",
-   "stalledDays": 15,
+   "stalledDays": 23,
    "risk": "ok"
   },
   {
@@ -9967,7 +10028,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-06-22",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -10003,7 +10064,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-06-22",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -10038,7 +10099,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-25",
    "firstDate": "2026-06-22",
-   "stalledDays": 15,
+   "stalledDays": 23,
    "risk": "ok"
   },
   {
@@ -10074,7 +10135,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-06-22",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -10109,7 +10170,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-25",
    "firstDate": "2026-06-22",
-   "stalledDays": 15,
+   "stalledDays": 23,
    "risk": "ok"
   },
   {
@@ -10145,7 +10206,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-23",
    "firstDate": "2026-06-22",
-   "stalledDays": 17,
+   "stalledDays": 25,
    "risk": "ok"
   },
   {
@@ -10180,7 +10241,7 @@ window.__PLAN_DATA__ = {
    "spread": true,
    "lastDate": "2026-10-26",
    "firstDate": "2026-06-22",
-   "stalledDays": 14,
+   "stalledDays": 22,
    "risk": "ok"
   }
  ]
